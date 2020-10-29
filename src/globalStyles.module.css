@@ -1,0 +1,48 @@
+html {
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+    margin: 0;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+ul {
+    padding: 0;
+}
+
+li {
+    list-style-type: none;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+:global(.appContainer) {
+    width: 300px;
+    margin: 0 auto;
+}
+@media (min-width: 768px) {
+   :global(.appContainer) {
+       width: 748px;
+   }
+}
+@media (min-width: 1280px) {
+    :global(.appContainer) {
+        width: 1192px;
+    }
+}

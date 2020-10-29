@@ -1,0 +1,49 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    composes: global(appContainer);
+}
+.header {
+    background-color: rgb(40, 64, 96);
+}
+.logoContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-decoration: none;
+}
+.logoutContainer {
+    composes: logoContainer;
+}
+.imgContainer {
+    width: 24px;
+    height: 24px;
+}
+.logoName {
+ margin-left: 5px;
+ color: #79879a;
+}
+.name {
+    margin-right: 13px;
+    color: #79879a;
+}
+.button {
+    background-color: inherit;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+.button::before {
+    content: '';
+    display: block;
+    height: 16px;
+    width: 16px;
+    background-image: url(./Image/exit.svg);
+    fill: #79879a;
+}
+@media (max-width: 767px) {
+    .button {
+        font-size: 0px;
+    }
+}
