@@ -3,12 +3,14 @@ import { Route, Switch } from "react-router-dom";
 import Header from "./component/Header/header";
 import Layout from "./component/Layout/layout";
 import CurrencyExchange from "./component/CurrencyExchange/CurrencyExchange";
+import NavSection from './component/NavSection/NavSection';
 
 class App extends Component {
   render() {
     return (
       <Layout>
         <Header />
+        <NavSection />
         <Switch>
           <Route path="/home" />
           <Route path="/stats" />
