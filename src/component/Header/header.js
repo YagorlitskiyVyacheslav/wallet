@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 export default class Header extends Component {
     render() {
         return (
+            <>
           <header className={styles.header}>
             <div className={styles.container}>
               <Link to='/home' className={styles.logoContainer}>
@@ -22,6 +23,7 @@ export default class Header extends Component {
               </div>
             </div>
           </header>
+          </>
         );
     }
 }

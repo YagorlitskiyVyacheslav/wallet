@@ -3,6 +3,7 @@
     justify-content: space-between;
     padding: 8px 0;
     composes: global(appContainer);
+    margin: 0 auto;
 }
 .header {
     background-color: rgb(40, 64, 96);

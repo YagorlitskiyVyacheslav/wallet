@@ -34,7 +34,6 @@ img {
 }
 :global(.appContainer) {
     width: 300px;
-    margin: 0 auto;
 }
 @media (min-width: 768px) {
    :global(.appContainer) {
