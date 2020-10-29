@@ -1,0 +1,58 @@
+.wrap {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  background-image: url(../../images/bg_exchange_currency.jpg);
+  background-position: bottom;
+  background-repeat: no-repeat;
+  width: 320px;
+  height: 458px;
+}
+
+@media screen and (min-width: 1280px) {
+  .wrap {
+    background-image: inherit;
+    width: 392px;
+    height: 190px;
+  }
+  .currencyTable {
+    min-width: 392px;
+    min-height: 190px;
+  }
+  .currencyTable__head {
+    font-size: 11px;
+  }
+}
+
+@media screen and (min-width: 703px) and (max-width: 1279px) {
+  .wrap {
+    height: 381px;
+  }
+}
+
+.currencyTable {
+  height: 190px;
+  width: 320px;
+  background-color: #f3f6f6;
+  border-spacing: 0 2px;
+}
+
+.currencyTable__head {
+  font-family: HelveticaNeueCyr;
+  font-size: 13px;
+  font-weight: bold;
+  height: 62px;
+
+  text-align: center;
+}
+
+.currencyTable__body {
+  text-align: center;
+  font-family: HelveticaNeueCyr;
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.currencyTable__body--item {
+  background-color: white;
+}
