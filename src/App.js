@@ -13,8 +13,8 @@ class App extends Component {
     return (
       <Layout>
         <Header />
+        <NavSection />
         <Container>
-          <NavSection />
           <Switch>
             <Route path="/home" exact component={Home} />
             <Route path="/stats" exact component={Stats} />
