@@ -46,7 +46,7 @@ img {
     }
 }
 @media (min-width: 1280px){
- .gridContainer {
+.gridContainer {
      display: grid;
      grid-template-columns: 0.26fr 1.74fr;
      grid-template-rows: 0.2fr 1.8fr;
@@ -55,18 +55,8 @@ img {
          "header header"
          "navigation body"
          "navigation body";
+ }
+body {
     background-color: #f2eaf0;
- }
-
- :global(.header) {
-     grid-area: header;
- }
-
- :global(.navigation) {
-     grid-area: navigation;
- }
-
- :global(.body) {
-     grid-area: body;
- }
+}
 }

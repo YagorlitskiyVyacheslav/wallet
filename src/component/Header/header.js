@@ -22,9 +22,6 @@ export default class Header extends Component {
                 </button>
               </div>
             </div>
-            {document.documentElement.clientWidth >= 768 && (
-              <hr className={styles.bottomLine} />
-            )}
           </header>
         );
     }
