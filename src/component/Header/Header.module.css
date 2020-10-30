@@ -7,7 +7,6 @@
 }
 .header {
     background-color: rgb(40, 64, 96);
-    /* composes: global(header); */
 }
 .logoContainer {
     display: flex;
@@ -58,11 +57,7 @@
     .header {
         background-color: rgb(255, 255, 255);
         box-shadow: 1.5px 2.598px 3px 0px rgba(1, 1, 0, 0.12);
-    }
-    .bottomLine {
-        box-shadow: 1.5px 2.598px 3px 0px rgba(1, 1, 0, 0.12); 
         margin-bottom: 3px;
-        border: none;
     }
     .logoName {
         color: #000000;
@@ -86,6 +81,10 @@
 @media screen and (min-width: 1280px) {
     .header {
         grid-area: header;
-        height: fit-content;
+        margin-bottom: 46px;
+    }
+    .container {
+        width: 1192px;
+        padding: 28px 0;
     }
 }
