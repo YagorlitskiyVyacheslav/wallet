@@ -1,0 +1,23 @@
+.container{
+    background-color: #f3f6f6;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+  .container {
+      width: 100vw;
+      height: 100vh;
+      background-color: #f8f8fe;
+    background-image: url(../../images/bg_exchange_tablet_big.png);
+    /* background-image: url(../../images/bg_exchange_tablet.png); */
+    background-repeat: no-repeat;
+    /* background-position: center; */
+    background-position: bottom;
+    /* background-size: contain; */
+    background-size: cover;
+    position: relative;
+  }
+}
+
+/* @media screen and (min-width: 1280px) {
+} */
+/* f8f8fe */
