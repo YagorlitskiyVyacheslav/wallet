@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-between;
     padding: 8px 0;
-    composes: global(appContainer);
+    width: 300px;
     margin: 0 auto;
 }
 .header {
@@ -26,8 +26,9 @@
  color: #79879a;
 }
 .name {
-    margin-right: 13px;
+    padding-right: 13px;
     color: #79879a;
+    font-size: 15px;
 }
 .button {
     background-color: inherit;
@@ -47,4 +48,37 @@
     .button {
         font-size: 0px;
     }
+}
+@media (min-width: 768px) {
+    .container {
+        padding: 25px 22px;
+        width: 748px;
+    }
+    .header {
+        background-color: rgb(255, 255, 255);
+        box-shadow: 1.5px 2.598px 3px 0px rgba(1, 1, 0, 0.12);
+    }
+    .bottomLine {
+        box-shadow: 1.5px 2.598px 3px 0px rgba(1, 1, 0, 0.12); 
+        margin-bottom: 3px;
+        border: none;
+    }
+    .logoName {
+        color: #000000;
+    }
+    .name {
+        border-right: 1px solid #79879a;
+        padding-right: 17px;
+    }
+    .button {
+        margin-left: 17px;
+        display: flex;
+        color: #79879a;
+        font-size: 15px;
+        font-family: "HelveticaNeueCyr", sans-serif;
+    }
+    .button::before {
+        margin-right: 5px;
+    }
+    
 }
