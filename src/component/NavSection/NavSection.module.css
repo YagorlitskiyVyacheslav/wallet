@@ -1,9 +1,7 @@
 .container {
     background-color: #3a5374;
 }
-
 .list {
-    composes: global(appContainer);
     display: flex;
     justify-content: center;
     padding: 8px 0;
@@ -15,7 +13,7 @@
     margin-right: 12px;
 }
 .link {
-    text-decoration: underline;
+    text-decoration: none;
     display: inline-block;
     width: 30px;
     height: 25px;
@@ -36,7 +34,7 @@
 .item:nth-child(2) a::before {
     mask-image: url(./baseline-timeline-24px.svg);
 }
-.item:last-child a::before {
+.item:nth-child(3) a::before {
     mask-image: url(./baseline-attach_money-24px.svg);
 }
 .isActive::before {
@@ -47,7 +45,7 @@
 }
 .balanceContainer {
     margin: 20px auto;
-    composes: global(appContainer);
+    width: 300px;
     border-radius: 4px;
     background-color: rgb(58, 83, 116);
     box-shadow: 14.095px 5.13px 9px 0px rgba(1, 1, 0, 0.08);
@@ -68,5 +66,75 @@
 @media (max-width: 767px) {
     .link {
         font-size: 0px;
+    }
+}
+@media (min-width: 768px) and (max-width: 1279px) {
+    .container {
+        background-color: inherit;
+    }
+    .section {
+        background-color: #f8fdfe;
+        padding: 30px 0;
+    }
+    .sectionContainer {
+        display: flex;
+        width: 748px;
+        margin: 0 auto;
+        justify-content: center;
+    }
+    .list {
+        padding: 0;
+    }
+    .link {
+        display: flex;
+        width: auto;
+        height: auto;
+        background-color: inherit;
+        align-items: center;
+        color: #6b7d83;
+        border-right: 1px solid #6b7d83;
+        border-radius: inherit;
+    }
+    .link:first-child {
+        padding-right: 12px;
+    }
+    .link:nth-child(2) {
+        padding: 0 12px;
+    }
+    .link::before {
+        min-width: 24px;
+        background-color: #6b7d83;
+        margin-right: 5px;
+    }
+    .isActive {
+        color: #3a5374;
+    }
+    .isActive::before {
+        background-color: #3a5374;
+    }
+    .balanceContainer {
+        margin: 0 0 0 12px;
+        background-color: inherit;
+        box-shadow: none;
+        
+        width: auto;
+        padding: 0;
+        display: flex;
+        align-items: center;
+    }
+    .balanceTitle {
+        margin-right: 5px;
+    }
+    .balanceTitle, .balanceSum {
+        color: rgb(107, 125, 131);
+    }
+}
+@media (min-width: 1280px) {
+    .sectionContainer {
+        display: flex;
+        flex-direction: column;
+    }
+    .section {
+        grid-area: navigation;
     }
 }
