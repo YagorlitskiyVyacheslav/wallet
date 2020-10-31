@@ -1,7 +1,6 @@
 /*! Mobile */
 
 .financeMobSection {
-  /* background-color: #f3f6f6; */
   background-color: #ffffff;
   margin: auto;
 }
@@ -68,9 +67,14 @@
   color: rgb(58, 83, 116);
 }
 
+.currencySection {
+  display: none;
+}
+
 /*! Tablet / Desktop */
 
 .financeWrapper {
+  composes: global(appContainer);
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -79,18 +83,7 @@
 
 .financeTable {
   width: 100%;
-  margin: 20px 8px 20px;
   text-align: center;
-}
-
-/** нечетное */
-.tr:nth-child(odd) {
-  background-color: #f8f8fe;
-}
-
-/** четное f3f6f6*/
-.tr:nth-child(even) {
-  background-color: #f3f6f6;
 }
 
 .thead {
@@ -106,37 +99,54 @@
   padding: 12px 0px;
 }
 
+.tr {
+  font-size: 13px;
+  font-family: "HelveticaNeueCyr";
+  color: rgb(44, 53, 62);
+  line-height: 2.308;
+  padding: 16px 0px;
+}
+
+/** нечетное */
+.tr:nth-child(odd) {
+  background-color: #f8f8fe;
+}
+
+/** четное f3f6f6*/
+.tr:nth-child(even) {
+  background-color: #f3f6f6;
+}
+
 .td {
   font-size: 13px;
   font-family: "HelveticaNeueCyr";
-  font-weight: bold;
-  color: #2c353e;
+  color: rgb(44, 53, 62);
   line-height: 2.308;
-  padding: 12px 0px;
+  padding: 16px 0px;
 }
 
-.tdAmount {
-  font-size: 13px;
-  font-family: "HelveticaNeueCyr";
+.tdIncome {
+  font-weight: bold;
+  color: #ff6c00;
+}
+
+.tdSpending {
   font-weight: bold;
   color: #3a5374;
-  line-height: 2.308;
-  padding: 12px 0px;
 }
 
 @media screen and (min-width: 768px) and (max-width: 1279px) {
-  .financeMobSection  {
+  .financeMobSection {
     width: 738px;
     margin: 0px auto;
   }
-  
+
   .financeWrapper {
     background-color: #f8f8fe;
-    /* width: 738px; */
-    /* width: 100%; */
   }
 
   .currencySection {
+    display: block;
     position: absolute;
     left: 33px;
     bottom: 52px;
@@ -148,31 +158,34 @@
 }
 
 @media screen and (min-width: 1280px) {
-  .financeMobSection  {
+  .financeMobSection {
     /* width: 856px; */
-    width: 100%;
-    margin: 0px auto;
+    margin: 0px 26px 0px 26px;
+    background-color: #f2eaf0;
+  }
 
-    /* margin: 0px 46px 0px 26px; */
-    background-color: #ececf3;
+  .financeWrapper {
+    width: 100%;
   }
 
   .financeTable {
+    margin: 0px;
   }
 
   .tr:nth-child(odd) {
-    background-color: #f3f6f6;
+    background-color: #f2eaf0;
   }
-  
+
   /** четное f3f6f6*/
   .tr:nth-child(even) {
-    background-color: #f8f8fe;
+    background-color: #f3f6f6;
   }
 
   .currencySection {
+    display: block;
     position: absolute;
     width: 312px;
     left: -300px;
-    bottom: -10px;
+    bottom: -22px;
   }
 }
