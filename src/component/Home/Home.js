@@ -59,7 +59,7 @@ export default class Home extends Component {
       },
       {
         id: "5c9b88bbfddb83212234a929",
-        date: 1994824888,
+        date: 15262626509444,
         type: "+",
         category: "Car",
         amount: 1000,
@@ -69,7 +69,7 @@ export default class Home extends Component {
       },
       {
         id: "5c9b88bbfddb83212234a930",
-        date: 1994824999,
+        date: 159929509444,
         type: "-",
         category: "Car",
         amount: 1000,
@@ -88,133 +88,121 @@ export default class Home extends Component {
     typeBalanceAfter: "",
   };
 
-  //   addContact = (data) => {
-  //     let newContact = {
-  //       id: uuidv4(),
-  //       name: data.name,
-  //       number: data.number,
-  //     };
-
-  //     const isNewContactUnique = () => {
-  //       const { contacts } = this.state;
-  //       return contacts.find((contact) => contact.name === newContact.name);
-  //     };
-
-  //     let newContactUnique = isNewContactUnique();
-
-  //     this.setState((prevState) => {
-  //       return !newContactUnique
-  //         ? { contacts: [...prevState.contacts, newContact] }
-  //         : window.alert(`${newContact.name} is already in contacts.`);
-  //     });
-  //   };
-
   render() {
     const { financeData } = this.state;
 
     console.log(financeData);
-    console.log(document.documentElement.clientWidth);
-    let date = new Date(199482466656).toLocaleDateString().split(".");
-    console.log(date);
+
+    let date;
+    let result;
 
     return (
       <>
         <section className={styles.financeMobSection}>
-          {document.documentElement.clientWidth < 767 &&
-            (console.log("111111"),
-            (
-              <div className={styles.financeMobWrapper}>
-                <ul className={styles.financeMobList}>
-                  {financeData.map((data) => (
-                    <>
-                      <li key={data.id} className={styles.financeMobItem}>
-                        <div className={styles.financeMobRow}>
-                          <p className={styles.financeMobTitle}>Дата</p>
-                          <span className={styles.financeMobDate}>
-                            {/* {date = new Date(`${data.date}`).toLocaleDateString().split(".")} */}
-                            {date = new Date(`${data.date}`).toDateString()}
-                          </span>
-                        </div>
-                        <div className={styles.financeMobRow}>
-                          <p className={styles.financeMobTitle}>Тип</p>
-                          <span className={styles.financeMobDate}>
-                            {data.type}
-                          </span>
-                        </div>
-                        <div className={styles.financeMobRow}>
-                          <p className={styles.financeMobTitle}>Категория</p>
-                          <span className={styles.financeMobDate}>
-                            {data.category}
-                          </span>
-                        </div>
-                        <div className={styles.financeMobRow}>
-                          <p className={styles.financeMobTitle}>Комментарии</p>
-                          <span className={styles.financeMobDate}>
-                            {data.comments}
-                          </span>
-                        </div>
-                        <div className={styles.financeMobRow}>
-                          <p className={styles.financeMobTitle}>Сумма</p>
-                          <span
-                            className={
-                              data.type === "+"
-                                ? styles.tdIncome
-                                : styles.tdSpending
-                            }>
-                            {data.amount}
-                          </span>
-                        </div>
-                        <div className={styles.financeMobRow}>
-                          <div className={styles.financeMobTitle}>Баланс</div>
-                          <span className={styles.financeMobDate}>
-                            {data.balanceAfter}
-                          </span>
-                        </div>
-                      </li>
-                    </>
-                  ))}
-                </ul>
-              </div>
-            ))}
-
-          {document.documentElement.clientWidth > 768 &&
-            (console.log("222222"),
-            (
-              <div className={styles.financeWrapper}>
-                <table className={styles.financeTable}>
-                  <thead className={styles.thead}>
-                    <tr className={styles.tr}>
-                      <th className={styles.th}>Дата</th>
-                      <th className={styles.th}>Тип</th>
-                      <th className={styles.th}>Категория</th>
-                      <th className={styles.th}>Комментарии</th>
-                      <th className={styles.th}>Сумма</th>
-                      <th className={styles.th}>Баланс</th>
-                    </tr>
-                  </thead>
-
-                  <tbody>
-                    {financeData.map((data) => (
-                      <tr key={data.id} className={styles.tr}>
-                        <td className={styles.td}>{data.date}</td>
-                        <td className={styles.td}>{data.type}</td>
-                        <td className={styles.td}>{data.category}</td>
-                        <td className={styles.td}>{data.comments}</td>
-                        <td
+          {document.documentElement.clientWidth < 767 && (
+            <div className={styles.financeMobWrapper}>
+              <ul className={styles.financeMobList}>
+                {financeData.map((data) => (
+                  <>
+                    <li key={data.id} className={styles.financeMobItem}>
+                      <div className={styles.financeMobRow}>
+                        <p className={styles.financeMobTitle}>Дата</p>
+                        <span className={styles.financeMobDate}>
+                          {
+                            ((date = new Date(data.date)),
+                            (result =
+                              `${date.getDate()}.` +
+                              (0 + `${date.getMonth() + 1}.`) +
+                              `${date.getFullYear()}`.slice(-2)))
+                          }
+                        </span>
+                      </div>
+                      <div className={styles.financeMobRow}>
+                        <p className={styles.financeMobTitle}>Тип</p>
+                        <span className={styles.financeMobDate}>
+                          {data.type}
+                        </span>
+                      </div>
+                      <div className={styles.financeMobRow}>
+                        <p className={styles.financeMobTitle}>Категория</p>
+                        <span className={styles.financeMobDate}>
+                          {data.category}
+                        </span>
+                      </div>
+                      <div className={styles.financeMobRow}>
+                        <p className={styles.financeMobTitle}>Комментарии</p>
+                        <span className={styles.financeMobDate}>
+                          {data.comments}
+                        </span>
+                      </div>
+                      <div className={styles.financeMobRow}>
+                        <p className={styles.financeMobTitle}>Сумма</p>
+                        <span
                           className={
                             data.type === "+"
                               ? styles.tdIncome
                               : styles.tdSpending
                           }>
                           {data.amount}
-                        </td>
-                        <td className={styles.td}>{data.balanceAfter}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            ))}
+                        </span>
+                      </div>
+                      <div className={styles.financeMobRow}>
+                        <div className={styles.financeMobTitle}>Баланс</div>
+                        <span className={styles.financeMobDate}>
+                          {data.balanceAfter}
+                        </span>
+                      </div>
+                    </li>
+                  </>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {document.documentElement.clientWidth > 768 && (
+            <div className={styles.financeWrapper}>
+              <table className={styles.financeTable}>
+                <thead className={styles.thead}>
+                  <tr className={styles.tr}>
+                    <th className={styles.th}>Дата</th>
+                    <th className={styles.th}>Тип</th>
+                    <th className={styles.th}>Категория</th>
+                    <th className={styles.th}>Комментарии</th>
+                    <th className={styles.th}>Сумма</th>
+                    <th className={styles.th}>Баланс</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  {financeData.map((data) => (
+                    <tr key={data.id} className={styles.tr}>
+                      <td className={styles.td}>
+                        {
+                          ((date = new Date(data.date)),
+                          (result =
+                            `${date.getDate()}.` +
+                            (0 + `${date.getMonth() + 1}.`) +
+                            `${date.getFullYear()}`.slice(-2)))
+                        }
+                      </td>
+                      <td className={styles.td}>{data.type}</td>
+                      <td className={styles.td}>{data.category}</td>
+                      <td className={styles.td}>{data.comments}</td>
+                      <td
+                        className={
+                          data.type === "+"
+                            ? styles.tdIncome
+                            : styles.tdSpending
+                        }>
+                        {data.amount}
+                      </td>
+                      <td className={styles.td}>{data.balanceAfter}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
         </section>
 
         <div className={styles.currencySection}>
