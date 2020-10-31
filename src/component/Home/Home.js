@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import CurrencyExchange from "../CurrencyExchange";
-import "./Home.css";
+import styles from './Home.module.css';
 
 export default class Home extends Component {
   // static propTypes = {
@@ -58,7 +58,7 @@ export default class Home extends Component {
         typeBalanceAfter: "+",
       },
       {
-        id: "5c9b88bbfddb83212234a928",
+        id: "5c9b88bbfddb83212234a929",
         date: 1994824888,
         type: "+",
         category: "Car",
@@ -68,7 +68,7 @@ export default class Home extends Component {
         typeBalanceAfter: "+",
       },
       {
-        id: "5c9b88bbfddb83212234a928",
+        id: "5c9b88bbfddb83212234a930",
         date: 1994824999,
         type: "+",
         category: "Car",
@@ -117,53 +117,45 @@ export default class Home extends Component {
 
     return (
       <>
-        <section className="finance-section">
+        <section className={styles.financeMobSection}>
           {document.documentElement.clientWidth < 767 &&
             (console.log("111111"),
             (
-              <div className="finance-mob__wrapper">
-                {/* <div className="finance-mob__block-title">
-                  <p className="finance-mob__title">Дата</p>
-                  <p className="finance-mob__title">Тип</p>
-                  <p className="finance-mob__title">Категория</p>
-                  <p className="finance-mob__title">Комментарии</p>
-                  <p className="finance-mob__title">Сумма</p>
-                  <div className="finance-mob__title">Баланс</div>
-                </div> */}
+              <div className={styles.financeMobWrapper}>
 
-                <ul className="finance-mob__list">
+                <ul className={styles.financeMobList}>
                   {financeData.map((data) => (
                     <>
-                      <li key={data.id} className="finance-mob__item">
-                        <div className="finance-mob__row">
-                          <p className="finance-mob__title">Дата</p>
-                          <span className="finance-mob__data">{data.date}</span>
+                      <li key={data.id} className={styles.financeMobItem}>
+                        <div className={styles.financeMobRow}>
+                          <p className={styles.financeMobTitle}>Дата</p>
+                          <span className={styles.financeMobDate}>{data.date}</span>
                         </div>
-                        <div className="finance-mob__row">
-                          <p className="finance-mob__title">Тип</p>
-                          <span className="finance-mob__data">{data.type}</span>
+                        <div className={styles.financeMobRow}>
+                          <p className={styles.financeMobTitle}>Тип</p>
+                          <span className={styles.financeMobDate}>{data.type}</span>
                         </div>
-                        <div className="finance-mob__row">
-                          <p className="finance-mob__title">Категория</p>
-                          <span className="finance-mob__data">
+                        <div className={styles.financeMobRow}>
+                          <p className={styles.financeMobTitle}>Категория</p>
+                          <span className={styles.financeMobDate}>
                             {data.category}
                           </span>
                         </div>
-                        <div className="finance-mob__row">
-                          <p className="finance-mob__title">Комментарии</p>
-                          <span className="finance-mob__data">
+                        <div className={styles.financeMobRow}>
+                          <p className={styles.financeMobTitle}>Комментарии</p>
+                          <span className={styles.financeMobDate}>
                             {data.comments}
                           </span>
                         </div>
-                        <div className="finance-mob__row">
-                          <p className="finance-mob__title">Сумма</p>
-                          <span className="finance-mob__data finance-mob__data--amount">
+                        <div className={styles.financeMobRow}>
+                          <p className={styles.financeMobTitle}>Сумма</p>
+                          <span className={styles.financeMobDateAmount}>
                             {data.amount}
                           </span>
                         </div>
-                        <div className="finance-mob__row">
-                          <div className="finance-mob__title">Баланс</div>
-                          <span className="finance-mob__data">
+                        <div className={styles.financeMobRow}>
+                          <div className={styles.financeMobTitle}>Баланс</div>
+                          <span className={styles.financeMobDate}>
                             {data.balanceAfter}
                           </span>
                         </div>
@@ -174,32 +166,31 @@ export default class Home extends Component {
               </div>
             ))}
 
-          {/* {document.documentElement.clientWidth < 1280 && */}
           {document.documentElement.clientWidth > 768 &&
             (console.log("222222"),
             (
-              <div className="finance-wrapper">
-                <table className="finance-table">
-                  <thead className="thead">
-                    <tr className="tr">
-                      <th className="th">Дата</th>
-                      <th className="th">Тип</th>
-                      <th className="th">Категория</th>
-                      <th className="th">Комментарии</th>
-                      <th className="th">Сумма</th>
-                      <th className="th">Баланс</th>
+              <div className={styles.financeWrapper}>
+                <table className={styles.financeTable}>
+                  <thead className={styles.thead}>
+                    <tr className={styles.tr}>
+                      <th className={styles.th}>Дата</th>
+                      <th className={styles.th}>Тип</th>
+                      <th className={styles.th}>Категория</th>
+                      <th className={styles.th}>Комментарии</th>
+                      <th className={styles.th}>Сумма</th>
+                      <th className={styles.th}>Баланс</th>
                     </tr>
                   </thead>
 
                   <tbody>
                     {financeData.map((data) => (
-                      <tr key={data.id} className="tr">
-                        <td className="td">{data.date}</td>
-                        <td className="td">{data.type}</td>
-                        <td className="td">{data.category}</td>
-                        <td className="td">{data.comments}</td>
-                        <td className="td td--amount">{data.amount}</td>
-                        <td className="td">{data.balanceAfter}</td>
+                      <tr key={data.id} className={styles.tr}>
+                        <td className={styles.td}>{data.date}</td>
+                        <td className={styles.td}>{data.type}</td>
+                        <td className={styles.td}>{data.category}</td>
+                        <td className={styles.td}>{data.comments}</td>
+                        <td className={styles.tdAmount}>{data.amount}</td>
+                        <td className={styles.td}>{data.balanceAfter}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -208,21 +199,10 @@ export default class Home extends Component {
             ))}
         </section>
 
-        <div className="currency-section">
+        <div className={styles.currencySection}>
           <CurrencyExchange />
         </div>
-        {/* <ContactForm onAddContact={this.addContact} /> */}
       </>
     );
   }
 }
-
-// {id: "5c9b88bbfddb83212234a926", date: 1553699509960, type: "+", category: "Job", amount: 2000, …}
-// amount: 2000
-// balanceAfter: 3000
-// category: "Job"
-// comments: "get money by my Job"
-// date: 1553699509960
-// id: "5c9b88bbfddb83212234a926"
-// type: "+"
-// typeBalanceAfter: "-"

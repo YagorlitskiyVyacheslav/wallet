@@ -1,11 +1,11 @@
 /*! Mobile */
 
-.finance-section {
+.financeMobSection {
   background-color: #f3f6f6;
   margin: auto;
 }
 
-.finance-mob__wrapper {
+.financeMobWrapper {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -15,13 +15,13 @@
   margin-bottom: 20px;
 }
 
-.finance-mob__list {
+.financeMobList {
   max-width: 306px;
   display: flex;
   flex-direction: column;
 }
 
-.finance-mob__item {
+.financeMobItem {
   display: flex;
   flex-direction: column;
   margin-bottom: 16px;
@@ -32,43 +32,43 @@
   line-height: 2.308;
 }
 
-.finance-mob__item:last-child {
+.financeMobItem:last-child {
   margin-bottom: 0px;
 }
 
-.finance-mob__row {
+.financeMobRow {
   display: flex;
   flex-direction: row;
   text-align: left;
   padding: 7px 0px 7px 16px;
 }
 
-.finance-mob__title {
+.financeMobTitle {
   min-width: 150px;
 }
 
 /** нечетное */
-.finance-mob__row:nth-child(odd) {
+.financeMobRow:nth-child(odd) {
   background-color: #f3f6f6;
 }
 
 /** четное f3f6f6*/
-.finance-mob__row:nth-child(even) {
+.financeMobRow:nth-child(even) {
   background-color: #ffffff;
 }
 
-.finance-mob__data {
+.financeMobDate {
   /* padding-left: 164px; */
 }
 
-.finance-mob__data--amount {
+.financeMobDateAmount {
   font-weight: bold;
   color: rgb(58, 83, 116);
 }
 
 /*! Tablet / Desktop */
 
-.finance-wrapper {
+.financeWrapper {
   composes: global(appContainer);
   display: flex;
   flex-direction: row;
@@ -76,7 +76,7 @@
   margin: 0px auto;
 }
 
-.finance-table {
+.financeTable {
   width: 100%;
   margin: 20px 8px 20px;
   text-align: center;
@@ -114,32 +114,61 @@
   padding: 12px 0px;
 }
 
-.td--amount {
+.tdAmount {
+  font-size: 13px;
+  font-family: "HelveticaNeueCyr";
+  font-weight: bold;
   color: #3a5374;
+  line-height: 2.308;
+  padding: 12px 0px;
 }
 
 @media screen and (min-width: 768px) and (max-width: 1279px) {
-  .finance-section {
+  .financeMobSection  {
     width: 738px;
     margin: 0px auto;
   }
   
-  .finance-wrapper {
+  .financeWrapper {
     /* width: 738px; */
     /* width: 100%; */
   }
 
-  .currency-section {
+  .currencySection {
     position: absolute;
     left: 33px;
     bottom: 52px;
   }
 
-  .finance-table {
+  .financeTable {
     margin: 0px 8px;
   }
 }
 
 @media screen and (min-width: 1280px) {
+  .financeMobSection  {
+    /* width: 856px; */
+    width: 100%;
+    margin: 0px auto;
+  }
+
+  .financeTable {
+    margin: 0px 46px 0px 26px;
+  }
+
+  .tr:nth-child(odd) {
+    background-color: #f3f6f6;
+  }
   
+  /** четное f3f6f6*/
+  .tr:nth-child(even) {
+    background-color: #f8f8fe;
+  }
+
+  .currencySection {
+    position: absolute;
+    width: 312px;
+    left: 33px;
+    bottom: 52px;
+  }
 }
