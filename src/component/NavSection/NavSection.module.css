@@ -136,15 +136,47 @@
     }
     .section {
         grid-area: navigation;
+        width: 312px;
+    }
+    .container {
+        background-color: #284060;
+        border-radius: 4px;
     }
     .list {
         display: block;
+        padding: 40px 0;
+    }
+    .item {
+        width: 100%;
     }
     .link {
         display: flex;
         align-items: center;
+        font-size: 15px;
+        font-family: "HelveticaNeueCyr", sans-serif;
+        font-weight: bold;
+        background-color: inherit;
+        width: 100%;
+        padding: 11px 0 11px 29px;
+        height: auto;
+    }
+    .link p {
+        color: rgb(255, 255, 255);
     }
     .link::before {
         min-width: 24px;
+        margin-right: 20px;
+        background-color: rgb(255, 255, 255);
+    }
+    .isActive {
+        background-color: #3a5374;
+    }
+    .balanceContainer {
+        background-color: #284060;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        padding: 40px 29px;
+        margin: 32px 0;
     }
 }

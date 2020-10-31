@@ -24,6 +24,9 @@
 .logoName {
  margin-left: 5px;
  color: #79879a;
+ font-size: 20px;
+ font-family: "BauhausC", sans-serif;
+ font-weight: bold;
 }
 .name {
     padding-right: 13px;
