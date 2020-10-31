@@ -1,5 +1,4 @@
 /*! Mobile */
-
 .financeMobSection {
   background-color: #ffffff;
   margin: auto;
@@ -11,7 +10,6 @@
   justify-content: center;
   margin: 0px auto;
   text-align: center;
-  /* background-color: #f3f6f6; */
   background-color: #ffffff;
   padding-bottom: 20px;
 }
@@ -58,10 +56,6 @@
   background-color: #ffffff;
 }
 
-.financeMobDate {
-  /* padding-left: 164px; */
-}
-
 .financeMobDateAmount {
   font-weight: bold;
   color: rgb(58, 83, 116);
@@ -71,58 +65,12 @@
   display: none;
 }
 
-/*! Tablet / Desktop */
-
 .financeWrapper {
   composes: global(appContainer);
   display: flex;
   flex-direction: row;
   justify-content: center;
   margin: 0px auto;
-}
-
-.financeTable {
-  width: 100%;
-  text-align: center;
-}
-
-.thead {
-  background-color: #ffffff;
-}
-
-.th {
-  font-size: 13px;
-  font-family: "HelveticaNeueCyr";
-  color: rgb(40, 40, 40);
-  line-height: 2.308;
-  background-color: #ffffff;
-  padding: 12px 0px;
-}
-
-.tr {
-  font-size: 13px;
-  font-family: "HelveticaNeueCyr";
-  color: rgb(44, 53, 62);
-  line-height: 2.308;
-  padding: 16px 0px;
-}
-
-/** нечетное */
-.tr:nth-child(odd) {
-  background-color: #f8f8fe;
-}
-
-/** четное f3f6f6*/
-.tr:nth-child(even) {
-  background-color: #f3f6f6;
-}
-
-.td {
-  font-size: 13px;
-  font-family: "HelveticaNeueCyr";
-  color: rgb(44, 53, 62);
-  line-height: 2.308;
-  padding: 16px 0px;
 }
 
 .tdIncome {
@@ -135,45 +83,47 @@
   color: #3a5374;
 }
 
-@media screen and (min-width: 768px) and (max-width: 1279px) {
+@media screen and (min-width: 768px) {
   .financeMobSection {
     width: 738px;
     margin: 0px auto;
+    margin-bottom: 380px;
   }
 
   .financeWrapper {
-    background-color: #f8f8fe;
-  }
-
-  .currencySection {
-    display: block;
-    position: absolute;
-    left: 33px;
-    bottom: 52px;
+    background-color: #ffffff;
   }
 
   .financeTable {
     margin: 0px 8px;
-  }
-}
-
-@media screen and (min-width: 1280px) {
-  .financeMobSection {
-    /* width: 856px; */
-    margin: 0px 26px 0px 26px;
-    background-color: #f2eaf0;
-  }
-
-  .financeWrapper {
     width: 100%;
+    text-align: center;
   }
 
-  .financeTable {
-    margin: 0px;
+  .thead {
+    background-color: #ffffff;
   }
 
+  .th {
+    font-size: 13px;
+    font-family: "HelveticaNeueCyr";
+    color: rgb(40, 40, 40);
+    line-height: 2.308;
+    background-color: #ffffff;
+    padding: 12px 0px;
+  }
+
+  .tr {
+    font-size: 13px;
+    font-family: "HelveticaNeueCyr";
+    color: rgb(44, 53, 62);
+    line-height: 2.308;
+    padding: 16px 0px;
+  }
+
+  /** нечетное */
   .tr:nth-child(odd) {
-    background-color: #f2eaf0;
+    background-color: #ffffff;
   }
 
   /** четное f3f6f6*/
@@ -181,11 +131,42 @@
     background-color: #f3f6f6;
   }
 
+  .td {
+    font-size: 13px;
+    font-family: "HelveticaNeueCyr";
+    color: rgb(44, 53, 62);
+    line-height: 2.308;
+    padding: 16px 0px;
+  }
+
   .currencySection {
-    display: block;
-    position: absolute;
-    width: 312px;
-    left: -300px;
-    bottom: -22px;
+    display: flex;
+    justify-content: start;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .financeMobSection {
+    width: 856px;
+    margin: 0px 26px 0px 26px;
+    background-color: #f2eaf0;
+  }
+
+  .financeWrapper {
+    width: 100%;
+  }
+  
+  .financeTable {
+    width: 100%;
+    margin: 0px;
+    text-align: center;
+  }
+
+  .tr:nth-child(odd) {
+    background-color: #f2eaf0;
+  }
+
+  .tr:nth-child(even) {
+    background-color: #f3f6f6;
   }
 }

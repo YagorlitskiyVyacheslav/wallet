@@ -3,28 +3,6 @@ import CurrencyExchange from "../CurrencyExchange";
 import styles from "./Home.module.css";
 
 export default class Home extends Component {
-  // static propTypes = {
-  //     contacts: PropTypes.arrayOf(PropTypes.object),
-  //     filter: PropTypes.string,
-  //     name: PropTypes.string,
-  //     number: PropTypes.string,
-  //   };
-
-  //   static defaultProps = {
-  //   financeData: [{
-  //     date: 1553699509960,
-  //     type: "+",
-  //     category: "Job",
-  //     amount: 2000,
-  //     balanceAfter: 3000,
-  //     comments: "get money by my Job",
-  //     typeBalanceAfter: "-",
-  //   }],
-  //     filter: "",
-  //     name: "Annie Copeland",
-  //     number: "227-91-26",
-  //   };
-
   state = {
     financeData: [
       {
@@ -159,7 +137,7 @@ export default class Home extends Component {
             </div>
           )}
 
-          {document.documentElement.clientWidth > 768 && (
+          {document.documentElement.clientWidth >= 768 && (
             <div className={styles.financeWrapper}>
               <table className={styles.financeTable}>
                 <thead className={styles.thead}>
@@ -205,9 +183,11 @@ export default class Home extends Component {
           )}
         </section>
 
+        {document.documentElement.clientWidth < 1280 &&(
         <div className={styles.currencySection}>
           <CurrencyExchange />
         </div>
+        )}
       </>
     );
   }
