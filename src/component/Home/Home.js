@@ -82,7 +82,14 @@ export default class Home extends Component {
               <ul className={styles.financeMobList}>
                 {financeData.map((data) => (
                   <>
-                    <li key={data.id} className={styles.financeMobItem}>
+                    <li
+                      key={data.id}
+                      className={
+                        data.type === "+"
+                          ? styles.financeMobItemIncome
+                          : styles.financeMobItemSpending
+                      }>
+                      {/* {styles.financeMobItem}> */}
                       <div className={styles.financeMobRow}>
                         <p className={styles.financeMobTitle}>Дата</p>
                         <span className={styles.financeMobDate}>
@@ -183,10 +190,10 @@ export default class Home extends Component {
           )}
         </section>
 
-        {document.documentElement.clientWidth < 1280 &&(
-        <div className={styles.currencySection}>
-          <CurrencyExchange />
-        </div>
+        {document.documentElement.clientWidth < 1280 && (
+          <div className={styles.currencySection}>
+            <CurrencyExchange />
+          </div>
         )}
       </>
     );

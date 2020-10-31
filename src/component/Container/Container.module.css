@@ -8,8 +8,7 @@
     background-color: #ffffff;
     background-image: url(../../images/bg_exchange_tablet.png);
     background-repeat: no-repeat;
-    /* background-position: bottom; */
-background-position-y: 560px;
+    background-position-y: 480px;
     background-size: contain;
   }
 }
