@@ -71,7 +71,6 @@
 /*! Tablet / Desktop */
 
 .financeWrapper {
-  composes: global(appContainer);
   display: flex;
   flex-direction: row;
   justify-content: center;
