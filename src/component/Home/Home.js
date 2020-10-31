@@ -177,7 +177,7 @@ export default class Home extends Component {
               </div>
             ))}
 
-          {document.documentElement.clientWidth > 768 &&
+          {document.documentElement.clientWidth >= 768 &&
             (console.log("222222"),
             (
               <div className={styles.financeWrapper}>

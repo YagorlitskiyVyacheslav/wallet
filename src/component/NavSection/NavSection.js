@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Route } from 'react-router-dom';
+import Balance from '../Balance/balance';
+import CurrencyExchange from '../CurrencyExchange/CurrencyExchange';
 import styles from './NavSection.module.css';
 
 export default class NavSection extends Component {
@@ -41,10 +43,9 @@ export default class NavSection extends Component {
                   )}
                 </ul>
               </nav>
-              <div className={styles.balanceContainer}>
-                <p className={styles.balanceTitle}>Balance</p>
-                <p className={styles.balanceSum}>100000.00 UAN</p>
-              </div>
+              {document.documentElement.clientWidth < 768 && <Route path='/home' component={Balance}/>}
+              {document.documentElement.clientWidth >= 768 && <Balance />}
+              {document.documentElement.clientWidth >= 1280 && <CurrencyExchange />}
             </div>
           </section>
         );
