@@ -15,20 +15,29 @@
 }
 
 .financeMobList {
+  display: flex;
+  flex-direction: column;
   max-width: 306px;
-  display: flex;
-  flex-direction: column;
-}
-
-.financeMobItem {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 16px;
-  box-shadow: 14.095px 5.13px 9px 0px rgba(1, 1, 0, 0.08);
   font-size: 13px;
   font-family: "HelveticaNeueCyr";
   color: rgb(44, 53, 62);
   line-height: 2.308;
+}
+
+.financeMobItemIncome {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+  box-shadow: 14.095px 5.13px 9px 0px rgba(1, 1, 0, 0.08);
+  border-left: 8px solid #ff6c00;
+}
+
+.financeMobItemSpending {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+  box-shadow: 14.095px 5.13px 9px 0px rgba(1, 1, 0, 0.08);
+  border-left: 8px solid #3a5374;
 }
 
 .financeMobItem:last-child {
@@ -87,7 +96,7 @@
   .financeMobSection {
     width: 738px;
     margin: 0px auto;
-    margin-bottom: 380px;
+    margin-bottom: 250px;
   }
 
   .financeWrapper {
@@ -155,7 +164,7 @@
   .financeWrapper {
     width: 100%;
   }
-  
+
   .financeTable {
     width: 100%;
     margin: 0px;
