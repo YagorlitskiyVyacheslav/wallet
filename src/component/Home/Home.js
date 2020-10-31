@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import CurrencyExchange from "../CurrencyExchange";
-import styles from './Home.module.css';
+import styles from "./Home.module.css";
 
 export default class Home extends Component {
   // static propTypes = {
@@ -70,7 +70,7 @@ export default class Home extends Component {
       {
         id: "5c9b88bbfddb83212234a930",
         date: 1994824999,
-        type: "+",
+        type: "-",
         category: "Car",
         amount: 1000,
         balanceAfter: 5000,
@@ -114,6 +114,8 @@ export default class Home extends Component {
 
     console.log(financeData);
     console.log(document.documentElement.clientWidth);
+    let date = new Date(199482466656).toLocaleDateString().split(".");
+    console.log(date);
 
     return (
       <>
@@ -122,18 +124,22 @@ export default class Home extends Component {
             (console.log("111111"),
             (
               <div className={styles.financeMobWrapper}>
-
                 <ul className={styles.financeMobList}>
                   {financeData.map((data) => (
                     <>
                       <li key={data.id} className={styles.financeMobItem}>
                         <div className={styles.financeMobRow}>
                           <p className={styles.financeMobTitle}>Дата</p>
-                          <span className={styles.financeMobDate}>{data.date}</span>
+                          <span className={styles.financeMobDate}>
+                            {/* {date = new Date(`${data.date}`).toLocaleDateString().split(".")} */}
+                            {date = new Date(`${data.date}`).toDateString()}
+                          </span>
                         </div>
                         <div className={styles.financeMobRow}>
                           <p className={styles.financeMobTitle}>Тип</p>
-                          <span className={styles.financeMobDate}>{data.type}</span>
+                          <span className={styles.financeMobDate}>
+                            {data.type}
+                          </span>
                         </div>
                         <div className={styles.financeMobRow}>
                           <p className={styles.financeMobTitle}>Категория</p>
@@ -149,7 +155,12 @@ export default class Home extends Component {
                         </div>
                         <div className={styles.financeMobRow}>
                           <p className={styles.financeMobTitle}>Сумма</p>
-                          <span className={styles.financeMobDateAmount}>
+                          <span
+                            className={
+                              data.type === "+"
+                                ? styles.tdIncome
+                                : styles.tdSpending
+                            }>
                             {data.amount}
                           </span>
                         </div>
@@ -189,7 +200,14 @@ export default class Home extends Component {
                         <td className={styles.td}>{data.type}</td>
                         <td className={styles.td}>{data.category}</td>
                         <td className={styles.td}>{data.comments}</td>
-                        <td className={styles.tdAmount}>{data.amount}</td>
+                        <td
+                          className={
+                            data.type === "+"
+                              ? styles.tdIncome
+                              : styles.tdSpending
+                          }>
+                          {data.amount}
+                        </td>
                         <td className={styles.td}>{data.balanceAfter}</td>
                       </tr>
                     ))}

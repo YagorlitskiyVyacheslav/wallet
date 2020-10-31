@@ -22,7 +22,6 @@ class App extends Component {
             <Route path="/login" />
             <Route path="/registration" />
           </Switch>
-          {/* <CurrencyExchange></CurrencyExchange> */}
         </Container>
       </Layout>
     );

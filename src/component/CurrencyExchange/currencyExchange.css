@@ -23,13 +23,12 @@
 
 @media screen and (min-width: 1280px) {
   .wrap {
-    /* width: 392px; */
     width: 312px;
     height: 190px;
     background-image: url(../../images/bg_exchange_currency.jpg);
   }
   .currencyTable {
-    min-width: 312px;
+    max-width: 312px;
     min-height: 190px;
   }
   .currencyTable__head {
