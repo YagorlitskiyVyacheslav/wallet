@@ -82,6 +82,11 @@
     .header {
         grid-area: header;
         margin-bottom: 46px;
+        width: 100vw;
+        position: fixed;
+        left: 0;
+        top: 0;
+        
     }
     .container {
         width: 1192px;

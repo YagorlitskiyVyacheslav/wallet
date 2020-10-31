@@ -55,6 +55,9 @@ img {
          "header header"
          "navigation body"
          "navigation body";
+         width: 1192px;
+         margin: 0 auto;
+         margin-top: 80px;
  }
 body {
     background-color: #f2eaf0;
