@@ -5,13 +5,12 @@
 @media screen and (min-width: 768px) and (max-width: 1279px) {
   .container {
     width: 100vw;
-    height: 100vh;
-    background-color: #f8f8fe;
+    background-color: #ffffff;
     background-image: url(../../images/bg_exchange_tablet.png);
     background-repeat: no-repeat;
-    background-position: bottom;
+    /* background-position: bottom; */
+background-position-y: 560px;
     background-size: contain;
-    position: relative;
   }
 }
 
@@ -23,4 +22,3 @@
     background-color: #f2eaf0;
   }
 }
-/* eaf1ef */
