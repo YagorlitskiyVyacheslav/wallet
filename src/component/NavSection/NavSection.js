@@ -14,7 +14,7 @@ export default class NavSection extends Component {
                 <ul className={styles.list}>
                   <li className={styles.item}>
                     <NavLink
-                      to="/home"
+                      to="/dashboard/home"
                       className={styles.link}
                       activeClassName={styles.isActive}
                     >
@@ -23,7 +23,7 @@ export default class NavSection extends Component {
                   </li>
                   <li className={styles.item}>
                     <NavLink
-                      to="/stats"
+                      to="/dashboard/stats"
                       className={styles.link}
                       activeClassName={styles.isActive}
                     >
@@ -33,7 +33,7 @@ export default class NavSection extends Component {
                   {document.documentElement.clientWidth < 768 && (
                     <li className={styles.item}>
                       <NavLink
-                        to="/currencies"
+                        to="/dashboard/currencies"
                         className={styles.link}
                         activeClassName={styles.isActive}
                       >
@@ -43,9 +43,13 @@ export default class NavSection extends Component {
                   )}
                 </ul>
               </nav>
-              {document.documentElement.clientWidth < 768 && <Route path='/home' component={Balance}/>}
+              {document.documentElement.clientWidth < 768 && (
+                <Route path="/dashboard/home" component={Balance} />
+              )}
               {document.documentElement.clientWidth >= 768 && <Balance />}
-              {document.documentElement.clientWidth >= 1280 && <CurrencyExchange />}
+              {document.documentElement.clientWidth >= 1280 && (
+                <CurrencyExchange />
+              )}
             </div>
           </section>
         );

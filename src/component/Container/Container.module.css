@@ -4,7 +4,7 @@
 
 @media screen and (min-width: 768px) and (max-width: 1279px) {
   .container {
-    width: 100vw;
+    width: 100%;
     background-color: white;
     background-image: url(../../images/bg_exchange_tablet.png);
     background-repeat: no-repeat;
