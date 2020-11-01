@@ -3,13 +3,14 @@
   justify-content: center;
   margin: auto;
   background-image: url(../../images/bg_exchange_currency.jpg);
+  background-color: white;
   background-position: bottom;
   background-repeat: no-repeat;
   width: 320px;
   height: 458px;
 }
 
-@media screen and (min-width: 703px) and (max-width: 1279px) {
+@media screen and (min-width: 768px) and (max-width: 1279px) {
   .wrap {
     /* height: 381px; */
     height: 190px;
