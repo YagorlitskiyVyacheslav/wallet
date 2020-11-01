@@ -17,7 +17,6 @@
   .container {
     grid-area: body;
     max-width: 930px;
-    position: relative;
     background-color: #f2eaf0;
   }
 }
