@@ -1,7 +1,7 @@
 .wrap {
   display: flex;
   justify-content: center;
-  margin: auto;
+  margin: 29px auto;
   background-image: url(../../images/bg_exchange_currency.jpg);
   background-color: white;
   background-position: bottom;
@@ -25,7 +25,7 @@
 @media screen and (min-width: 1280px) {
   .wrap {
     width: 312px;
-    height: 190px;
+    height: 458px;
     background-image: url(../../images/bg_exchange_currency.jpg);
   }
   .currencyTable {
