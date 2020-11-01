@@ -38,10 +38,10 @@ export default class CurrencyExchange extends Component {
                     {point.ccy}
                   </td>
                   <td className={styles.currencyTable__body__item}>
-                    {point.sale}
+                    {point.sale.substring(0, 5)}
                   </td>
                   <td className={styles.currencyTable__body__item}>
-                    {point.buy}
+                    {point.buy.substring(0, 5)}
                   </td>
                 </tr>
               ))}
