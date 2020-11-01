@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import CurrencyExchange from "../CurrencyExchange";
+import TransactionForm from "../TransactionForm/TransactionForm";
 import styles from "./Home.module.css";
 
 export default class Home extends Component {
@@ -76,6 +77,7 @@ export default class Home extends Component {
 
     return (
       <>
+        <TransactionForm />
         <section className={styles.financeMobSection}>
           {document.documentElement.clientWidth < 767 && (
             <div className={styles.financeMobWrapper}>
