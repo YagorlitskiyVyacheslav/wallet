@@ -88,7 +88,8 @@ export default class Home extends Component {
                         data.type === "+"
                           ? styles.financeMobItemIncome
                           : styles.financeMobItemSpending
-                      }>
+                      }
+                    >
                       {/* {styles.financeMobItem}> */}
                       <div className={styles.financeMobRow}>
                         <p className={styles.financeMobTitle}>Дата</p>
@@ -127,7 +128,8 @@ export default class Home extends Component {
                             data.type === "+"
                               ? styles.tdIncome
                               : styles.tdSpending
-                          }>
+                          }
+                        >
                           {data.amount}
                         </span>
                       </div>
@@ -164,6 +166,7 @@ export default class Home extends Component {
                       <td className={styles.td}>
                         {
                           ((date = new Date(data.date)),
+                          // eslint-disable-next-line no-unused-vars
                           (result =
                             `${date.getDate()}.` +
                             (0 + `${date.getMonth() + 1}.`) +
@@ -178,7 +181,8 @@ export default class Home extends Component {
                           data.type === "+"
                             ? styles.tdIncome
                             : styles.tdSpending
-                        }>
+                        }
+                      >
                         {data.amount}
                       </td>
                       <td className={styles.td}>{data.balanceAfter}</td>
