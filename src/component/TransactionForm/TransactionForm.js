@@ -28,12 +28,14 @@ class TransactionForm extends Component {
 
     const corectTypeOfDate = [year, month, day].join("-");
 
-    this.setState({ isOpenModal: true, date: corectTypeOfDate });
+    this.setState({ date: corectTypeOfDate });
     window.addEventListener("keydown", this.onEscape);
+    document.querySelector("body").classList.add(`${styles.onOpenModal}`);
   }
 
   componentWillUnmount() {
     window.removeEventListener("keydown", this.onEscape);
+    document.querySelector("body").classList.remove(`${styles.onOpenModal}`);
   }
 
   handlerInput = (e) => {
