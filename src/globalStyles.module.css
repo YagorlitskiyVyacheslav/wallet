@@ -49,7 +49,7 @@ img {
 .gridContainer {
      display: grid;
      grid-template-columns: 0.26fr 1.74fr;
-     grid-template-rows: 0.2fr 1.8fr;
+     grid-template-rows: 0fr 1.2fr;
      gap: 0px 0px;
      grid-template-areas:
          "header header"
@@ -57,7 +57,7 @@ img {
          "navigation body";
          width: 1192px;
          margin: 0 auto;
-         margin-top: 80px;
+         margin-top: 126px;
  }
 body {
     background-color: #f2eaf0;

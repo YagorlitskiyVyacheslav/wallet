@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import HomeTable from "./HomeTable";
 import CurrencyExchange from "../CurrencyExchange";
+import TransactionForm from "../TransactionForm/TransactionForm";
 import styles from "./Home.module.css";
 
 export default class Home extends Component {
@@ -81,8 +82,10 @@ export default class Home extends Component {
 
     return (
       <>
+        <TransactionForm />
+      
         <section className={styles.financeMobSection}>
-          <HomeTable finance={financeData} />
+          <HomeTable finance={financeData} />     
         </section>
 
         {document.documentElement.clientWidth < 1280 && (
