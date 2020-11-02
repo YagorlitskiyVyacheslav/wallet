@@ -1,7 +1,6 @@
-const ADD = 'tarnsactions/add';
-const BALANCE = 'tarnsactions/balance';
-
-export default {
-    ADD,
-    BALANCE,
+const transactionsActionTypes = {
+  ADD: "tarnsactions/add",
+  BALANCE: "tarnsactions/balance",
 };
+
+export default transactionsActionTypes;

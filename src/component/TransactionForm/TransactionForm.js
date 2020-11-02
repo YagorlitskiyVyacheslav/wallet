@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import uuid from "react-uuid";
-import transactionsActions from "../../redux/transactions/transactionsActions";
+import { addTransaction } from "../../redux/transactions/transactionsActions";
 import styles from "./TransactionForm.module.css";
 
 const TransactionType = {
@@ -28,12 +28,14 @@ class TransactionForm extends Component {
 
     const corectTypeOfDate = [year, month, day].join("-");
 
-    this.setState({ isOpenModal: true, date: corectTypeOfDate });
+    this.setState({ date: corectTypeOfDate });
     window.addEventListener("keydown", this.onEscape);
+    document.querySelector("body").classList.add(`${styles.onOpenModal}`);
   }
 
   componentWillUnmount() {
     window.removeEventListener("keydown", this.onEscape);
+    document.querySelector("body").classList.remove(`${styles.onOpenModal}`);
   }
 
   handlerInput = (e) => {
@@ -85,14 +87,7 @@ class TransactionForm extends Component {
   };
 
   render() {
-    const {
-      comment,
-      transactionType,
-      category,
-      count,
-      date,
-      isOpenModal,
-    } = this.state;
+    const { comment, transactionType, category, count, date } = this.state;
 
     const isSelectDepositeInput = transactionType === TransactionType.DEPOSIT;
 
@@ -197,7 +192,7 @@ class TransactionForm extends Component {
             type="submit"
             disabled={!count}
           >
-            Добавить
+            Add
           </button>
         </div>
       </form>
@@ -208,7 +203,7 @@ class TransactionForm extends Component {
 const mapStateToProps = (state) => ({ transactions: state.transactions.items });
 
 const mapDispatchToProps = {
-  addTransaction: transactionsActions.addTransaction,
+  addTransaction: addTransaction,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TransactionForm);
