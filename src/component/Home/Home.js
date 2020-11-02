@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import HomeTable from "./HomeTable";
-import CurrencyExchange from "../CurrencyExchange";
+import CurrencyExchange from "../CurrencyExchange/CurrencyExchange";
 import Modal from "../Modal/Modal";
 import TransactionForm from "../TransactionForm/TransactionForm";
 import Button from "../Button/Button";

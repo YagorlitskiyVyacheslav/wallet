@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
 import Dashboard from "./views/Dashboard";
+import SignIn from './views/SignIn/SignIn';
+import SignUp from './views/SignUp/SignUp';
 
 class App extends Component {
   render() {
@@ -8,8 +10,8 @@ class App extends Component {
       <>
         <Switch>
           <Route path="/dashboard" component={Dashboard} />
-          <Route path="/login" />
-          <Route path="/registration" />
+          <Route path="/login" component={SignIn}/>
+          <Route path="/registration" component={SignUp}/>
           <Redirect to="/dashboard/home"/>
         </Switch>
       </>
