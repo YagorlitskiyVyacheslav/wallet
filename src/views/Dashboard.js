@@ -1,12 +1,10 @@
-import React, { Component } from "react";
+import React, { Component, lazy, Suspense } from "react";
 import { Route, Switch } from "react-router-dom";
 import Header from "../component/Header/header";
 import Layout from "../component/Layout/layout";
 import Container from "../component/Container/Container";
-import CurrencyExchange from "../component/CurrencyExchange/CurrencyExchange";
 import NavSection from "../component/NavSection/NavSection";
-import Home from "../component/Home/Home";
-import Stats from "../component/Statistic/Statistic";
+import Spiner from "../component/Loader";
 
 class Dashboard extends Component {
   render() {
@@ -15,11 +13,27 @@ class Dashboard extends Component {
         <Header />
         <NavSection />
         <Container>
-          <Switch>
-            <Route path={`${this.props.match.url}/home`} component={Home} />
-            <Route path={`${this.props.match.url}/stats`} exact component={Stats} />
-            <Route path={`${this.props.match.url}/currencies`} component={CurrencyExchange} />
-          </Switch>
+          <Suspense fallback={<Spiner />}>
+            <Switch>
+              <Route
+                path={`${this.props.match.url}/home`}
+                component={lazy(() => import("../component/Home/Home"))}
+              />
+              <Route
+                path={`${this.props.match.url}/stats`}
+                exact
+                component={lazy(() =>
+                  import("../component/Statistic/Statistic")
+                )}
+              />
+              <Route
+                path={`${this.props.match.url}/currencies`}
+                component={lazy(() =>
+                  import("../component/CurrencyExchange/CurrencyExchange")
+                )}
+              />
+            </Switch>
+          </Suspense>
         </Container>
       </Layout>
     );

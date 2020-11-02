@@ -32,6 +32,13 @@ img {
     height: 100%;
     display: block;
 }
+.loaderLayout {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
 :global(.appContainer) {
     width: 300px;
 }

@@ -25,7 +25,7 @@ class SignIn extends Component {
               Sign in
             </button>
           </form>
-          <Link to="/signup" >
+          <Link to="/registration" >
             <h2 type="button">
               Sign up
             </h2>

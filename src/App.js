@@ -1,19 +1,28 @@
-import React, { Component } from "react";
+import React, { Component, lazy, Suspense } from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
-import Dashboard from "./views/Dashboard";
-import SignIn from './views/SignIn/SignIn';
-import SignUp from './views/SignUp/SignUp';
+import Spiner from "./component/Loader";
 
 class App extends Component {
   render() {
     return (
       <>
-        <Switch>
-          <Route path="/dashboard" component={Dashboard} />
-          <Route path="/login" component={SignIn}/>
-          <Route path="/registration" component={SignUp}/>
-          <Redirect to="/dashboard/home"/>
-        </Switch>
+        <Suspense fallback={<Spiner />}>
+          <Switch>
+            <Route
+              path="/dashboard"
+              component={lazy(() => import("./views/Dashboard"))}
+            />
+            <Route
+              path="/login"
+              component={lazy(() => import("./views/SignIn/SignIn"))}
+            />
+            <Route
+              path="/registration"
+              component={lazy(() => import("./views/SignUp/SignUp"))}
+            />
+            <Redirect to="/dashboard/home" />
+          </Switch>
+        </Suspense>
       </>
     );
   }
