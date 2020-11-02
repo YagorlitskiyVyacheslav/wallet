@@ -2,7 +2,10 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import HomeTable from "./HomeTable";
 import CurrencyExchange from "../CurrencyExchange";
+import Modal from "../Modal/Modal";
 import TransactionForm from "../TransactionForm/TransactionForm";
+import Button from "../Button/Button";
+import Toggler from "../Toggler";
 import styles from "./Home.module.css";
 
 export default class Home extends Component {
@@ -82,10 +85,22 @@ export default class Home extends Component {
 
     return (
       <>
-        <TransactionForm />
-      
+        <Toggler>
+          {({ isOpen, onToggle }) => (
+            <>
+              {isOpen ? (
+                <Modal onToggle={onToggle}>
+                  <TransactionForm onToggle={onToggle} />
+                </Modal>
+              ) : (
+                <Button onToggle={onToggle} />
+              )}
+            </>
+          )}
+        </Toggler>
+
         <section className={styles.financeMobSection}>
-          <HomeTable finance={financeData} />     
+          <HomeTable finance={financeData} />
         </section>
 
         {document.documentElement.clientWidth < 1280 && (
