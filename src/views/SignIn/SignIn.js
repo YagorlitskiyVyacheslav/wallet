@@ -1,9 +1,22 @@
-import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
-import style from './SignIn.module.css';
+import React, { useState } from 'react';
+import { useDispatch } from "react-redux";
+import { Link } from 'react-router-dom';
+import { requestSingIn } from "../../redux/auth/authOperations";
 import walletIcon from '../../images/Authentication/walletIcon.png';
-class SignIn extends Component {
-  render() {
+import style from './SignIn.module.css';
+
+const SignIn = () => {
+  const dispatch = useDispatch();
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const singIn = (event) => {
+    event.preventDefault();
+
+    dispatch(requestSingIn({ email, password }))
+  }
+
     return (
       <div className={style.modal}>
         <div className={style.formContainer}>
@@ -12,17 +25,21 @@ class SignIn extends Component {
             <h1>Wallet</h1>
           </div>
 
-          <form className={style.formSignIn}>
+          <form className={style.formSignIn} onSubmit={singIn}>
             <input
+              value={email}
               type="email"
               name="email"
               placeholder="E-mail"
+              onChange={(event) => setEmail(event.target.value)}
               className={style.signInEmail}
             />
             <input
+              value={password}
               type="password"
               name="password"
               placeholder="Пароль"
+              onChange={(event) => setPassword(event.target.value)}
               className={style.signInPassword}
             />
             <button
@@ -32,9 +49,7 @@ class SignIn extends Component {
             </button>
           </form>
           <Link to="/registration" className={style.link}>
-            <p
-              type="button"
-              className={style.linkSignUp}>
+            <p className={style.linkSignUp}>
               Регистрация
             </p>
           </Link>
@@ -42,6 +57,5 @@ class SignIn extends Component {
       </div>
     );
   }
-}
 
 export default SignIn;

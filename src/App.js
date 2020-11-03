@@ -1,29 +1,33 @@
 import React, { Component, lazy, Suspense } from "react";
-import { Redirect, Route, Switch } from "react-router-dom";
+import { Switch } from "react-router-dom";
+import PrivateRoute from "./component/PrivateRoute/PrivateRoute";
+import RestrictedRoute from "./component/RestrictedRoute/PrivateRoute";
 import Spiner from "./component/Loader";
 
 class App extends Component {
   render() {
     return (
-      <>
         <Suspense fallback={<Spiner />}>
           <Switch>
-            <Route
-              path="/dashboard"
+            <PrivateRoute
+              exact
+              path="/"
               component={lazy(() => import("./views/Dashboard"))}
             />
-            <Route
+            <RestrictedRoute
+              exact
               path="/login"
+              redirect="/"
               component={lazy(() => import("./views/SignIn/SignIn"))}
             />
-            <Route
+            <RestrictedRoute
+              exact
               path="/registration"
+              redirect="/"
               component={lazy(() => import("./views/SignUp/SignUp"))}
             />
-            <Redirect to="/dashboard/home" />
           </Switch>
         </Suspense>
-      </>
     );
   }
 }
