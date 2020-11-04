@@ -5,7 +5,7 @@ import CurrencyExchange from '../CurrencyExchange/CurrencyExchange';
 import styles from './NavSection.module.css';
 
 export default class NavSection extends Component {
-    
+
     render() {
         return (
           <section className={styles.section}>
@@ -14,7 +14,7 @@ export default class NavSection extends Component {
                 <ul className={styles.list}>
                   <li className={styles.item}>
                     <NavLink
-                      to="/dashboard/home"
+                      to="/"
                       className={styles.link}
                       activeClassName={styles.isActive}
                     >
@@ -23,7 +23,7 @@ export default class NavSection extends Component {
                   </li>
                   <li className={styles.item}>
                     <NavLink
-                      to="/dashboard/stats"
+                      to="/stats"
                       className={styles.link}
                       activeClassName={styles.isActive}
                     >
@@ -33,7 +33,7 @@ export default class NavSection extends Component {
                   {document.documentElement.clientWidth < 768 && (
                     <li className={styles.item}>
                       <NavLink
-                        to="/dashboard/currencies"
+                        to="/currencies"
                         className={styles.link}
                         activeClassName={styles.isActive}
                       >
@@ -44,7 +44,7 @@ export default class NavSection extends Component {
                 </ul>
               </nav>
               {document.documentElement.clientWidth < 768 && (
-                <Route path="/dashboard/home" component={Balance} />
+                <Route path="/" component={Balance} />
               )}
               {document.documentElement.clientWidth >= 768 && <Balance />}
               {document.documentElement.clientWidth >= 1280 && (

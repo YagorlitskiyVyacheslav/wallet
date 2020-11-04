@@ -10,7 +10,6 @@ const HomeTable = ({ finance }) => {
       <div className={styles.financeMobWrapper}>
         <ul className={styles.financeMobList}>
           {finance.map((data) => (
-            <>
               <li
                 key={data.id}
                 className={
@@ -60,7 +59,6 @@ const HomeTable = ({ finance }) => {
                   </span>
                 </div>
               </li>
-            </>
           ))}
         </ul>
       </div>

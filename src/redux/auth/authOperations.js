@@ -2,8 +2,6 @@ import { API_URL } from "../../constants";
 import { setUserData, setToken } from "./authActions";
 
 export const requestSingIn = (payload) => async (dispatch) => {
-    console.log(payload);
-    console.log(dispatch);
     try {
         const response = await fetch(`${API_URL}/api/login`, {
             method: 'POST',
@@ -13,12 +11,16 @@ export const requestSingIn = (payload) => async (dispatch) => {
             }
         });
         const { token, user } = await response.json();
+
         dispatch(setToken(token));
         dispatch(setUserData(user));
+
+        saveTokenToStorage({ token, user: JSON.stringify(user) });
     } catch (error) {
         console.error(error);
     }
 }
+
 export const requestSingUp = (payload) => async (dispatch) => {
   try {
     const response = await fetch(`${API_URL}/api/register`, {
@@ -28,20 +30,41 @@ export const requestSingUp = (payload) => async (dispatch) => {
         "Content-Type": "application/json",
       },
     });
-    const { user } = await response.json();
+    const { token, user } = await response.json();
+
+    dispatch(setToken(token));
     dispatch(setUserData(user));
+
+    saveTokenToStorage({ token, user: JSON.stringify(user) });
   } catch (error) {
     console.error(error);
   }
 };
-export const saveTokenToStorage = (payload) => (dispatch) => {
 
+export const getTokenFromStorage = () => (dispatch) => {
+    try {
+        const token = localStorage.getItem('token');
+        const user = JSON.parse(localStorage.getItem('user'));
+
+        dispatch(setToken(token));
+        dispatch(setUserData(user));
+    } catch (error) {
+        console.log(error);
+    }
 }
-export const getTokenFromStorage = (payload) => (dispatch) => {
-    // Получили дані із локал сторедж
+
+export const logout = () => (dispatch) => {
     const token = '';
+    const user = {};
 
     dispatch(setToken(token));
-}
-export const deleteTokenFromStorage = (payload) => (dispatch) => {}
+    dispatch(setUserData(user));
 
+    saveTokenToStorage({ token, user: JSON.stringify(user) });
+}
+
+
+export const saveTokenToStorage = ({ user, token }) => {
+  localStorage.setItem('user', user);
+  localStorage.setItem('token', token);
+}
