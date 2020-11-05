@@ -12,9 +12,8 @@
   width: 320px;
   box-sizing: border-box;
   padding: 0px 20px;
-
 }
-.statistic_main_title{
+.statistic_main_title {
   display: none;
 }
 
@@ -75,7 +74,7 @@
   align-items: center;
 }
 
-.costs_title{
+.costs_title {
   margin: 0;
 }
 .costs_section {
@@ -90,7 +89,11 @@
   color: #415b7d;
 }
 
-.costs_desc{
+.costs_desc {
+  display: none;
+}
+
+.currencySection {
   display: none;
 }
 
@@ -104,14 +107,14 @@
     width: 768px;
     padding: 0px 10px;
   }
-  .statistic_main_title{
+  .statistic_main_title {
     display: block;
     margin: 0;
     width: 100%;
     padding: 40px 0;
     text-align: center;
     color: #ffffff;
-    background-color: #284060 ;
+    background-color: #284060;
     text-transform: uppercase;
   }
 
@@ -138,7 +141,7 @@
   .statictic__title {
     display: none;
   }
-    
+
   .statistic__list {
     height: 220px;
     flex-wrap: wrap;
@@ -149,47 +152,51 @@
     margin-right: 20px;
     margin-bottom: 0;
   }
-   
-  .costs{
+
+  .costs {
     justify-content: flex-end;
     text-transform: uppercase;
     margin-bottom: 0px;
     padding: 7px 0px;
   }
 
-  .costs_title{
+  .costs_title {
     margin: 0px 33px 0px 0px;
     text-align: start;
   }
+
+  .currencySection {
+    display: none;
+  }
 }
 
-@media only screen and (min-width: 1024px){
-  .statistics{
+@media only screen and (min-width: 1024px) {
+  .statistics {
     width: 855px;
-    background:none;
+    background: none;
     box-shadow: 0px 0px 20px 0px rgba(220, 224, 223, 0.75);
   }
-  .desctop_container{
+  .desctop_container {
     display: flex;
     justify-content: space-between;
     padding-right: 65px;
   }
-  .container{
+  .container {
     width: 422px;
     padding: 0;
   }
 
-  .statistic_main_title{
+  .statistic_main_title {
     text-transform: none;
     padding: 21px 0px;
   }
-  .chart{
+  .chart {
     width: 430px;
     box-shadow: none;
     margin: 0;
   }
 
-  .statistic_container{
+  .statistic_container {
     width: 360px;
   }
 
@@ -201,20 +208,33 @@
   .statistic__list {
     height: auto;
   }
-  .list__item{
+  .list__item {
     margin-right: 0px;
     padding: 0px 22px 0px 35px;
   }
 
-  .costs_section{
+  .costs_section {
     padding: 10px 15px 30px 35px;
   }
-  .costs{
+  .costs {
     justify-content: space-between;
     text-transform: none;
   }
 
-  .costs_desc{
+  .costs_desc {
     display: inline-block;
+  }
+
+  .currencySection {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+  .currencySection {
+    display: block;
+    position: absolute;
+    top: 338px;
+    left: -312px;
   }
 }
