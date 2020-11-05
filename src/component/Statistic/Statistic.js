@@ -65,6 +65,7 @@ export default class Statistic extends Component {
         },
       ],
     };
+
     return (
       <>
         {baseData.length>0? (
