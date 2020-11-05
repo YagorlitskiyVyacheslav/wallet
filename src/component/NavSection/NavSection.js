@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { NavLink, Route } from 'react-router-dom';
 import Balance from '../Balance/balance';
-import CurrencyExchange from '../CurrencyExchange/CurrencyExchange';
 import styles from './NavSection.module.css';
 
 export default class NavSection extends Component {
@@ -47,9 +46,6 @@ export default class NavSection extends Component {
                 <Route path="/" component={Balance} />
               )}
               {document.documentElement.clientWidth >= 768 && <Balance />}
-              {document.documentElement.clientWidth >= 1280 && (
-                <CurrencyExchange />
-              )}
             </div>
           </section>
         );

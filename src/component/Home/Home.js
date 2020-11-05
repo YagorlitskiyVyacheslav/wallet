@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import HomeTable from "./HomeTable";
+import Welcome from "./Welcome";
 import CurrencyExchange from "../CurrencyExchange/CurrencyExchange";
 import Modal from "../Modal/Modal";
 import TransactionForm from "../TransactionForm/TransactionForm";
@@ -100,14 +101,13 @@ export default class Home extends Component {
         </Toggler>
 
         <section className={styles.financeMobSection}>
-          <HomeTable finance={financeData} />
+          {financeData.length === 0 && <Welcome />}
+          {financeData.length !== 0 && <HomeTable finance={financeData} />}
         </section>
 
-        {document.documentElement.clientWidth < 1280 && (
-          <div className={styles.currencySection}>
-            <CurrencyExchange />
-          </div>
-        )}
+        <div className={styles.currencySection}>
+          <CurrencyExchange />
+        </div>
       </>
     );
   }
