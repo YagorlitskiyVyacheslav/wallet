@@ -11,7 +11,7 @@
   .financeMobSection {
     width: 738px;
     margin: 0px auto;
-    margin-bottom: 250px;
+    margin-bottom: 200px;
   }
 
   .currencySection {
@@ -25,5 +25,12 @@
     width: 856px;
     margin: 0px 26px 0px 26px;
     background-color: #f2eaf0;
+  }
+
+  .currencySection {
+    position: absolute;
+    top: 338px;
+    left: -312px;
+    
   }
 }

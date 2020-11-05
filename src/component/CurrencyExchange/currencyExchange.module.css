@@ -27,6 +27,7 @@
     width: 312px;
     height: 458px;
     background-image: url(../../images/bg_exchange_currency.jpg);
+    margin: 0px auto 48px;
   }
   .currencyTable {
     max-width: 312px;
