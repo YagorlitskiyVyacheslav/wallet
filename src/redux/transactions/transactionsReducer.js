@@ -1,53 +1,48 @@
-// import { combineReducers } from 'redux';
-// import transactionsActions from './transactionsActions';
-import transactionsActionTypes from './transactionsActionTypes';
+import transactionsActionTypes from "./transactionsActionTypes";
+import transactionOperations from "./transactionOperations";
 
 const transactionsReducer = (
-    state = {
-        items: [],
-        balance: 0,
-    },
-    action,
+  state = {
+    items: [],
+    balance: 0,
+  },
+  action
 ) => {
-    switch (action.type) {
-        case transactionsActionTypes.ADD:
-            const newTransaction = {
-                ...action.payload.transaction,
-                balance: state.balance + action.payload.transaction.count,
-            };
-            return {
-                items: [newTransaction, ...state.items],
-                balance: state.balance + action.payload.transaction.count,
-            };
+  switch (action.type) {
+    case transactionsActionTypes.ADD:
+      const count = Number(
+        action.payload.transaction.type + action.payload.transaction.amount
+      );
 
-        default:
-            return state;
-    }
+      const balanceAfter = state.balance + count;
+
+      const typeBalanceAfter = balanceAfter > 0 ? "+" : "-";
+
+      const userId = action.payload.transaction.userId;
+      const token = action.payload.transaction.token;
+
+      const newTransaction = {
+        ...action.payload.transaction,
+        balanceAfter,
+        typeBalanceAfter,
+      };
+
+      transactionOperations.postTransactions(userId, token, newTransaction);
+
+      return {
+        items: [newTransaction, ...state.items],
+        balance: balanceAfter,
+      };
+
+    case transactionsActionTypes.BALANCE:
+      return {
+        items: state.items,
+        balance: action.payload.count,
+      };
+
+    default:
+      return state;
+  }
 };
-
-// const transactionsReducer = (state = [], action) => {
-//     switch (action.type) {
-//         case transactionsActionTypes.ADD:
-//             return [action.payload.transaction, ...state];
-
-//         default:
-//             return state;
-//     }
-// };
-
-// const balanceReduser = (state = 0, action) => {
-//     switch (action.type) {
-//         case transactionsActionTypes.BALANCE:
-//             return state + action.payload.count;
-
-//         default:
-//             return state;
-//     }
-// };
-
-// export default combineReducers({
-//     items: transactionsReducer,
-//     balance: balanceReduser,
-// });
 
 export default transactionsReducer;
