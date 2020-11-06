@@ -1,6 +1,9 @@
 import { API_URL } from "../../constants";
 
-const postTransactions = (userId, token, transaction) => {
+const userId = JSON.parse(localStorage.getItem("user")).id;
+const token = localStorage.getItem("token");
+
+const postTransactions = (transaction) => {
   const url = `${API_URL}/api/finance/${userId}`;
 
   const options = {
@@ -14,7 +17,7 @@ const postTransactions = (userId, token, transaction) => {
   fetch(url, options);
 };
 
-const getTransactions = (userId, token) => {
+const getTransactions = () => {
   const url = `${API_URL}/api/finance/${userId}`;
 
   const options = {
