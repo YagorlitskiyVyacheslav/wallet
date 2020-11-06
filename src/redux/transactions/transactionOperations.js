@@ -1,9 +1,7 @@
 import { API_URL } from "../../constants";
+import { addTransaction, updateBalance } from "./transactionsActions";
 
-const userId = JSON.parse(localStorage.getItem("user")).id;
-const token = localStorage.getItem("token");
-
-const postTransactions = (transaction) => {
+const postTransactions = (userId, token, transaction) => {
   const url = `${API_URL}/api/finance/${userId}`;
 
   const options = {
@@ -17,7 +15,7 @@ const postTransactions = (transaction) => {
   fetch(url, options);
 };
 
-const getTransactions = () => {
+const getTransactions = (userId, token) => async (dispatch) => {
   const url = `${API_URL}/api/finance/${userId}`;
 
   const options = {
@@ -26,9 +24,10 @@ const getTransactions = () => {
       "Content-Type": "application/json",
     },
   };
-  fetch(url, options)
-    .then((responce) => responce.json())
-    .then((data) => console.log(data.finance.data));
+  const responce = await fetch(url, options);
+  const transaction = await responce.json();
+  dispatch(addTransaction(transaction.finance.data));
+  dispatch(updateBalance(transaction.finance.totalBalance));
 };
 
 const transactionOperations = {

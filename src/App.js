@@ -12,7 +12,6 @@ const App = () => {
 
     useEffect(() => {
         dispatch(getTokenFromStorage());
-        transactionOperations.getTransactions()
     }, []);
 
     return (
