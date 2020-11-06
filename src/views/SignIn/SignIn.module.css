@@ -29,6 +29,16 @@
   outline: none;
   border: 1px solid transparent;
 }
+input {
+background-color: #f9fbfb;
+}
+
+input:focus:valid{
+  background-color: rgba(132, 248, 103, 0.5);
+}
+input:focus:invalid {
+background-color: rgba(243, 98, 100, 0.5);
+}
 
 .signInPassword {
   composes: signInEmail;

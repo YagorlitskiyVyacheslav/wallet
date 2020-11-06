@@ -31,7 +31,9 @@ const SignIn = () => {
               type="email"
               name="email"
               placeholder="E-mail"
+              required
               onChange={(event) => setEmail(event.target.value)}
+              onSubmit = {style.submit}
               className={style.signInEmail}
             />
             <input
@@ -39,6 +41,7 @@ const SignIn = () => {
               type="password"
               name="password"
               placeholder="Пароль"
+              required
               onChange={(event) => setPassword(event.target.value)}
               className={style.signInPassword}
             />
