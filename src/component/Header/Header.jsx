@@ -1,12 +1,12 @@
 import React  from 'react';
 import { Link } from 'react-router-dom';
-import { useDispatch } from "react-redux";
+import { connect, useDispatch } from "react-redux";
 import { logout } from "../../redux/auth/authOperations";
 import logo from "./Image/logo.svg";
 import logoTablet from "./Image/wallet icon.png";
 import styles from "./Header.module.css";
 
-const Header = () => {
+const Header = ({name}) => {
     const dispatch = useDispatch();
 
     const logoutHandler = () => {
@@ -23,7 +23,7 @@ const Header = () => {
                     <p className={styles.logoName}>Wallet</p>
                 </Link>
                 <div className={styles.logoutContainer}>
-                    <p className={styles.name}>Name</p>
+                    <p className={styles.name}>{name}</p>
                     <button type="button" className={styles.button} onClick={logoutHandler}>Logout</button>
                 </div>
             </div>
@@ -31,4 +31,8 @@ const Header = () => {
     );
 }
 
-export default Header;
+const mapDispatchToProps = (state) => ({
+    name: state.auth.user.name
+})
+export default connect(mapDispatchToProps)(Header)
+// export default Header;
