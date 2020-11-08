@@ -8,8 +8,8 @@ const HomePage = ({token, userId}) => {
   const dispatch = useDispatch();
 
   useEffect(() => { 
-    console.log(userId)
-    console.log(token)
+    // console.log(userId)
+    // console.log(token)
       dispatch(transactionOperations.getTransactions(userId, token));
     }, []);
 return ( 

@@ -1,69 +1,3 @@
-.signInLogoContainer {
-  padding-top: 100px;
-  text-align: center;
-}
-.signInLogo {
-  margin: 0 auto;
-  margin-bottom: 20px;
-  width: 25px;
-  height: 25px;
-}
-.formSignIn {
-  margin-top: 33px;
-  text-align: center;
-}
-
-.signInEmail {
-  background-color: #f9fbfb;
-  width: 275px;
-  height: 48px;
-  margin-bottom: 12px;
-  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='%23dbe1e6' %3e%3cpath d='M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z' /%3e%3cpath d='M0 0h24v24H0z' fill='none' /%3e%3c/svg%3e");
-  background-repeat: no-repeat;
-  background-position-x: 15px;
-  background-position-y: 10px;
-  padding-left: 50px;
-  color: black;
-  font-size: 15px;
-  border-radius: 6px;
-  outline: none;
-  border: 1px solid transparent;
-}
-input {
-background-color: #f9fbfb;
-}
-
-input:focus:valid{
-  background-color: rgba(132, 248, 103, 0.5);
-}
-input:focus:invalid {
-background-color: rgba(243, 98, 100, 0.5);
-}
-
-.signInPassword {
-  composes: signInEmail;
-  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg aria-hidden='true' focusable='false' width='23' height='23' data-prefix='fas' data-icon='lock' role='img' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512' class='svg-inline--fa fa-lock fa-w-14 fa-2x'%3e%3cpath fill='%23dbe1e6' d='M400 224h-24v-72C376 68.2 307.8 0 224 0S72 68.2 72 152v72H48c-26.5 0-48 21.5-48 48v192c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V272c0-26.5-21.5-48-48-48zm-104 0H152v-72c0-39.7 32.3-72 72-72s72 32.3 72 72v72z' class=''%3e%3c/path%3e%3c/svg%3e");
-}
-
-.signInButton {
-  width: 275px;
-  margin: 0 auto;
-  height: 39px;
-  background-color: #e18337;
-  border: none;
-  border-radius: 4px;
-  color: white;
-  font-size: 15px;
-  margin-top: 18px;
-  margin-bottom: 10px;
-}
-
-.link {
-  color: rgb(166, 177, 181);
-  text-align: center;
-  text-decoration: none;
-}
-
 .linkSignUp {
   margin: 0 auto;
   margin-top: 20px;
@@ -76,39 +10,12 @@ background-color: rgba(243, 98, 100, 0.5);
   .modal {
     background-image: url(../../images/Authentication/bg-tablet-login.png);
     background-size: cover;
+    background-repeat: no-repeat;
     height: 100vh;
   }
-  .formContainer {
-    height: 390px;
-    width: 550px;
-    background-color: white;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-  .signInLogoContainer {
-    padding-top: 35px;
-    display: flex;
-    justify-content: center;
-  }
-  .signInLogo {
-    margin: 5px;
-  }
-
-  .signInEmail {
-    width: 433px;
-    height: 57px;
-    background-position-y: 15px;
-    font-size: 18px;
-    padding-left: 60px;
-  }
-  .signInButton {
-    width: 280px;
-    margin-top: 22px;
-    font-size: 18px;
-  }
-  .linkSignUp {
-    font-size: 18px;
-  }
+}
+@media (min-width: 1280px) {
+.modal{
+  background-image: url('../../images/Authentication/bg-desktop-login.png');
+}
 }

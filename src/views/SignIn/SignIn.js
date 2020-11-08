@@ -1,64 +1,68 @@
-import React, { useState } from 'react';
-import { useDispatch } from "react-redux";
-import { Link } from 'react-router-dom';
-import { requestSingIn } from "../../redux/auth/authOperations";
+import React, {useState} from 'react';
+import {useDispatch} from 'react-redux';
+import {Link} from 'react-router-dom';
+import {requestSingIn} from '../../redux/auth/authOperations';
 import walletIcon from '../../images/Authentication/walletIcon.png';
 import style from './SignIn.module.css';
+import css from './Authentication.module.css'
+import {useForm} from 'react-hook-form';
 
 const SignIn = () => {
   const dispatch = useDispatch();
-
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const {register, handleSubmit, errors} = useForm(); 
+  const OnSubmit = (data) => {
+    dispatch(requestSingIn({email, password}));
+  };
 
-  const singIn = (event) => {
-    event.preventDefault();
+  return (
+    <div className={style.modal}>
+      <div className={css.formContainer}>
+        <div className={css.authenticationLogoContainer}>
+          <img src={walletIcon} alt="Wallet" className={css.authenticationLogo} />
+          <h1>Wallet</h1>
+        </div>
 
-    dispatch(requestSingIn({ email, password }))
-  }
-
-    return (
-      <div className={style.modal}>
-        <div className={style.formContainer}>
-          <div className={style.signInLogoContainer}>
-            <img src={walletIcon} alt="Wallet" className={style.signInLogo} />
-            <h1>Wallet</h1>
-          </div>
-
-          <form className={style.formSignIn} onSubmit={singIn}>
+        <form className={css.authenticationForm} onSubmit={handleSubmit(OnSubmit)}>
+          <label className={css.label}>
             <input
-              value={email}
               type="email"
               name="email"
               placeholder="E-mail"
-              required
               onChange={(event) => setEmail(event.target.value)}
-              onSubmit = {style.submit}
-              className={style.signInEmail}
+              className={`${css.authenticationEmail} ${css.inputValidation}`}
+              value={email}
+              ref={register({required: true})}
             />
+            {errors.email && (
+              <p className={css.authenticationError}>Введите E-mail.</p>
+            )}
+          </label>
+          <label className={css.label}>
             <input
               value={password}
               type="password"
               name="password"
               placeholder="Пароль"
-              required
               onChange={(event) => setPassword(event.target.value)}
-              className={style.signInPassword}
+              className={css.authenticationPassword}
+              ref={register({required: true})}
             />
-            <button
-              type="submit"
-              className={style.signInButton}>
-              Войти
-            </button>
-          </form>
-          <Link to="/registration" className={style.link}>
-            <p className={style.linkSignUp}>
-              Регистрация
-            </p>
-          </Link>
-        </div>
+            {errors.password && (
+              <p className={css.authenticationError}>Введите пароль.</p>
+            )}
+          </label>
+          <button type="submit" className={css.authenticationButton}>
+            Войти
+          </button>
+        </form>
+        <Link to="/registration" className={css.link}>
+          <p className={style.linkSignUp}>Регистрация</p>
+        </Link>
       </div>
-    );
-  }
+    </div>
+  );
+};
 
 export default SignIn;
