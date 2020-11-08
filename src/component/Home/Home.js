@@ -34,17 +34,18 @@ class Home extends Component {
   componentDidMount() {
     this.setState({ isLoading: true });
 
+    const {updateState, user, token} = this.props;
+
     transactionOperations
-      .getTransactions()
+      .getTransactions(user, token)
       .then((transactions) => {
         const balance = Number(
           transactions.typeTotalBalance + transactions.totalBalance
         );
         const items = transactions.data;
-        this.props.updateState(items, balance);
+        updateState(items, balance);
       })
-      .finally((error) => {
-        console.log(error);
+      .finally(() => {
         this.setState({ isLoading: false });
       });
   }
@@ -84,6 +85,8 @@ class Home extends Component {
 const mapStateToProps = (state) => ({
   items: state.transactions.items,
   balance: state.transactions.balance,
+  user: state.auth.user,
+  token: state.auth.token
 });
 
 const mapToDispatch = {

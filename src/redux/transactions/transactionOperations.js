@@ -1,9 +1,10 @@
 import { API_URL } from "../../constants";
 
-const user = JSON.parse(localStorage.getItem("user"));
-const token = localStorage.getItem("token");
+
 
 const postTransactions = (transaction) => {
+  const user = JSON.parse(localStorage.getItem("user"));
+  const token = localStorage.getItem("token");
   const url = `${API_URL}/api/finance/${user.id}`;
 
   const options = {
@@ -17,7 +18,7 @@ const postTransactions = (transaction) => {
   fetch(url, options);
 };
 
-const getTransactions = () => {
+const getTransactions = (user, token) => {
   const url = `${API_URL}/api/finance/${user.id}`;
 
   const options = {
@@ -29,7 +30,6 @@ const getTransactions = () => {
   return fetch(url, options)
     .then((responce) => responce.json())
     .then((data) => {
-      console.log(data.finance);
       return data.finance;
     });
 };

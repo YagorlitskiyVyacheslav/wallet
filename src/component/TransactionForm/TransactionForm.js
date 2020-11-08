@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { addTransaction } from "../../redux/transactions/transactionsActions";
 import styles from "./TransactionForm.module.css";
-import transactionOperations from "../../redux/transactions/transactionOperations";
 
 const TransactionType = {
   DEPOSIT: "deposite",
@@ -136,14 +135,20 @@ class TransactionForm extends Component {
 
           {isSelectDepositeInput ? (
             <>
-              <option value="salary" label="Salary" />
-              <option value="partTimeJob" label="Part time job" />
+              <option value="Salary" label="Salary" />
+              <option value="Part time job" label="Part time job" />
             </>
           ) : (
             <>
-              <option value="car" label="Car" />
-              <option value="food" label="Food" />
-              <option value="health" label="Health" />
+              <option value="Main Expenses" label="Main Expenses" />
+              <option value="Food" label="Food" />
+              <option value="Car" label="Car" />
+              <option value="Self Care" label="Self Care" />
+              <option value="Child Care" label="Child Care" />
+              <option value="House" label="House" />
+              <option value="Education" label="Education" />
+              <option value="Enterteinment" label="Enterteinment" />
+              <option value="Health" label="Health" />
             </>
           )}
         </select>

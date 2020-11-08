@@ -16,10 +16,10 @@ const transactionsReducer = (
 
       const balanceAfter = state.balance + count;
 
-      const typeBalanceAfter = balanceAfter > 0 ? "+" : "-";
+      // const typeBalanceAfter = balanceAfter > 0 ? "+" : "-";
 
-      const balanceAfterCorrect =
-        balanceAfter > 0 ? balanceAfter : String(balanceAfter).substring(1);
+      // const balanceAfterCorrect =
+      //   balanceAfter > 0 ? balanceAfter : String(balanceAfter).substring(1);
 
       const newTransaction = {
         ...action.payload.transaction,

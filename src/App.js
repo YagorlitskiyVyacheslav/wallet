@@ -11,7 +11,7 @@ const App = () => {
 
   useEffect(() => {
     dispatch(getTokenFromStorage());
-  }, []);
+  });
 
   return (
     <Suspense fallback={<Spiner />}>
