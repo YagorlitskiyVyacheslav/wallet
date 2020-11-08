@@ -97,7 +97,15 @@
   display: none;
 }
 
-@media only screen and (min-width: 767px) {
+.error__title{
+  margin: 0 auto;
+  width: 320px;
+  padding: 0px 20px;
+  display: block;
+  text-align: center;
+}
+
+@media only screen and (min-width: 768px) {
   .statistics {
     width: 768px;
     margin: 0 auto;
@@ -164,9 +172,17 @@
     margin: 0px 33px 0px 0px;
     text-align: start;
   }
+
+  .error__title{
+    margin: 0 auto;
+    width: 768px;
+    padding: 0px 20px;
+    display: block;
+    text-align: center;
+  }
 }
 
-@media only screen and (min-width: 1024px){
+@media only screen and (min-width: 1280px){
   .statistics{
     width: 855px;
     background:none;
@@ -205,6 +221,7 @@
     height: auto;
   }
   .list__item{
+    width: 100%;
     margin-right: 0px;
     padding: 0px 22px 0px 35px;
   }
