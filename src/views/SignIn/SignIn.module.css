@@ -13,9 +13,9 @@
     background-repeat: no-repeat;
     height: 100vh;
   }
-}
-@media (min-width: 1280px) {
-.modal{
-  background-image: url('../../images/Authentication/bg-desktop-login.png');
-}
+  @media (min-width: 1280px) {
+    .modal {
+      background-image: url('../../images/Authentication/bg-desktop-login.png');
+    }
+  }
 }
