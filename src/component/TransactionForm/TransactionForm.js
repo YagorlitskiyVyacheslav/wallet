@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { addTransaction } from "../../redux/transactions/transactionsActions";
 import styles from "./TransactionForm.module.css";
+import transactionOperations from "../../redux/transactions/transactionOperations";
 
 const TransactionType = {
   DEPOSIT: "deposite",
@@ -194,7 +195,11 @@ class TransactionForm extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({ transactions: state.transactions.items });
+const mapStateToProps = (state) => ({
+  transactions: state.transactions.items,
+  token: state.auth.token,
+  userId: state.auth.user.id,
+});
 
 const mapDispatchToProps = {
   addTransaction,

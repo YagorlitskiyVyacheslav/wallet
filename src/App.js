@@ -5,6 +5,7 @@ import PrivateRoute from "./component/PrivateRoute/PrivateRoute";
 import RestrictedRoute from "./component/RestrictedRoute/PrivateRoute";
 import Spiner from "./component/Loader";
 import { getTokenFromStorage } from "./redux/auth/authOperations";
+import transactionOperations from "./redux/transactions/transactionOperations";
 
 const App = () => {
   const dispatch = useDispatch();

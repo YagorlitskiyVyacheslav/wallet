@@ -74,9 +74,11 @@ class Home extends Component {
           {financeData.length !== 0 && <HomeTable finance={financeData} />}
         </section>
 
-        <div className={styles.currencySection}>
-          <CurrencyExchange />
-        </div>
+        {document.documentElement.clientWidth < 1280 && (
+          <div className={styles.currencySection}>
+            <CurrencyExchange />
+          </div>
+        )}
       </>
     );
   }
