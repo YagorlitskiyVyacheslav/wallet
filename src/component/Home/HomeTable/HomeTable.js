@@ -10,7 +10,7 @@ const HomeTable = ({ finance }) => {
         <ul className={styles.financeMobList}>
           {finance.map((data) => (
             <li
-              key={data.id}
+              key={data._id}
               className={
                 data.type === "+"
                   ? `${styles.financeMobItem} ${styles.financeMobItemIncome}`

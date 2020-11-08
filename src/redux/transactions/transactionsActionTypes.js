@@ -1,6 +1,6 @@
 const transactionsActionTypes = {
   ADD: "tarnsactions/add",
-  BALANCE: "tarnsactions/balance",
+  UPDATE_STATE: "tarnsactions/updateState",
 };
 
 export default transactionsActionTypes;

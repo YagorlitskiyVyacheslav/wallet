@@ -7,9 +7,10 @@ export const addTransaction = (transaction) => ({
   },
 });
 
-export const updateBalance = (count) => ({
-  type: transactionsActionTypes.BALANCE,
+export const updateState = (items, balance) => ({
+  type: transactionsActionTypes.UPDATE_STATE,
   payload: {
-    count,
+    items,
+    balance,
   },
 });
