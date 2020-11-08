@@ -8,7 +8,7 @@ import {requestSingUp} from '../../redux/auth/authOperations';
 import PasswordStrengthMeter from './PasswordMeter/PasswordStrengthMeter';
 import {useForm} from 'react-hook-form';
 import {info, defaultModules} from '@pnotify/core';
-// import PNotify from '@pnotify/core';
+import iPhoneIMG from '../../images/Authentication/iPhone-registration-desktop.png';
 import '@pnotify/core/dist/PNotify.css';
 import '@pnotify/core/dist/BrightTheme.css';
 import * as PNotifyMobile from '@pnotify/mobile';
@@ -39,6 +39,10 @@ const SignUp = () => {
 
   return (
     <div className={style.modal}>
+       <div className={css.iPhoneContainer}>
+        <img src={iPhoneIMG} alt="iPhone" className={css.iPhoneIMG}></img> 
+        <p className={css.financeApp}>Finance App</p>
+      </div>
       <div className={style.formContainer}>
         <div className={css.authenticationLogoContainer}>
           <img
