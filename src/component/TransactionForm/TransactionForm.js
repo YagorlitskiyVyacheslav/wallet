@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { addTransaction } from "../../redux/transactions/transactionsActions";
 import styles from "./TransactionForm.module.css";
-import transactionOperations from "../../redux/transactions/transactionOperations";
 
 const TransactionType = {
   DEPOSIT: "deposite",
