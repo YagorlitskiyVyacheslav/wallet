@@ -1,41 +1,44 @@
-import { API_URL } from "../../constants";
+import { API_URL } from '../../constants';
 
-const postTransactions = (transaction) => {
-  const user = JSON.parse(localStorage.getItem("user"));
-  const token = localStorage.getItem("token");
-  const url = `${API_URL}/api/finance/${user.id}`;
+const postTransaction = (userId, token, transaction) => {
+    const url = `${API_URL}/api/finance/${userId}`;
 
-  const options = {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${token}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(transaction),
-  };
-  fetch(url, options);
+    const options = {
+        method: 'POST',
+        headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(transaction),
+    };
+
+    fetch(url, options).catch(error => console.log(error));
 };
 
+const getTransactions = async (userId, token) => {
+    try {
+        const url = `${API_URL}/api/finance/${userId}`;
 
-const getTransactions = (user, token) => {
-  const url = `${API_URL}/api/finance/${user.id}`;
+        const options = {
+            headers: {
+                Authorization: `Bearer ${token}`,
+                'Content-Type': 'application/json',
+            },
+        };
 
-  const options = {
-    headers: {
-      Authorization: `Bearer ${token}`,
-      "Content-Type": "application/json",
-    },
-  };
-  return fetch(url, options)
-    .then((responce) => responce.json())
-    .then((data) => {
-      return data.finance;
-    });
+        const response = await fetch(url, options);
+
+        const transactions = await response.json();
+
+        return transactions.finance;
+    } catch (error) {
+        throw error;
+    }
 };
 
 const transactionOperations = {
-  postTransactions,
-  getTransactions,
+    postTransaction,
+    getTransactions,
 };
 
 export default transactionOperations;
