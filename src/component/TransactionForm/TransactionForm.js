@@ -54,12 +54,16 @@ class TransactionForm extends Component {
     e.preventDefault();
     const { comment, value, category, count, date } = this.state;
 
+    const { userId, token } = this.props;
+
     const transaction = {
       date: Date.parse(date),
       type: value,
       category,
       amount: count,
       comments: comment,
+      userId,
+      token,
     };
 
     this.props.addTransaction(transaction);
@@ -135,20 +139,14 @@ class TransactionForm extends Component {
 
           {isSelectDepositeInput ? (
             <>
-              <option value="Salary" label="Salary" />
-              <option value="Part time job" label="Part time job" />
+              <option value="salary" label="Salary" />
+              <option value="partTimeJob" label="Part time job" />
             </>
           ) : (
             <>
-              <option value="Main Expenses" label="Main Expenses" />
-              <option value="Food" label="Food" />
-              <option value="Car" label="Car" />
-              <option value="Self Care" label="Self Care" />
-              <option value="Child Care" label="Child Care" />
-              <option value="House" label="House" />
-              <option value="Education" label="Education" />
-              <option value="Enterteinment" label="Enterteinment" />
-              <option value="Health" label="Health" />
+              <option value="car" label="Car" />
+              <option value="food" label="Food" />
+              <option value="health" label="Health" />
             </>
           )}
         </select>
@@ -196,8 +194,8 @@ class TransactionForm extends Component {
 
 const mapStateToProps = (state) => ({
   transactions: state.transactions.items,
-  token: state.auth.token,
   userId: state.auth.user.id,
+  token: state.auth.token,
 });
 
 const mapDispatchToProps = {
