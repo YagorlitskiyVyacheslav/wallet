@@ -1,8 +1,6 @@
-import React, { Component } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { updateState } from "../../redux/transactions/transactionsActions";
-import transactionOperations from "../../redux/transactions/transactionOperations";
 import HomeTable from "./HomeTable";
 import Welcome from "./Welcome";
 import CurrencyExchange from "../CurrencyExchange/CurrencyExchange";
@@ -12,89 +10,49 @@ import Button from "../Button/Button";
 import Toggler from "../Toggler";
 import styles from "./Home.module.css";
 
-class Home extends Component {
-  static propTypes = {
-    financeData: PropTypes.arrayOf(
-      PropTypes.shape({
-        date: PropTypes.number.isRequired,
-        type: PropTypes.string.isRequired,
-        category: PropTypes.string,
-        comments: PropTypes.string,
-        amount: PropTypes.number.isRequired,
-        balanceAfter: PropTypes.number.isRequired,
-      }).isRequired
-      // ).isRequired,
-    ),
-  };
-
-  state = {
-    isLoading: false,
-  };
-
-  componentDidMount() {
-    const { userId, token } = this.props;
-    this.setState({ isLoading: true });
-
-    transactionOperations
-      .getTransactions(userId, token)
-      .then((transactions) => {
-        const balance = Number(
-          transactions.typeTotalBalance + transactions.totalBalance
-        );
-        const items = transactions.data;
-        this.props.updateState(items, balance);
-      })
-      .finally(() => {
-        this.setState({ isLoading: false });
-      });
-  }
-
-  componentWillUnmount() {
-    console.log("componentWillUnmount");
-    this.props.updateState([], 0);
-  }
-
-  render() {
-    const financeData = this.props.items;
-
-    return (
-      <>
-        <Toggler>
-          {({ isOpen, onToggle }) => (
-            <>
-              {isOpen ? (
-                <Modal onToggle={onToggle}>
-                  <TransactionForm onToggle={onToggle} />
-                </Modal>
-              ) : (
-                <Button onToggle={onToggle} />
-              )}
-            </>
+const Home = ({ items }) => (
+  <>
+    <Toggler>
+      {({ isOpen, onToggle }) => (
+        <>
+          {isOpen ? (
+            <Modal onToggle={onToggle}>
+              <TransactionForm onToggle={onToggle} />
+            </Modal>
+          ) : (
+            <Button onToggle={onToggle} />
           )}
-        </Toggler>
+        </>
+      )}
+    </Toggler>
 
-        <section className={styles.financeMobSection}>
-          {financeData.length === 0 && <Welcome />}
-          {financeData.length !== 0 && <HomeTable finance={financeData} />}
-        </section>
+    <section className={styles.financeMobSection}>
+      {items.length === 0 && <Welcome />}
+      {items.length !== 0 && <HomeTable finance={items} />}
+    </section>
 
-        <div className={styles.currencySection}>
-          <CurrencyExchange />
-        </div>
-      </>
-    );
-  }
-}
+    <div className={styles.currencySection}>
+      <CurrencyExchange />
+    </div>
+  </>
+);
 
-const mapStateToProps = (state) => ({
-  userId: state.auth.user.id,
-  token: state.auth.token,
-  items: state.transactions.items,
-  balance: state.transactions.balance,
-});
-
-const mapToDispatch = {
-  updateState,
+Home.propTypes = {
+  financeData: PropTypes.arrayOf(
+    PropTypes.shape({
+      date: PropTypes.number.isRequired,
+      type: PropTypes.string.isRequired,
+      category: PropTypes.string,
+      comments: PropTypes.string,
+      amount: PropTypes.number.isRequired,
+      balanceAfter: PropTypes.number.isRequired,
+    }).isRequired
+    // ).isRequired,
+  ),
 };
 
-export default connect(mapStateToProps, mapToDispatch)(Home);
+const mapStateToProps = (state) => ({
+  items: state.transactions.items,
+});
+
+export default connect(mapStateToProps)(Home);

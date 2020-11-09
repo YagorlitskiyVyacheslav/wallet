@@ -1,5 +1,5 @@
 import transactionsActionTypes from "./transactionsActionTypes";
-import transactionOperations from "./transactionOperations";
+import postTransaction from "./transactionOperations";
 
 const transactionsReducer = (
   state = {
@@ -16,16 +16,17 @@ const transactionsReducer = (
 
       const balanceAfter = state.balance + count;
 
+      const typeBalanceAfter = balanceAfter > 0 ? "+" : "-";
+
       const newTransaction = {
         ...action.payload.transaction,
+        typeBalanceAfter,
         balanceAfter,
       };
 
-      const userId = action.payload.transaction.userId;
+      const { userId, token } = newTransaction;
 
-      const token = action.payload.transaction.token;
-
-      transactionOperations.postTransactions(userId, token, newTransaction);
+      postTransaction(userId, token, newTransaction);
 
       return {
         items: [...state.items, newTransaction],
