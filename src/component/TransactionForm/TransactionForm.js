@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { addTransaction } from "../../redux/transactions/transactionsActions";
 import styles from "./TransactionForm.module.css";
-import transactionOperations from "../../redux/transactions/transactionOperations";
 
 const TransactionType = {
   DEPOSIT: "deposite",
@@ -55,12 +54,16 @@ class TransactionForm extends Component {
     e.preventDefault();
     const { comment, value, category, count, date } = this.state;
 
+    const { userId, token } = this.props;
+
     const transaction = {
       date: Date.parse(date),
       type: value,
       category,
       amount: count,
       comments: comment,
+      userId,
+      token,
     };
 
     this.props.addTransaction(transaction);
@@ -189,7 +192,11 @@ class TransactionForm extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({ transactions: state.transactions.items });
+const mapStateToProps = (state) => ({
+  transactions: state.transactions.items,
+  userId: state.auth.user.id,
+  token: state.auth.token,
+});
 
 const mapDispatchToProps = {
   addTransaction,

@@ -16,19 +16,16 @@ const transactionsReducer = (
 
       const balanceAfter = state.balance + count;
 
-      const typeBalanceAfter = balanceAfter > 0 ? "+" : "-";
-
-      const balanceAfterCorrect =
-        balanceAfter > 0 ? balanceAfter : String(balanceAfter).substring(1);
-
       const newTransaction = {
         ...action.payload.transaction,
-        // balanceAfter: balanceAfterCorrect,
-        // typeBalanceAfter,
         balanceAfter,
       };
 
-      transactionOperations.postTransactions(newTransaction);
+      const userId = action.payload.transaction.userId;
+
+      const token = action.payload.transaction.token;
+
+      transactionOperations.postTransactions(userId, token, newTransaction);
 
       return {
         items: [...state.items, newTransaction],

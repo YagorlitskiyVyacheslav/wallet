@@ -32,10 +32,11 @@ class Home extends Component {
   };
 
   componentDidMount() {
+    const { userId, token } = this.props;
     this.setState({ isLoading: true });
 
     transactionOperations
-      .getTransactions()
+      .getTransactions(userId, token)
       .then((transactions) => {
         const balance = Number(
           transactions.typeTotalBalance + transactions.totalBalance
@@ -43,10 +44,14 @@ class Home extends Component {
         const items = transactions.data;
         this.props.updateState(items, balance);
       })
-      .finally((error) => {
-        console.log(error);
+      .finally(() => {
         this.setState({ isLoading: false });
       });
+  }
+
+  componentWillUnmount() {
+    console.log("componentWillUnmount");
+    this.props.updateState([], 0);
   }
 
   render() {
@@ -82,6 +87,8 @@ class Home extends Component {
 }
 
 const mapStateToProps = (state) => ({
+  userId: state.auth.user.id,
+  token: state.auth.token,
   items: state.transactions.items,
   balance: state.transactions.balance,
 });
