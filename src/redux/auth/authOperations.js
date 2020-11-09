@@ -1,7 +1,16 @@
 import { API_URL } from '../../constants';
+import "@pnotify/core/dist/PNotify.css";
+import "@pnotify/core/dist/BrightTheme.css";
+import * as PNotifyMobile from "@pnotify/mobile";
+import "@pnotify/mobile/dist/PNotifyMobile.css";
+import { defaults } from "@pnotify/core";
 import { setUserData, setToken } from './authActions';
 import { updateState } from '../transactions/transactionsActions';
 import transactionOperations from '../transactions/transactionOperations';
+
+defaults.width = '350px';
+defaults.delay = 2000;
+defaultModules.set(PNotifyMobile, {});
 
 export const requestSingIn = payload => async dispatch => {
     try {
@@ -13,7 +22,11 @@ export const requestSingIn = payload => async dispatch => {
             },
         });
         const { token, user } = await response.json();
-
+        if (!user) {
+          info({
+            text: "Неверный E-mail или пароль.",
+          });
+        }
         dispatch(setToken(token));
         dispatch(setUserData(user));
 
@@ -41,7 +54,15 @@ export const requestSingUp = payload => async dispatch => {
             },
         });
         const { token, user } = await response.json();
-
+        if (response.status === 400) {
+          info({
+            text: "Такой E-mail уже существует!",
+          });
+        } else {
+          info({
+            text: "Регистрация успешна!",
+          });
+        }
         dispatch(setToken(token));
         dispatch(setUserData(user));
 
