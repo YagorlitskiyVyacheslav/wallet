@@ -14,6 +14,7 @@ export default class NavSection extends Component {
               <li className={styles.item}>
                 <NavLink
                   to="/"
+                  exact
                   className={styles.link}
                   activeClassName={styles.isActive}>
                   <p>Home</p>
