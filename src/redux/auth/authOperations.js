@@ -1,9 +1,12 @@
 import { API_URL } from '../../constants';
+
 import "@pnotify/core/dist/PNotify.css";
 import "@pnotify/core/dist/BrightTheme.css";
 import * as PNotifyMobile from "@pnotify/mobile";
 import "@pnotify/mobile/dist/PNotifyMobile.css";
 import { defaults } from "@pnotify/core";
+import { info, defaultModules } from "@pnotify/core";
+
 import { setUserData, setToken } from './authActions';
 import { updateState } from '../transactions/transactionsActions';
 import transactionOperations from '../transactions/transactionOperations';
