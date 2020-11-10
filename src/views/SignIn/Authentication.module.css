@@ -15,6 +15,8 @@
 }
 
 .authenticationLogoContainer {
+  font-family: "BauhausC";
+  font-weight: bold;
   padding-top: 100px;
   text-align: center;
 }
@@ -143,6 +145,8 @@
   .financeApp {
     margin-top: 35px;
     font-size: 24px;
+    font-family: "HelveticaNeueCyr";
+    font-weight: bold;
     color: white;
     text-align: center;
   }
