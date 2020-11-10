@@ -1,12 +1,14 @@
 import React, {useState} from 'react';
 import {useDispatch} from 'react-redux';
 import {Link} from 'react-router-dom';
+import {useForm} from 'react-hook-form';
 import {requestSingIn} from '../../redux/auth/authOperations';
 import walletIcon from '../../images/Authentication/walletIcon.png';
 import iPhoneIMG from '../../images/Authentication/iPhone-login-desktop.png';
-import style from './SignIn.module.css';
 import css from './Authentication.module.css';
-import {useForm} from 'react-hook-form';
+import style from './SignIn.module.css';
+
+
 
 const SignIn = () => {
   const dispatch = useDispatch();
@@ -30,7 +32,7 @@ const SignIn = () => {
             alt="Wallet"
             className={css.authenticationLogo}
           />
-          <h1>Wallet</h1>
+          <h1 className={css.authenticationName}>Wallet</h1>
         </div>
 
         <form
