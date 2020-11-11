@@ -12,31 +12,17 @@ const selectOptYear = [{ value: 2000, label: 2000 }];
 class Statistic extends Component {
   totalIncome = () => {
     const dataBase = this.props.data;
-    let base = [];
-    let total = [];
     let sum = 0;
-    dataBase.forEach((el) => {
-      if (el.type === "+") {
-        return base.push(el);
-      }
-    });
-    base.map((el) => total.push(el.amount));
-    total.map((el) => (sum += +el));
+    const filteredData = dataBase.filter(el => el.type === '+');
+    filteredData.map(el =>sum += +el.amount )
     return sum;
   };
 
   totalCosts = () => {
     const dataBase = this.props.data;
-    let base = [];
-    let total = [];
     let sum = 0;
-    dataBase.forEach((el) => {
-      if (el.type === "-") {
-        return base.push(el);
-      }
-    });
-    base.map((el) => total.push(el.amount));
-    total.map((el) => (sum += +el));
+    const filteredData = dataBase.filter(el => el.type === '-');
+    filteredData.map(el =>sum += +el.amount )
     return sum;
   };
 
