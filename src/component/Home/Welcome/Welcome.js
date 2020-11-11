@@ -1,6 +1,6 @@
 import React from "react";
-import logo from "../../Header/Image/logo.svg";
-import logoTablet from "../../Header/Image/wallet icon.png";
+import logo from "../../../images/Header/logo.svg";
+import logoTablet from "../../../images/Header/wallet icon.png";
 import styles from "./Welcome.module.css";
 
 const Welcome = () => {
