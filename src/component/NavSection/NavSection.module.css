@@ -29,13 +29,13 @@
     background-color: #a9b3c0;
 }
 .item:first-child a::before {
-    mask-image: url(./baseline-home-24px.svg);
+    mask-image: url(../../images/NavigationIcon/baseline-home-24px.svg);
 }
 .item:nth-child(2) a::before {
-    mask-image: url(./baseline-timeline-24px.svg);
+    mask-image: url(../../images/NavigationIcon/baseline-timeline-24px.svg);
 }
 .item:nth-child(3) a::before {
-    mask-image: url(./baseline-attach_money-24px.svg);
+    mask-image: url(../../images/NavigationIcon/baseline-attach_money-24px.svg);
 }
 .isActive::before {
     background-color: #ffffff;

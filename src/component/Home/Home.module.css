@@ -27,9 +27,7 @@
     background-color: #f2eaf0;
   }
 
-  /* .currencySection {
-    position: absolute;
-    top: 338px;
-    left: -312px;
-  } */
+  .currencySection {
+    display: none;
+  }
 }

@@ -1,24 +1,23 @@
 import React, {useState} from 'react';
 import {useDispatch} from 'react-redux';
 import {Link} from 'react-router-dom';
-import style from './SignUp.module.css';
-import css from '../SignIn/Authentication.module.css';
-import walletIcon from '../../images/Authentication/walletIcon.png';
+import {defaults} from '@pnotify/core';
 import {requestSingUp} from '../../redux/auth/authOperations';
-import PasswordStrengthMeter from './PasswordMeter/PasswordStrengthMeter';
 import {useForm} from 'react-hook-form';
 import {info, defaultModules} from '@pnotify/core';
+import * as PNotifyMobile from '@pnotify/mobile';
+import PasswordStrengthMeter from './PasswordMeter/PasswordStrengthMeter';
+import walletIcon from '../../images/Authentication/walletIcon.png';
 import iPhoneIMG from '../../images/Authentication/iPhone-registration-desktop.png';
 import '@pnotify/core/dist/PNotify.css';
 import '@pnotify/core/dist/BrightTheme.css';
-import * as PNotifyMobile from '@pnotify/mobile';
 import '@pnotify/mobile/dist/PNotifyMobile.css';
-import {defaults} from '@pnotify/core';
+import css from '../SignIn/Authentication.module.css';
+import style from './SignUp.module.css';
 
 defaults.width = '350px';
 defaults.delay = 2000;
 defaultModules.set(PNotifyMobile, {});
-
 
 const SignUp = () => {
   const dispatch = useDispatch();

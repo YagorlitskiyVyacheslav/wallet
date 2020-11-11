@@ -5,7 +5,6 @@ import { Provider } from "react-redux";
 import App from "./App";
 import store from "./redux/stote";
 import "./globalStyles.module.css";
-import "./fonts/fonts.css";
 
 ReactDOM.render(
   <Provider store={store}>
