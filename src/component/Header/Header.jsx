@@ -2,8 +2,8 @@ import React  from 'react';
 import { Link } from 'react-router-dom';
 import { connect, useDispatch } from "react-redux";
 import { logout } from "../../redux/auth/authOperations";
-import logo from "./Image/logo.svg";
-import logoTablet from "./Image/wallet icon.png";
+import logo from "../../images/Header/logo.svg";
+import logoTablet from "../../images/Header/wallet icon.png";
 import styles from "./Header.module.css";
 
 const Header = ({name}) => {
