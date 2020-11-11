@@ -49,7 +49,7 @@ const SignUp = () => {
             alt="wallet"
             className={css.authenticationLogo}
           />
-          <h1>Wallet</h1>
+          <h1 className={css.authenticationLogoName}>Wallet</h1>
         </div>
         <form
           className={css.authenticationForm}

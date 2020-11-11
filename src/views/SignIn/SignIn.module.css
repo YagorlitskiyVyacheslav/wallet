@@ -1,8 +1,10 @@
 .linkSignUp {
+  font-family: "HelveticaNeueCyr";
+  font-weight: 400;
   margin: 0 auto;
-  margin-top: 20px;
-  font-size: 15px;
-  width: 95px;
+  margin-top: -10px;
+  font-size: 12px;
+  width: 75px;
   border-bottom: 1px solid rgb(166, 177, 181);
 }
 

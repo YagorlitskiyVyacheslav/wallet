@@ -8,8 +8,6 @@ import iPhoneIMG from '../../images/Authentication/iPhone-login-desktop.png';
 import css from './Authentication.module.css';
 import style from './SignIn.module.css';
 
-
-
 const SignIn = () => {
   const dispatch = useDispatch();
   const [email, setEmail] = useState('');
@@ -22,7 +20,7 @@ const SignIn = () => {
   return (
     <div className={style.modal}>
       <div className={css.iPhoneContainer}>
-        <img src={iPhoneIMG} alt="iPhone" className={css.iPhoneIMG}></img> 
+        <img src={iPhoneIMG} alt="iPhone" className={css.iPhoneIMG}></img>
         <p className={css.financeApp}>Finance App</p>
       </div>
       <div className={css.formContainer}>
@@ -32,26 +30,28 @@ const SignIn = () => {
             alt="Wallet"
             className={css.authenticationLogo}
           />
-          <h1 className={css.authenticationName}>Wallet</h1>
+          <h1 className={css.authenticationLogoName}>Wallet</h1>
         </div>
 
         <form
           className={css.authenticationForm}
           onSubmit={handleSubmit(OnSubmit)}>
-          <label className={css.label}>
-            <input
-              type="email"
-              name="email"
-              placeholder="E-mail"
-              onChange={(event) => setEmail(event.target.value)}
-              className={`${css.authenticationEmail} ${css.inputValidation}`}
-              value={email}
-              ref={register({required: true})}
-            />
-            {errors.email && (
-              <p className={css.authenticationError}>Введите E-mail.</p>
-            )}
-          </label>
+          {
+            <label className={css.label}>
+              <input
+                type="email"
+                name="email"
+                placeholder="E-mail"
+                onChange={(event) => setEmail(event.target.value)}
+                className={`${css.authenticationEmail} ${css.inputValidation}`}
+                value={email}
+                ref={register({required: true})}
+              />
+              {errors.email && (
+                <p className={css.authenticationError}>Введите E-mail.</p>
+              )}
+            </label>
+          }
           <label className={css.label}>
             <input
               value={password}
