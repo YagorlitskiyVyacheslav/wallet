@@ -1,3 +1,5 @@
+@value label from "../../assets/styles/Authentication.module.css";
+
 .linkSignUp {
   font-family: "HelveticaNeueCyr";
   font-weight: 400;

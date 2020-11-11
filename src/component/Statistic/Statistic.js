@@ -5,24 +5,24 @@ import { connect } from "react-redux";
 import colorSwitcher from "./colorsSwitcher";
 import selectOptMonth from "./selectOptMonth";
 import styles from "./statistic.module.css";
-const CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
+const CanvasJSChart = CanvasJSReact.CanvasJSChart;
 const selectOptYear = [{ value: 2000, label: 2000 }];
 
 class Statistic extends Component {
   totalIncome = () => {
     const dataBase = this.props.data;
     let sum = 0;
-    const filteredData = dataBase.filter(el => el.type === '+');
-    filteredData.map(el =>sum += +el.amount )
+    const filteredData = dataBase.filter((el) => el.type === "+");
+    filteredData.map((el) => (sum += +el.amount));
     return sum;
   };
 
   totalCosts = () => {
     const dataBase = this.props.data;
     let sum = 0;
-    const filteredData = dataBase.filter(el => el.type === '-');
-    filteredData.map(el =>sum += +el.amount )
+    const filteredData = dataBase.filter((el) => el.type === "-");
+    filteredData.map((el) => (sum += +el.amount));
     return sum;
   };
 
@@ -94,7 +94,7 @@ class Statistic extends Component {
                         <span
                           style={{ backgroundColor: base.color }}
                           className={styles.label_before}
-                        ></span>
+                        />
                         <span className={styles.item__label}>
                           {base.category}
                         </span>
@@ -132,7 +132,9 @@ class Statistic extends Component {
   }
 }
 
+// TODO: to container
 const mapDispatchToProps = (state) => ({
   data: state.transactions.items,
 });
+
 export default connect(mapDispatchToProps)(Statistic);

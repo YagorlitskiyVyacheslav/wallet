@@ -29,6 +29,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "lint": "prettier --write */**/*.js",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -50,6 +51,7 @@
     ]
   },
   "devDependencies": {
-    "pnotify": "^5.2.0"
+    "pnotify": "^5.2.0",
+    "prettier": "2.1.2"
   }
 }
