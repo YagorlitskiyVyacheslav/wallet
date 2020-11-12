@@ -10,10 +10,12 @@ import style from './SignIn.module.css';
 
 const SignIn = () => {
   const dispatch = useDispatch();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const {register, handleSubmit, errors} = useForm();
-  const OnSubmit = (data) => {
+
+  const onSubmit = () => {
     dispatch(requestSingIn({email, password}));
   };
 
@@ -35,9 +37,9 @@ const SignIn = () => {
 
         <form
           className={css.authenticationForm}
-          onSubmit={handleSubmit(OnSubmit)}>
+          onSubmit={handleSubmit(onSubmit)}>
           {
-            <label className={css.label}>
+            <label className={style.label}>
               <input
                 type="email"
                 name="email"
@@ -52,7 +54,7 @@ const SignIn = () => {
               )}
             </label>
           }
-          <label className={css.label}>
+          <label className={style.label}>
             <input
               value={password}
               type="password"
