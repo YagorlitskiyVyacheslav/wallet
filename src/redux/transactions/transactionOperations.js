@@ -1,9 +1,7 @@
 import { API_URL } from "../../constants";
 
-const postTransactions = (transaction) => {
-  const user = JSON.parse(localStorage.getItem("user"));
-  const token = localStorage.getItem("token");
-  const url = `${API_URL}/api/finance/${user.id}`;
+export const postTransaction = (userId, token, transaction) => {
+  const url = `${API_URL}/api/finance/${userId}`;
 
   const options = {
     method: "POST",
@@ -13,28 +11,33 @@ const postTransactions = (transaction) => {
     },
     body: JSON.stringify(transaction),
   };
-  fetch(url, options);
+
+  fetch(url, options).catch((error) => console.log(error));
 };
 
+export const getTransactions = async (userId, token) => {
+  try {
+    const url = `${API_URL}/api/finance/${userId}`;
 
-const getTransactions = (user, token) => {
-  const url = `${API_URL}/api/finance/${user.id}`;
+    const options = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    };
 
-  const options = {
-    headers: {
-      Authorization: `Bearer ${token}`,
-      "Content-Type": "application/json",
-    },
-  };
-  return fetch(url, options)
-    .then((responce) => responce.json())
-    .then((data) => {
-      return data.finance;
-    });
+    const response = await fetch(url, options);
+
+    const transactions = await response.json();
+
+    return transactions.finance;
+  } catch (error) {
+    throw error;
+  }
 };
 
 const transactionOperations = {
-  postTransactions,
+  postTransaction,
   getTransactions,
 };
 

@@ -1,5 +1,6 @@
 .buttonOpenModal {
   position: fixed;
+  z-index: 2;
   color: #fff;
   font-size: 30px;
   border: none;
@@ -20,9 +21,24 @@
   outline: none;
 }
 
+.buttonOpenModal::after {
+  position: fixed;
+  z-index: 1;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 42px;
+  background-color: rgba(40, 64, 96, 0.651);
+  box-shadow: 0px -10px 30px 0px rgba(119, 119, 119, 0.1);
+}
+
 @media (min-width: 768px) {
   .buttonOpenModal {
     right: 45px;
     bottom: 45px;
+  }
+
+  .buttonBackground {
+    display: none;
   }
 }

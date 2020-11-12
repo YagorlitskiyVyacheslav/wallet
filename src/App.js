@@ -3,8 +3,10 @@ import { Switch } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import PrivateRoute from "./component/PrivateRoute/PrivateRoute";
 import RestrictedRoute from "./component/RestrictedRoute/PrivateRoute";
-import Spiner from "./component/Loader";
+import Loader from "./component/Loader";
 import { getTokenFromStorage } from "./redux/auth/authOperations";
+import './fonts/fonts.css';
+
 
 const App = () => {
   const dispatch = useDispatch();
@@ -14,7 +16,7 @@ const App = () => {
   });
 
   return (
-    <Suspense fallback={<Spiner />}>
+    <Suspense fallback={<Loader />}>
       <Switch>
         <PrivateRoute
           exact

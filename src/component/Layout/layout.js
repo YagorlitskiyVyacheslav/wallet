@@ -8,9 +8,7 @@ const Layout = ({ children }) => (
   <div className={styles.gridContainer}>
     <Header />
     <NavSection />
-    <Container>
-      {children}
-    </Container>
+    <Container>{children}</Container>
   </div>
 );
 

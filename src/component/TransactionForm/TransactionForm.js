@@ -4,7 +4,7 @@ import { addTransaction } from "../../redux/transactions/transactionsActions";
 import styles from "./TransactionForm.module.css";
 
 const TransactionType = {
-  DEPOSIT: "deposite",
+  DEPOSIT: "deposit",
   WITHDRAW: "withdraw",
 };
 
@@ -25,9 +25,9 @@ class TransactionForm extends Component {
     const month = currentDate.getMonth() + 1;
     const day = String(currentDate.getDate()).padStart(2, "0");
 
-    const corectTypeOfDate = [year, month, day].join("-");
+    const correctTypeOfDate = [year, month, day].join("-");
 
-    this.setState({ date: corectTypeOfDate });
+    this.setState({ date: correctTypeOfDate });
     window.addEventListener("keydown", this.onEscape);
     document.querySelector("body").classList.add(`${styles.onOpenModal}`);
   }
@@ -54,12 +54,16 @@ class TransactionForm extends Component {
     e.preventDefault();
     const { comment, value, category, count, date } = this.state;
 
+    const { userId, token } = this.props;
+
     const transaction = {
       date: Date.parse(date),
       type: value,
       category,
       amount: count,
       comments: comment,
+      userId,
+      token,
     };
 
     this.props.addTransaction(transaction);
@@ -77,7 +81,7 @@ class TransactionForm extends Component {
   render() {
     const { comment, transactionType, category, count, date } = this.state;
 
-    const isSelectDepositeInput = transactionType === TransactionType.DEPOSIT;
+    const isSelectDepositInput = transactionType === TransactionType.DEPOSIT;
 
     return (
       <form className={styles.form} onSubmit={this.handlerSubmit}>
@@ -94,14 +98,14 @@ class TransactionForm extends Component {
             <input
               className={styles.depositeInput}
               type="radio"
-              checked={isSelectDepositeInput}
+              checked={isSelectDepositInput}
               value={TransactionType.DEPOSIT}
               onChange={this.handlerRadio}
             />
             <span>Income</span>
             <span
               className={
-                isSelectDepositeInput
+                isSelectDepositInput
                   ? `${styles.radioIconDeposite} ${styles.active}`
                   : `${styles.radioIconDeposite}`
               }
@@ -112,13 +116,13 @@ class TransactionForm extends Component {
               className={styles.withdrawInput}
               type="radio"
               value={TransactionType.WITHDRAW}
-              checked={!isSelectDepositeInput}
+              checked={!isSelectDepositInput}
               onChange={this.handlerRadio}
             />
             <span>Cost</span>
             <span
               className={
-                !isSelectDepositeInput
+                !isSelectDepositInput
                   ? `${styles.radioIconWithdraw} ${styles.active}`
                   : `${styles.radioIconDeposite}`
               }
@@ -133,7 +137,7 @@ class TransactionForm extends Component {
         >
           <option value="" label="Category" disabled />
 
-          {isSelectDepositeInput ? (
+          {isSelectDepositInput ? (
             <>
               <option value="Salary" label="Salary" />
               <option value="Part time job" label="Part time job" />
@@ -147,7 +151,7 @@ class TransactionForm extends Component {
               <option value="Child Care" label="Child Care" />
               <option value="House" label="House" />
               <option value="Education" label="Education" />
-              <option value="Enterteinment" label="Enterteinment" />
+              <option value="Entertainment" label="Entertainment" />
               <option value="Health" label="Health" />
             </>
           )}
@@ -196,8 +200,8 @@ class TransactionForm extends Component {
 
 const mapStateToProps = (state) => ({
   transactions: state.transactions.items,
-  token: state.auth.token,
   userId: state.auth.user.id,
+  token: state.auth.token,
 });
 
 const mapDispatchToProps = {

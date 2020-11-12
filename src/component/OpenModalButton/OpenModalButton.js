@@ -1,10 +1,10 @@
 import React from "react";
-import styles from "./Button.module.css";
+import styles from "./OpenModalButton.module.css";
 
-const Button = ({ onToggle }) => (
+const OpenModalButton = ({ onToggle }) => (
   <button className={styles.buttonOpenModal} type="button" onClick={onToggle}>
     +
   </button>
 );
 
-export default Button;
+export default OpenModalButton;
