@@ -83,7 +83,7 @@ class Statistic extends Component {
             </div>
             <div className={styles.statistic_container}>
               <div className={styles.statictic}>
-                <div className={styles.statictic__title}>
+                <div className={styles.statistic__title}>
                   <p className={styles.statictic__category}>Категории</p>
                   <p className={styles.statictic__total}>Сумма</p>
                 </div>
