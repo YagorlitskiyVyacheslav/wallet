@@ -1,5 +1,5 @@
 import React from "react";
-import HomeTableList from "./HomeTableList";
+import HomeTableItem from "./HomeTableItem";
 import styles from "./HomeTable.module.css";
 
 const HomeTable = ({ finance }) => {
@@ -8,7 +8,7 @@ const HomeTable = ({ finance }) => {
       <ul className={styles.financeMobList}>
         {finance.map((data) => (
     //  TODO: to HomeTableItem component
-          <HomeTableList data={data} />
+          <HomeTableItem  key={data._id} data={data} />
         ))}
       </ul>
     </div>

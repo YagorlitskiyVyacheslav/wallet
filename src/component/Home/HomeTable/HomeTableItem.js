@@ -2,7 +2,15 @@ import React from "react";
 import styles from "./HomeTable.module.css";
 
 const HomeTableList = ({ data }) => {
-  let date;
+  let date = new Date(data.date);
+  date =
+    date.getDate() +
+    "." +
+    ((date.getMonth() + 1).length === 2
+      ? date.getMonth() + 1
+      : 0 + date.getMonth() + 1) +
+    "." +
+    `${date.getFullYear()}`.slice(-2);
 
   return (
     <li
@@ -14,14 +22,7 @@ const HomeTableList = ({ data }) => {
       }>
       <div className={styles.financeMobRow}>
         <p className={styles.financeMobTitle}>Дата</p>
-        <span className={styles.financeMobDate}>
-          {
-            ((date = new Date(data.date)),
-            `${date.getDate()}.` +
-              (0 + `${date.getMonth() + 1}.`) +
-              `${date.getFullYear()}`.slice(-2))
-          }
-        </span>
+        <span className={styles.financeMobDate}>{date}</span>
       </div>
       <div className={styles.financeMobRow}>
         <p className={styles.financeMobTitle}>Тип</p>

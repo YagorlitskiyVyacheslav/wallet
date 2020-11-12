@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { connect } from "react-redux";
 import { updateState } from "../../redux/transactions/transactionsActions";
 import transactionOperations from "../../redux/transactions/transactionOperations";
 import HomeTable from "./HomeTable/HomeTable";
@@ -49,14 +48,9 @@ Home.propTypes = {
       amount: PropTypes.number.isRequired,
       balanceAfter: PropTypes.number.isRequired,
     }).isRequired
-    // ).isRequired,
   ),
 };
 
-
 // TODO: to container
-const mapStateToProps = (state) => ({
-  items: state.transactions.items,
-});
 
-export default connect(mapStateToProps)(Home);
+export default Home;
