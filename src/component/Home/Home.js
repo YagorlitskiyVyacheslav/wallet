@@ -1,8 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import HomeTable from "./HomeTable";
-import Welcome from "./Welcome";
+import { updateState } from "../../redux/transactions/transactionsActions";
+import transactionOperations from "../../redux/transactions/transactionOperations";
+import HomeTable from "./HomeTable/HomeTable";
+import Welcome from "./Welcome/Welcome";
 import CurrencyExchange from "../CurrencyExchange/CurrencyExchange";
 import Modal from "../Modal/Modal";
 import TransactionForm from "../TransactionForm/TransactionForm";
