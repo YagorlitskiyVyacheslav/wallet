@@ -1,3 +1,5 @@
+@value label, authenticationError, authenticationLogoContainer, authenticationLogo, authenticationLogoName, authenticationForm, authenticationEmail, authenticationPassword, authenticationName, inputValidation, authenticationButton, link, financeApp, iPhoneIMG, iPhoneContainer, formContainer  from "../../assets/styles/Authentication.module.css";
+
 .signUpLogoContainer {
   padding-top: 58px;
   text-align: center;
