@@ -9,13 +9,15 @@ const HomeTable = ({ finance }) => {
       <div className={styles.financeMobWrapper}>
         <ul className={styles.financeMobList}>
           {finance.map((data) => (
+            //  TODO: to HomeTableItem component
             <li
               key={data._id}
               className={
                 data.type === "+"
                   ? `${styles.financeMobItem} ${styles.financeMobItemIncome}`
                   : `${styles.financeMobItem} ${styles.financeMobItemSpending}`
-              }>
+              }
+            >
               <div className={styles.financeMobRow}>
                 <p className={styles.financeMobTitle}>Дата</p>
                 <span className={styles.financeMobDate}>
@@ -46,7 +48,8 @@ const HomeTable = ({ finance }) => {
                     data.type === "+"
                       ? `${styles.financeMobDate} ${styles.tdIncome}`
                       : `${styles.financeMobDate} ${styles.tdSpending}`
-                  }>
+                  }
+                >
                   {data.amount}
                 </span>
               </div>

@@ -6,7 +6,7 @@ import {requestSingUp} from '../../redux/auth/authOperations';
 import {useForm} from 'react-hook-form';
 import {info, defaultModules} from '@pnotify/core';
 import * as PNotifyMobile from '@pnotify/mobile';
-import PasswordStrengthMeter from './PasswordMeter/PasswordStrengthMeter';
+import PasswordStrengthMeter from '../../component/PasswordMeter/PasswordStrengthMeter';
 import walletIcon from '../../images/Authentication/walletIcon.png';
 import iPhoneIMG from '../../images/Authentication/iPhone-registration-desktop.png';
 import '@pnotify/core/dist/PNotify.css';
@@ -21,12 +21,15 @@ defaultModules.set(PNotifyMobile, {});
 
 const SignUp = () => {
   const dispatch = useDispatch();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setUserName] = useState('');
-  const [confirmPassword, setConfirmPasword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+
   const {register, handleSubmit, errors} = useForm();
-  const OnSubmit = (data) => {
+
+  const onSubmit = () => {
     if (password === confirmPassword) {
       dispatch(requestSingUp({email, password, name}));
     } else {
@@ -39,7 +42,7 @@ const SignUp = () => {
   return (
     <div className={style.modal}>
        <div className={css.iPhoneContainer}>
-        <img src={iPhoneIMG} alt="iPhone" className={css.iPhoneIMG}></img> 
+        <img src={iPhoneIMG} alt="iPhone" className={css.iPhoneIMG}></img>
         <p className={css.financeApp}>Finance App</p>
       </div>
       <div className={style.formContainer}>
@@ -53,7 +56,7 @@ const SignUp = () => {
         </div>
         <form
           className={css.authenticationForm}
-          onSubmit={handleSubmit(OnSubmit)}>
+          onSubmit={handleSubmit(onSubmit)}>
           <label className={css.label}>
             <input
               type="email"
@@ -93,7 +96,7 @@ const SignUp = () => {
               placeholder="Подтвердите пароль"
               autoComplete="off"
               className={css.authenticationPassword}
-              onChange={(event) => setConfirmPasword(event.target.value)}
+              onChange={(event) => setConfirmPassword(event.target.value)}
             />
             {errors.passwordConfirm && (
               <p className={css.authenticationError}>Подтвердите пароль.</p>
@@ -124,4 +127,5 @@ const SignUp = () => {
     </div>
   );
 };
+
 export default SignUp;
