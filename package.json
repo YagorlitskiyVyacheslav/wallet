@@ -52,6 +52,6 @@
   },
   "devDependencies": {
     "pnotify": "^5.2.0",
-    "prettier": "2.1.2
+    "prettier": "2.1.2"
   }
 }
