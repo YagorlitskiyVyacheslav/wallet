@@ -29,13 +29,18 @@
   width: 320px;
   margin: 0 auto;
 }
-.statictic__title {
+.statistic__title {
   padding: 20px;
   margin: 0px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   background-color: #f3f6f6;
+}
+.chart_error{
+  padding: 10px;
+  text-align: center;
+  font-size: 18px;
 }
 .costs_title,
 .costs_total,
@@ -156,10 +161,12 @@
     width: 768px;
     margin: 0 auto;
   }
-  .statictic__title {
+  .statistic__title {
     display: none;
   }
-
+  .statistic__list_error{
+    height: auto;
+  }
   .statistic__list {
     height: 220px;
     flex-wrap: wrap;
@@ -229,7 +236,7 @@
     width: 360px;
   }
 
-  .statictic__title {
+  .statistic__title {
     display: flex;
     padding: 25px 35px;
   }

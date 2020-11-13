@@ -30,13 +30,13 @@ class Statistic extends Component {
       ],
     };
 
-    return dataPoints.length > 0 ? (
+    return dataPoints.length > 0 || totalIncomeBalance > 0 ? (
       <div className={styles.statistics}>
-        <h2 className={styles.statistic_main_title}>Статистика</h2>
+        <h2 className={styles.statistic_main_title}>Statistics</h2>
         <div className={styles.desctop_container}>
           <div className={styles.container}>
             <div className={styles.chart}>
-              <CanvasJSChart options={options} />
+              {dataPoints.length > 0 ? <CanvasJSChart options={options} /> : <p className={styles.chart_error}>There is no any information about costs!</p>}
             </div>
           </div>
           <div className={styles.main_section}>
@@ -55,10 +55,10 @@ class Statistic extends Component {
             <div className={styles.statistic_container}>
               <div className={styles.statictic}>
                 <div className={styles.statistic__title}>
-                  <p className={styles.statictic__category}>Категории</p>
-                  <p className={styles.statictic__total}>Сумма</p>
+                  <p className={styles.statictic__category}>Category</p>
+                  <p className={styles.statictic__total}>Total</p>
                 </div>
-                <ul className={styles.statistic__list}>
+                <ul className={totalCostBalance > 0 ? styles.statistic__list: styles.statistic__list_error}>
                   {dataPoints.map((base) => (
                     <li key={base.category} className={styles.list__item}>
                       <p className={styles.category_section}>
@@ -77,17 +77,17 @@ class Statistic extends Component {
               </div>
               <div className={(styles.container, styles.costs_section)}>
                 <h3 className={styles.costs}>
-                  <p className={styles.costs_title}>Расходы:</p>
+                  <p className={styles.costs_title}>Incomes:</p>
                   <span className={styles.costs_total}>
                     {totalCostBalance}{" "}
-                    <span className={styles.costs_desc}>грн.</span>
+                    <span className={styles.costs_desc}>UAH</span>
                   </span>
                 </h3>
                 <h3 className={styles.costs}>
-                  <p className={styles.costs_title}>Доходы:</p>
+                  <p className={styles.costs_title}>Costs:</p>
                   <span className={styles.income_total}>
                     {totalIncomeBalance}{" "}
-                    <span className={styles.costs_desc}>грн.</span>
+                    <span className={styles.costs_desc}>UAH</span>
                   </span>
                 </h3>
               </div>
