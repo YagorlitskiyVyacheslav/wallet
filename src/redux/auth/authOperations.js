@@ -8,8 +8,6 @@ import { defaults } from "@pnotify/core";
 import { info, defaultModules } from "@pnotify/core";
 
 import { setUserData, setToken } from "./authActions";
-import { updateState } from "../transactions/transactionsActions";
-import transactionOperations from "../transactions/transactionOperations";
 
 defaults.width = "350px";
 defaults.delay = 2000;
@@ -36,15 +34,6 @@ export const requestSingIn = (payload) => async (dispatch) => {
     dispatch(setUserData(user));
 
     saveTokenToStorage({ token, user: JSON.stringify(user) });
-
-    const transactions = await transactionOperations.getTransactions(
-      user.id,
-      token
-    );
-
-    const { data, totalBalance } = transactions;
-
-    dispatch(updateState(data, totalBalance));
   } catch (error) {
     info({
       text: error,
@@ -91,13 +80,6 @@ export const getTokenFromStorage = () => (dispatch) => {
 
     dispatch(setToken(token));
     dispatch(setUserData(user));
-
-    transactionOperations
-      .getTransactions(user.id, token)
-      .then((transactions) =>
-        dispatch(updateState(transactions.data, transactions.totalBalance))
-      )
-      .catch((error) => console.log(error));
   } catch (error) {
     console.log(error);
   }
@@ -109,7 +91,6 @@ export const logout = () => (dispatch) => {
 
   dispatch(setToken(token));
   dispatch(setUserData(user));
-  dispatch(updateState([], 0));
 
   saveTokenToStorage({ token, user: JSON.stringify(user) });
 };

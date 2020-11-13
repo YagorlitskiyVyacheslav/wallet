@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { connect, useDispatch } from "react-redux";
 import { logout } from "../../redux/auth/authOperations";
+import { userNameSelector } from "../../redux/auth/authSelectors";
 import logo from "../../images/Header/logo.svg";
 import logoTablet from "../../images/Header/wallet icon.png";
 import styles from "./Header.module.css";
@@ -39,6 +40,6 @@ const Header = ({ name }) => {
 
 // TODO: to container
 const mapDispatchToProps = (state) => ({
-  name: state.auth.user.name,
+  name: userNameSelector(state),
 });
 export default connect(mapDispatchToProps)(Header);

@@ -1,6 +1,2 @@
-const transactionsActionTypes = {
-  ADD: "tarnsactions/add",
-  UPDATE_STATE: "tarnsactions/updateState",
-};
-
-export default transactionsActionTypes;
+export const SET_TRANSACTIONS = 'SET_TRANSACTION';
+export const SET_BALANCE = 'SET_BALANCE';

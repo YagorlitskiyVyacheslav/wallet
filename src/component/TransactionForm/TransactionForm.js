@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { addTransaction } from "../../redux/transactions/transactionsActions";
+import { createTransaction } from "../../redux/transactions/transactionOperations";
+import { userIdSelector, userTokenSelector } from "../../redux/auth/authSelectors";
+import { transactionsListSelector } from "../../redux/transactions/transactionsSelectors";
 import styles from "./TransactionForm.module.css";
 
 const TransactionType = {
@@ -66,7 +68,7 @@ class TransactionForm extends Component {
       token,
     };
 
-    this.props.addTransaction(transaction);
+    this.props.createTransaction(userId, token, transaction);
     this.props.onToggle();
   };
 
@@ -199,13 +201,13 @@ class TransactionForm extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  transactions: state.transactions.items,
-  userId: state.auth.user.id,
-  token: state.auth.token,
+  transactions: transactionsListSelector(state),
+  userId: userIdSelector(state),
+  token: userTokenSelector(state),
 });
 
 const mapDispatchToProps = {
-  addTransaction,
+  createTransaction,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TransactionForm);

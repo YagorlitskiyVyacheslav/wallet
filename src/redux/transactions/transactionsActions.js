@@ -1,16 +1,10 @@
-import transactionsActionTypes from "./transactionsActionTypes";
+import { SET_TRANSACTIONS, SET_BALANCE } from "./transactionsActionTypes";
 
-export const addTransaction = (transaction) => ({
-  type: transactionsActionTypes.ADD,
-  payload: {
-    transaction,
-  },
+export const setTransactions = (payload) => ({
+  type: SET_TRANSACTIONS,
+  payload
 });
-
-export const updateState = (items, balance) => ({
-  type: transactionsActionTypes.UPDATE_STATE,
-  payload: {
-    items,
-    balance,
-  },
-});
+export const setBalance = (payload) => ({
+  type: SET_BALANCE,
+  payload,
+})

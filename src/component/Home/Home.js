@@ -1,7 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { updateState } from "../../redux/transactions/transactionsActions";
-import transactionOperations from "../../redux/transactions/transactionOperations";
 import HomeTable from "./HomeTable/HomeTable";
 import Welcome from "./Welcome/Welcome";
 import CurrencyExchange from "../CurrencyExchange/CurrencyExchange";
@@ -50,7 +48,5 @@ Home.propTypes = {
     }).isRequired
   ),
 };
-
-// TODO: to container
 
 export default Home;
