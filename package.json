@@ -21,6 +21,7 @@
     "react-uuid": "^1.0.2",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
+    "reselect": "^4.0.0",
     "sweetalert2": "^10.9.0",
     "sweetalert2-react-content": "^3.2.1",
     "web-vitals": "^0.2.4"
@@ -29,6 +30,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "lint": "prettier --write */**/*.js",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -50,6 +52,7 @@
     ]
   },
   "devDependencies": {
-    "pnotify": "^5.2.0"
+    "pnotify": "^5.2.0",
+    "prettier": "2.1.2"
   }
 }

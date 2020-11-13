@@ -1,12 +1,16 @@
+@value label, authenticationError, authenticationLogoContainer, authenticationLogo, authenticationLogoName, authenticationForm, authenticationEmail, authenticationPassword, authenticationName, inputValidation, authenticationButton, link, financeApp, iPhoneIMG, iPhoneContainer, formContainer  from "../../assets/styles/Authentication.module.css";
+
 .signUpLogoContainer {
   padding-top: 58px;
   text-align: center;
 }
 
 .linkSignIn {
-  margin: 0 auto;
-  font-size: 15px;
-  width: 45px;
+  font-family: "HelveticaNeueCyr";
+  font-weight: 400;
+  margin: -10px auto;
+  font-size: 12px;
+  width: 35px;
   border-bottom: 1px solid rgb(166, 177, 181);
 }
 
@@ -18,7 +22,7 @@
     height: 100vh;
   }
   .formContainer {
-    height: 560px;
+    height: 550px;
     width: 550px;
     background-color: white;
     position: absolute;

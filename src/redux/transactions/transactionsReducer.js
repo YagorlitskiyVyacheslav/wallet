@@ -1,52 +1,19 @@
-import transactionsActionTypes from './transactionsActionTypes';
-import transactionOperations from './transactionOperations';
+import { SET_TRANSACTIONS, SET_BALANCE } from "./transactionsActionTypes";
 
-const transactionsReducer = (
-    state = {
-        items: [],
-        balance: 0,
-    },
-    action,
-) => {
-    switch (action.type) {
-        case transactionsActionTypes.ADD:
-            const count = Number(
-                action.payload.transaction.type +
-                    action.payload.transaction.amount,
-            );
-
-            const balanceAfter = state.balance + count;
-
-            const typeBalanceAfter = balanceAfter > 0 ? '+' : '-';
-
-            const newTransaction = {
-                ...action.payload.transaction,
-                typeBalanceAfter,
-                balanceAfter,
-            };
-
-            const { userId, token } = newTransaction;
-
-            transactionOperations.postTransaction(
-                userId,
-                token,
-                newTransaction,
-            );
-
-            return {
-                items: [...state.items, newTransaction],
-                balance: balanceAfter,
-            };
-
-        case transactionsActionTypes.UPDATE_STATE:
-            return {
-                items: action.payload.items,
-                balance: action.payload.balance,
-            };
-
-        default:
-            return state;
-    }
+const initialState = {
+  items: [],
+  balance: 0,
 };
 
-export default transactionsReducer;
+const reducer = (state = initialState, action) => {
+  switch (action.type) {
+    case SET_TRANSACTIONS:
+      return { ...state, items: action.payload };
+    case SET_BALANCE:
+      return { ...state, balance: action.payload };
+    default:
+      return state;
+  }
+}
+
+export default reducer;

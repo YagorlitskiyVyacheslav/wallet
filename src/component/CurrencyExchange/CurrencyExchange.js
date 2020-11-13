@@ -4,12 +4,7 @@ import styles from "./currencyExchange.module.css";
 
 export default class CurrencyExchange extends Component {
   state = {
-    actualCurs: [
-      //   { ccy: "USD", base_ccy: "UAH", buy: "28.20000", sale: "28.60000" },
-      //   { ccy: "EUR", base_ccy: "UAH", buy: "33.10000", sale: "33.70000" },
-      //   { ccy: "RUR", base_ccy: "UAH", buy: "0.35700", sale: "0.39700" },
-      // { ccy: "BTC", base_ccy: "USD", buy: "12464.2216", sale: "13776.2450" },
-    ],
+    actualCurs: [],
   };
 
   componentDidMount() {

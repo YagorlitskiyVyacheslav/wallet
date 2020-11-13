@@ -1,47 +1,17 @@
 import React, { Component } from "react";
 import CanvasJSReact from "./canvasjs.react";
 import Select from "react-select";
-import { connect } from "react-redux";
-import colorSwitcher from "./colorsSwitcher";
 import selectOptMonth from "./selectOptMonth";
 import styles from "./statistic.module.css";
-const CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
+const CanvasJSChart = CanvasJSReact.CanvasJSChart;
 const selectOptYear = [{ value: 2000, label: 2000 }];
 
 class Statistic extends Component {
-  totalIncome = () => {
-    const dataBase = this.props.data;
-    let sum = 0;
-    const filteredData = dataBase.filter(el => el.type === '+');
-    filteredData.map(el =>sum += +el.amount )
-    return sum;
-  };
-
-  totalCosts = () => {
-    const dataBase = this.props.data;
-    let sum = 0;
-    const filteredData = dataBase.filter(el => el.type === '-');
-    filteredData.map(el =>sum += +el.amount )
-    return sum;
-  };
-
-  addColors = () => {
-    const dataBase = this.props.data;
-    let data = [];
-    dataBase.forEach((el) => {
-      if (el.type === "-") {
-        data.push(el);
-        el.color = colorSwitcher(el.category);
-        el.y = el.amount;
-        el.label = el.category;
-      }
-    });
-    return data;
-  };
-
   render() {
-    const baseData = this.addColors();
+    const dataPoints = this.props.dataPoints;
+    const totalIncomeBalance = this.props.totalIncomeBalance;
+    const totalCostBalance = this.props.totalCostBalance;
 
     const options = {
       theme: "white",
@@ -55,11 +25,12 @@ class Statistic extends Component {
           indexLabel: "{category}",
           indexLabelPlacement: "inside",
           indexLabelFontColor: "White",
-          dataPoints: baseData,
+          dataPoints: dataPoints,
         },
       ],
     };
-    return baseData.length > 0 ? (
+
+    return dataPoints.length > 0 ? (
       <div className={styles.statistics}>
         <h2 className={styles.statistic_main_title}>Статистика</h2>
         <div className={styles.desctop_container}>
@@ -88,13 +59,13 @@ class Statistic extends Component {
                   <p className={styles.statictic__total}>Сумма</p>
                 </div>
                 <ul className={styles.statistic__list}>
-                  {baseData.map((base) => (
-                    <li key={base._id} className={styles.list__item}>
+                  {dataPoints.map((base) => (
+                    <li key={base.category} className={styles.list__item}>
                       <p className={styles.category_section}>
                         <span
                           style={{ backgroundColor: base.color }}
                           className={styles.label_before}
-                        ></span>
+                        />
                         <span className={styles.item__label}>
                           {base.category}
                         </span>
@@ -108,14 +79,14 @@ class Statistic extends Component {
                 <h3 className={styles.costs}>
                   <p className={styles.costs_title}>Расходы:</p>
                   <span className={styles.costs_total}>
-                    {this.totalCosts()}{" "}
+                    {totalCostBalance}{" "}
                     <span className={styles.costs_desc}>грн.</span>
                   </span>
                 </h3>
                 <h3 className={styles.costs}>
                   <p className={styles.costs_title}>Доходы:</p>
                   <span className={styles.income_total}>
-                    {this.totalIncome()}{" "}
+                    {totalIncomeBalance}{" "}
                     <span className={styles.costs_desc}>грн.</span>
                   </span>
                 </h3>
@@ -132,7 +103,4 @@ class Statistic extends Component {
   }
 }
 
-const mapDispatchToProps = (state) => ({
-  data: state.transactions.items,
-});
-export default connect(mapDispatchToProps)(Statistic);
+export default Statistic;
