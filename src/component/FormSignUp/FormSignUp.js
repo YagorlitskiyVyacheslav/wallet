@@ -1,22 +1,12 @@
 import React, {useState} from 'react';
 import {useDispatch} from 'react-redux';
 import {Link} from 'react-router-dom';
-import {defaults} from '@pnotify/core';
 import {requestSingUp} from '../../redux/auth/authOperations';
 import {useForm} from 'react-hook-form';
-import {info, defaultModules} from '@pnotify/core';
-import * as PNotifyMobile from '@pnotify/mobile';
 import PasswordStrengthMeter from '../PasswordMeter/PasswordStrengthMeter';
 import walletIcon from '../../images/Authentication/walletIcon.png';
 import iPhoneIMG from '../../images/Authentication/iPhone-registration-desktop.png';
-import '@pnotify/core/dist/PNotify.css';
-import '@pnotify/core/dist/BrightTheme.css';
-import '@pnotify/mobile/dist/PNotifyMobile.css';
 import style from './SignUp.module.css';
-
-defaults.width = '350px';
-defaults.delay = 2000;
-defaultModules.set(PNotifyMobile, {});
 
 const SignUp = () => {
   const dispatch = useDispatch();
@@ -25,22 +15,18 @@ const SignUp = () => {
   const [password, setPassword] = useState('');
   const [name, setUserName] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-
   const {register, handleSubmit, errors} = useForm();
-
+  const confirmPasswordError = () =>
+    password !== confirmPassword ? true : false;
   const onSubmit = () => {
     if (password === confirmPassword) {
       dispatch(requestSingUp({email, password, name}));
-    } else {
-      info({
-        text: 'Пароли не совпадают',
-      });
     }
   };
 
   return (
     <div className={style.modal}>
-       <div className={style.iPhoneContainer}>
+      <div className={style.iPhoneContainer}>
         <img src={iPhoneIMG} alt="iPhone" className={style.iPhoneIMG}></img>
         <p className={style.financeApp}>Finance App</p>
       </div>
@@ -97,8 +83,8 @@ const SignUp = () => {
               className={style.authenticationPassword}
               onChange={(event) => setConfirmPassword(event.target.value)}
             />
-            {errors.passwordConfirm && (
-              <p className={style.authenticationError}>Подтвердите пароль.</p>
+            {confirmPasswordError() && confirmPassword !== '' && (
+              <p className={style.authenticationError}>Пароли не совпадают.</p>
             )}
           </label>
           <label className={style.label}>
