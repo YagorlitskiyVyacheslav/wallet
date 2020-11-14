@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import HomeTable from './HomeTable/HomeTable';
 import Welcome from './Welcome/Welcome';
-import CurrencyExchange from '../CurrencyExchange/CurrencyExchange';
+import CurrencyExchange from '../CurrencyExchange/CurrencyExchange.container';
 import Modal from '../Modal/Modal';
 import TransactionForm from '../TransactionForm/TransactionForm.container';
 import OpenModalButton from '../OpenModalButton/OpenModalButton';

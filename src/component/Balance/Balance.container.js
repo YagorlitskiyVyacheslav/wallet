@@ -2,8 +2,8 @@ import { connect } from 'react-redux';
 import { totalBalanceSelector } from "../../redux/transactions/transactionsSelectors";
 import Balance from "./Balance";
 
-const mapDispatchToProps = (state) => ({
+const mapStateToProps = (state) => ({
     balance: totalBalanceSelector(state)
 })
 
-export default connect(mapDispatchToProps)(Balance);
+export default connect(mapStateToProps)(Balance);
