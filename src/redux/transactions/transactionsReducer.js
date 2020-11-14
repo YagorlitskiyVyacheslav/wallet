@@ -2,12 +2,12 @@ import {
   SET_TRANSACTIONS,
   SET_BALANCE,
   SET_FILTER,
-} from './transactionsActionTypes';
+} from "./transactionsActionTypes";
 
 const initialState = {
   items: [],
   balance: 0,
-  filter: '',
+  filter: "",
 };
 
 const reducer = (state = initialState, action) => {

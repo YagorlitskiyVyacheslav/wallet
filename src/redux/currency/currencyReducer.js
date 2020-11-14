@@ -1,12 +1,14 @@
-import { addCurrencyExchange } from './currencyActionTypes';
+import { SET_CURRENCY_EXCHANGE } from "./currencyActionTypes";
 
-const currencyReducer = (state = [], action) => {
-    switch (action.type) {
-        case addCurrencyExchange:
-            return action.payload;
-        default: 
-        return state;
-    }
-}
+const initialState = [];
+
+const currencyReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case SET_CURRENCY_EXCHANGE:
+      return action.payload;
+    default:
+      return state;
+  }
+};
 
 export default currencyReducer;
