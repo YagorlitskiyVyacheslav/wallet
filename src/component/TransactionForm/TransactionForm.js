@@ -1,213 +1,222 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { createTransaction } from "../../redux/transactions/transactionOperations";
-import { userIdSelector, userTokenSelector } from "../../redux/auth/authSelectors";
-import { transactionsListSelector } from "../../redux/transactions/transactionsSelectors";
-import styles from "./TransactionForm.module.css";
+import React, { Component } from 'react';
+import styles from './TransactionForm.module.css';
 
 const TransactionType = {
-  DEPOSIT: "deposit",
-  WITHDRAW: "withdraw",
+    DEPOSIT: 'deposit',
+    WITHDRAW: 'withdraw',
 };
 
 class TransactionForm extends Component {
-  state = {
-    comment: "",
-    value: "-",
-    transactionType: TransactionType.WITHDRAW,
-    category: "",
-    count: "",
-    date: "",
-  };
-
-  componentDidMount() {
-    const currentDate = new Date();
-
-    const year = currentDate.getFullYear();
-    const month = currentDate.getMonth() + 1;
-    const day = String(currentDate.getDate()).padStart(2, "0");
-
-    const correctTypeOfDate = [year, month, day].join("-");
-
-    this.setState({ date: correctTypeOfDate });
-    window.addEventListener("keydown", this.onEscape);
-    document.querySelector("body").classList.add(`${styles.onOpenModal}`);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener("keydown", this.onEscape);
-    document.querySelector("body").classList.remove(`${styles.onOpenModal}`);
-  }
-
-  handlerInput = (e) => {
-    const { name, value } = e.target;
-    this.setState({ [name]: value });
-  };
-
-  handlerRadio = (e) => {
-    this.setState({
-      transactionType: e.target.value,
-      value: e.target.value === TransactionType.DEPOSIT ? "+" : "-",
-      category: "",
-    });
-  };
-
-  handlerSubmit = (e) => {
-    e.preventDefault();
-    const { comment, value, category, count, date } = this.state;
-
-    const { userId, token } = this.props;
-
-    const transaction = {
-      date: Date.parse(date),
-      type: value,
-      category,
-      amount: count,
-      comments: comment,
-      userId,
-      token,
+    state = {
+        date: '',
+        type: '-',
+        category: '',
+        amount: '',
+        comments: '',
+        transactionType: TransactionType.WITHDRAW,
     };
 
-    this.props.createTransaction(userId, token, transaction);
-    this.props.onToggle();
-  };
+    componentDidMount() {
+        const currentDate = new Date();
 
-  onBtnClose = () => this.props.onToggle();
+        const correctTypeOfDate = currentDate
+            .toLocaleDateString()
+            .split('.')
+            .reverse()
+            .join('-');
 
-  onEscape = (e) => {
-    if (e.code === "Escape") {
-      this.props.onToggle();
+        this.setState({ date: correctTypeOfDate });
+        window.addEventListener('keydown', this.onEscape);
+        document.querySelector('body').classList.add(`${styles.onOpenModal}`);
     }
-  };
 
-  render() {
-    const { comment, transactionType, category, count, date } = this.state;
+    componentWillUnmount() {
+        window.removeEventListener('keydown', this.onEscape);
+        document
+            .querySelector('body')
+            .classList.remove(`${styles.onOpenModal}`);
+    }
 
-    const isSelectDepositInput = transactionType === TransactionType.DEPOSIT;
+    handlerInput = e => {
+        const { name, value } = e.target;
+        this.setState({ [name]: value });
+    };
 
-    return (
-      <form className={styles.form} onSubmit={this.handlerSubmit}>
-        <div className={styles.formHeader}>
-          <h3 className={styles.title}>Add a transaction</h3>
-          <button
-            className={styles.buttonCloseModal}
-            type="button"
-            onClick={this.onBtnClose}
-          />
-        </div>
-        <div className={styles.radioGroup} role="group">
-          <label className={styles.label}>
-            <input
-              className={styles.depositeInput}
-              type="radio"
-              checked={isSelectDepositInput}
-              value={TransactionType.DEPOSIT}
-              onChange={this.handlerRadio}
-            />
-            <span>Income</span>
-            <span
-              className={
-                isSelectDepositInput
-                  ? `${styles.radioIconDeposite} ${styles.active}`
-                  : `${styles.radioIconDeposite}`
-              }
-            />
-          </label>
-          <label className={styles.label}>
-            <input
-              className={styles.withdrawInput}
-              type="radio"
-              value={TransactionType.WITHDRAW}
-              checked={!isSelectDepositInput}
-              onChange={this.handlerRadio}
-            />
-            <span>Cost</span>
-            <span
-              className={
-                !isSelectDepositInput
-                  ? `${styles.radioIconWithdraw} ${styles.active}`
-                  : `${styles.radioIconDeposite}`
-              }
-            />
-          </label>
-        </div>
-        <select
-          className={styles.select}
-          name="category"
-          value={category}
-          onChange={this.handlerInput}
-        >
-          <option value="" label="Category" disabled />
+    handlerRadio = e => {
+        this.setState({
+            transactionType: e.target.value,
+            type: e.target.value === TransactionType.DEPOSIT ? '+' : '-',
+            category: '',
+        });
+    };
 
-          {isSelectDepositInput ? (
-            <>
-              <option value="Salary" label="Salary" />
-              <option value="Part time job" label="Part time job" />
-            </>
-          ) : (
-            <>
-              <option value="Main Expenses" label="Main Expenses" />
-              <option value="Food" label="Food" />
-              <option value="Car" label="Car" />
-              <option value="Self Care" label="Self Care" />
-              <option value="Child Care" label="Child Care" />
-              <option value="House" label="House" />
-              <option value="Education" label="Education" />
-              <option value="Entertainment" label="Entertainment" />
-              <option value="Health" label="Health" />
-            </>
-          )}
-        </select>
-        <div className={styles.inputGroup}>
-          <input
-            className={styles.inputCount}
-            type="number"
-            value={count}
-            name="count"
-            placeholder="0.00"
-            onChange={this.handlerInput}
-          />
-          <input
-            className={styles.inputDate}
-            type="date"
-            name="date"
-            value={date}
-            onChange={this.handlerInput}
-          />
-        </div>
-        <label className={styles.textAreaLabel}>
-          Comment
-          <textarea
-            className={styles.textArea}
-            type="text"
-            onChange={this.handlerInput}
-            name="comment"
-            value={comment}
-            placeholder="Add a comment..."
-          />
-        </label>
-        <div className={styles.formFooter}>
-          <button
-            className={styles.buttonAddTransaction}
-            type="submit"
-            disabled={!count}
-          >
-            Add
-          </button>
-        </div>
-      </form>
-    );
-  }
+    handlerSubmit = e => {
+        e.preventDefault();
+        const { date, type, category, amount, comments } = this.state;
+
+        const { userId, token, balance } = this.props;
+
+        const balanceAfter = balance + Number(type + amount);
+
+        const typeBalanceAfter = balanceAfter > 0 ? '+' : '-';
+
+        const transaction = {
+            date: Date.parse(date),
+            type,
+            category,
+            amount,
+            balanceAfter,
+            comments,
+            typeBalanceAfter,
+        };
+
+        this.props.createTransaction(userId, token, transaction);
+
+        this.props.onToggle();
+    };
+
+    onBtnClose = () => this.props.onToggle();
+
+    onEscape = e => {
+        if (e.code === 'Escape') {
+            this.props.onToggle();
+        }
+    };
+
+    render() {
+        const {
+            comments,
+            transactionType,
+            category,
+            amount,
+            date,
+        } = this.state;
+
+        const isSelectDepositInput =
+            transactionType === TransactionType.DEPOSIT;
+
+        return (
+            <form className={styles.form} onSubmit={this.handlerSubmit}>
+                <div className={styles.formHeader}>
+                    <h3 className={styles.title}>Add a transaction</h3>
+                    <button
+                        className={styles.buttonCloseModal}
+                        type="button"
+                        onClick={this.onBtnClose}
+                    />
+                </div>
+                <div className={styles.radioGroup} role="group">
+                    <label className={styles.label}>
+                        <input
+                            className={styles.depositeInput}
+                            type="radio"
+                            checked={isSelectDepositInput}
+                            value={TransactionType.DEPOSIT}
+                            onChange={this.handlerRadio}
+                        />
+                        <span>Income</span>
+                        <span
+                            className={
+                                isSelectDepositInput
+                                    ? `${styles.radioIconDeposite} ${styles.active}`
+                                    : `${styles.radioIconDeposite}`
+                            }
+                        />
+                    </label>
+                    <label className={styles.label}>
+                        <input
+                            className={styles.withdrawInput}
+                            type="radio"
+                            value={TransactionType.WITHDRAW}
+                            checked={!isSelectDepositInput}
+                            onChange={this.handlerRadio}
+                        />
+                        <span>Cost</span>
+                        <span
+                            className={
+                                !isSelectDepositInput
+                                    ? `${styles.radioIconWithdraw} ${styles.active}`
+                                    : `${styles.radioIconDeposite}`
+                            }
+                        />
+                    </label>
+                </div>
+                <select
+                    className={styles.select}
+                    name="category"
+                    value={category}
+                    onChange={this.handlerInput}
+                >
+                    <option value="" label="Category" disabled />
+
+                    {isSelectDepositInput ? (
+                        <>
+                            <option value="Salary" label="Salary" />
+                            <option
+                                value="Part time job"
+                                label="Part time job"
+                            />
+                        </>
+                    ) : (
+                        <>
+                            <option
+                                value="Main Expenses"
+                                label="Main Expenses"
+                            />
+                            <option value="Food" label="Food" />
+                            <option value="Car" label="Car" />
+                            <option value="Self Care" label="Self Care" />
+                            <option value="Child Care" label="Child Care" />
+                            <option value="House" label="House" />
+                            <option value="Education" label="Education" />
+                            <option
+                                value="Entertainment"
+                                label="Entertainment"
+                            />
+                            <option value="Health" label="Health" />
+                        </>
+                    )}
+                </select>
+                <div className={styles.inputGroup}>
+                    <input
+                        className={styles.inputCount}
+                        type="number"
+                        value={amount}
+                        name="amount"
+                        placeholder="0.00"
+                        onChange={this.handlerInput}
+                    />
+                    <input
+                        className={styles.inputDate}
+                        type="date"
+                        name="date"
+                        value={date}
+                        onChange={this.handlerInput}
+                    />
+                </div>
+                <label className={styles.textAreaLabel}>
+                    Comment
+                    <textarea
+                        className={styles.textArea}
+                        type="text"
+                        onChange={this.handlerInput}
+                        name="comments"
+                        value={comments}
+                        placeholder="Add a comments..."
+                    />
+                </label>
+                <div className={styles.formFooter}>
+                    <button
+                        className={styles.buttonAddTransaction}
+                        type="submit"
+                        disabled={!amount}
+                    >
+                        Add
+                    </button>
+                </div>
+            </form>
+        );
+    }
 }
 
-const mapStateToProps = (state) => ({
-  transactions: transactionsListSelector(state),
-  userId: userIdSelector(state),
-  token: userTokenSelector(state),
-});
-
-const mapDispatchToProps = {
-  createTransaction,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(TransactionForm);
+export default TransactionForm;
