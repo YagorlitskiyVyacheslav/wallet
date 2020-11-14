@@ -36,7 +36,8 @@ class Statistic extends Component {
         <div className={styles.desctop_container}>
           <div className={styles.container}>
             <div className={styles.chart}>
-              {dataPoints.length > 0 ? <CanvasJSChart options={options} /> : <p className={styles.chart_error}>There is no any information about costs!</p>}
+              {dataPoints.length > 0 ? <CanvasJSChart options={options} /> : <p className={styles.chart_error}>There is no any information about costs!
+              Please add some costs!</p>}
             </div>
           </div>
           <div className={styles.main_section}>
