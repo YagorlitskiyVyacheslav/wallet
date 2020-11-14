@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import styles from "./HomeTable.module.css";
 
 const HomeTableList = ({ data }) => {
@@ -54,5 +55,18 @@ const HomeTableList = ({ data }) => {
     </li>
   );
 };
+
+HomeTableList.propTypes = {
+  finance: PropTypes.arrayOf(
+    PropTypes.shape({
+      _id: PropTypes.number.isRequired,
+      type: PropTypes.string.isRequired,
+      category: PropTypes.string.isRequired,
+      comments: PropTypes,
+      amount: PropTypes.number,
+      balanceAfter: PropTypes.number
+    })
+    )
+}
 
 export default HomeTableList;

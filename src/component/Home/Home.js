@@ -37,16 +37,7 @@ const Home = ({ items }) => (
 );
 
 Home.propTypes = {
-    financeData: PropTypes.arrayOf(
-        PropTypes.shape({
-            date: PropTypes.number.isRequired,
-            type: PropTypes.string.isRequired,
-            category: PropTypes.string,
-            comments: PropTypes.string,
-            amount: PropTypes.number.isRequired,
-            balanceAfter: PropTypes.number.isRequired,
-        }).isRequired,
-    ),
+    items: PropTypes.arrayOf(PropTypes.object)
 };
 
 export default Home;

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import styles from './TransactionForm.module.css';
 
 const TransactionType = {
@@ -217,6 +218,29 @@ class TransactionForm extends Component {
             </form>
         );
     }
+}
+
+TransactionForm.propTypes = {
+    balance: PropTypes.number.isRequired,
+    token: PropTypes.string.isRequired,
+    userId: PropTypes.string.isRequired,
+    onToggle: PropTypes.func.isRequired,
+    createTransaction: PropTypes.func.isRequired,
+    transaction: PropTypes.arrayOf(
+        PropTypes.shape({
+          amount: PropTypes.number.isRequired,
+          balanceAfter: PropTypes.number,
+          category: PropTypes.string.isRequired,
+          color: PropTypes.string.isRequired,
+          comments: PropTypes.string,
+          createdAt: PropTypes.string,
+          date: PropTypes.number.isRequired,
+          type: PropTypes.string.isRequired,
+          typeBalanceAfter: PropTypes.string,
+          updatedAt: PropTypes.string,
+          _id: PropTypes.number.isRequired
+        })
+      )
 }
 
 export default TransactionForm;

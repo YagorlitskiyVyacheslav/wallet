@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import styles from "./OpenModalButton.module.css";
 
 const OpenModalButton = ({ onToggle }) => (
@@ -6,5 +7,9 @@ const OpenModalButton = ({ onToggle }) => (
     +
   </button>
 );
+
+OpenModalButton.propTypes = {
+  onToggle: PropTypes.func
+}
 
 export default OpenModalButton;

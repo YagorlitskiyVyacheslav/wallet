@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import CanvasJSReact from './canvasjs.react';
 import Select from 'react-select';
 import selectOptMonth from './selectOptMonth';
@@ -203,6 +204,29 @@ class Statistic extends Component {
       </div>
     );
   }
+}
+
+Statistic.propTypes = {
+  dataPoints: PropTypes.arrayOf(
+    PropTypes.shape({
+      amount: PropTypes.number.isRequired,
+      balanceAfter: PropTypes.number,
+      category: PropTypes.string.isRequired,
+      color: PropTypes.string.isRequired,
+      comments: PropTypes.string,
+      createdAt: PropTypes.string,
+      date: PropTypes.number.isRequired,
+      label: PropTypes.string.isRequired,
+      type: PropTypes.string.isRequired,
+      typeBalanceAfter: PropTypes.string,
+      updatedAt: PropTypes.string,
+      y: PropTypes.number.isRequired,
+      _id: PropTypes.number.isRequired
+    })
+  ),
+  setFilter: PropTypes.func.isRequired,
+  totalCostBalance: PropTypes.number.isRequired,
+  totalIncomeBalance: PropTypes.number.isRequired
 }
 
 export default Statistic;

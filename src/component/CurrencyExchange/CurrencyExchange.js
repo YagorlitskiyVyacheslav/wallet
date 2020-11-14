@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import styles from "./currencyExchange.module.css";
 
 const CurrencyExchange = ({actualCurs}) => (
@@ -32,4 +33,8 @@ const CurrencyExchange = ({actualCurs}) => (
 </div>
 );
 
+
+CurrencyExchange.propTypes = {
+  actualCurs: PropTypes.array.isRequired
+}
 export default CurrencyExchange;
