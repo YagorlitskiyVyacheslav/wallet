@@ -5,7 +5,7 @@ export const transactionsListSelector = state => state.transactions.items;
 export const totalBalanceSelector = state => state.transactions.balance;
 export const transactionsFilterSelector = state => state.transactions.filter;
 
-export const filtredTransactionsByDateSelector = createSelector(
+export const filteredTransactionsByDateSelector = createSelector(
   transactionsListSelector,
   transactionsFilterSelector,
   (transactionsList, filter) => {
@@ -18,11 +18,11 @@ export const filtredTransactionsByDateSelector = createSelector(
 );
 
 export const incomeTransactionsListSelector = createSelector(
-  filtredTransactionsByDateSelector,
+    filteredTransactionsByDateSelector,
   transactionsList => transactionsList.filter(item => item.type === '+'),
 );
 export const costTransactionsListSelector = createSelector(
-  filtredTransactionsByDateSelector,
+    filteredTransactionsByDateSelector,
   transactionsList => transactionsList.filter(item => item.type === '-'),
 );
 
@@ -61,18 +61,6 @@ export const costTransactionsByCategorySelector = createSelector(
   },
 );
 
-// export const filtredTransactionsByDateSelector = createSelector(
-//   costTransactionsByCategorySelector,
-//   transactionsFilterSelector,
-//   (transactionsList, filter) => {
-//     return filter
-//       ? transactionsList.filter(
-//           item => item.date >= filter.start && item.date <= filter.end,
-//         )
-//       : transactionsList;
-//   },
-// );
-
 export const UIStatisticsTransactionsListSelector = createSelector(
   costTransactionsByCategorySelector,
   transactionsList => {
@@ -84,15 +72,3 @@ export const UIStatisticsTransactionsListSelector = createSelector(
     }));
   },
 );
-
-// export const UIStatisticsTransactionsListSelector = createSelector(
-//   costTransactionsByCategorySelector,
-//   transactionsList => {
-//     return transactionsList.map(item => ({
-//       ...item,
-//       y: item.amount,
-//       label: item.category,
-//       color: colorSwitcher(item.category),
-//     }));
-//   },
-// );

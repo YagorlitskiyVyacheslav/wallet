@@ -1,1 +1,1 @@
-export const addCurrencyExchange = 'ADD_CURRENCY_EXCHANGE';
+export const SET_CURRENCY_EXCHANGE = 'SET_CURRENCY_EXCHANGE';
