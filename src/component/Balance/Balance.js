@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import styles from "../NavSection/NavSection.module.css";
 
 const Balance = ({ balance }) => (
@@ -7,5 +8,8 @@ const Balance = ({ balance }) => (
     <p className={styles.balanceSum}>{balance}</p>
   </div>
 );
-
+ 
+Balance.propTypes = {
+  balance: PropTypes.number.isRequired
+}
 export default Balance;

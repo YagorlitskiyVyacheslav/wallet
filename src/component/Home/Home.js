@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import HomeTable from './HomeTable/HomeTable';
 import Welcome from './Welcome/Welcome';
-import CurrencyExchange from '../CurrencyExchange/CurrencyExchange';
+import CurrencyExchange from '../CurrencyExchange/CurrencyExchange.container';
 import Modal from '../Modal/Modal';
 import TransactionForm from '../TransactionForm/TransactionForm.container';
 import OpenModalButton from '../OpenModalButton/OpenModalButton';
@@ -37,16 +37,7 @@ const Home = ({ items }) => (
 );
 
 Home.propTypes = {
-    financeData: PropTypes.arrayOf(
-        PropTypes.shape({
-            date: PropTypes.number.isRequired,
-            type: PropTypes.string.isRequired,
-            category: PropTypes.string,
-            comments: PropTypes.string,
-            amount: PropTypes.number.isRequired,
-            balanceAfter: PropTypes.number.isRequired,
-        }).isRequired,
-    ),
+    items: PropTypes.arrayOf(PropTypes.object)
 };
 
 export default Home;

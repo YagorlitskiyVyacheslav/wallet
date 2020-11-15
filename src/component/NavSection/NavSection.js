@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink, Route } from "react-router-dom";
 import Balance from "../Balance/Balance.container";
-import CurrencyExchange from "../CurrencyExchange/CurrencyExchange";
+import CurrencyExchange from "../CurrencyExchange/CurrencyExchange.container";
 import styles from "./NavSection.module.css";
 
 const NavSection = () => (
