@@ -1,6 +1,5 @@
 .buttonOpenModal {
   position: fixed;
-  z-index: 2;
   color: #fff;
   font-size: 30px;
   border: none;
@@ -12,7 +11,6 @@
   bottom: 5px;
   transform: translateX(50%);
 }
-.bg { background-color: rgb(40, 64, 96); opacity: 0.651; box-shadow: 0px -10px 30px 0px rgba(119, 119, 119, 0.1); position: absolute; left: 0px; top: 526 px; width: 320px; height: 42px; z-index: 105; }
 
 .buttonOpenModal:hover {
   cursor: pointer;
@@ -22,9 +20,8 @@
   outline: none;
 }
 
-.buttonOpenModal::after {
+.buttonOverlay {
   position: fixed;
-  z-index: 1;
   bottom: 0;
   left: 0;
   right: 0;
@@ -32,27 +29,14 @@
   background-color: rgba(40, 64, 96, 0.651);
   box-shadow: 0px -10px 30px 0px rgba(119, 119, 119, 0.1);
 }
-@media (max-width: 767px) {
-  .buttonOverlay {
-    content: '';
-    display: block;
-    position: fixed;
-    z-index: 1;
-    background-color: rgba(40, 64, 96, 0.65);
-    box-shadow: 0px -10px 30px 0px rgba(119, 119, 119, 0.1);
-    height: 42px;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-  }
-}
+
 @media (min-width: 768px) {
   .buttonOpenModal {
     right: 45px;
     bottom: 45px;
   }
 
-  .buttonBackground {
+  .buttonOverlay {
     display: none;
   }
 }
