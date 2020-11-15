@@ -11,18 +11,18 @@ const selectOptYear = [];
 
 class Statistic extends Component {
   state = {
-    month: "",
-    year: "",
+    month: '',
+    year: '',
   };
 
   componentDidMount() {
     const currentDate = new Date();
     let initialYear = currentDate.getFullYear();
     const initialMonth = currentDate.getMonth() + 1;
-    const initialDay = "01";
+    const initialDay = '01';
 
     const currentFormatStartDate = [initialYear, initialMonth, initialDay].join(
-      "-"
+      '-',
     );
 
     const currentFormatEndDate = Date.now();
@@ -33,14 +33,14 @@ class Statistic extends Component {
 
     const initialMonthOption = {
       value: initialMonth,
-      label: selectOptMonth.find((item) => Number(item.value) === initialMonth)
+      label: selectOptMonth.find(item => Number(item.value) === initialMonth)
         .label,
     };
     const initialYearOption = { value: initialYear, label: initialYear };
 
     this.setState({ month: initialMonthOption, year: initialYearOption });
 
-    countOfYears.forEach((e) => {
+    countOfYears.forEach(e => {
       if (selectOptYear.length < 1) {
         selectOptYear.push({
           value: initialYear,
@@ -48,17 +48,18 @@ class Statistic extends Component {
         });
         return;
       }
-
-      initialYear -= 1;
-      selectOptYear.push({
-        value: initialYear,
-        label: initialYear,
-      });
+      if (selectOptYear.length < 5) {
+        initialYear -= 1;
+        selectOptYear.push({
+          value: initialYear,
+          label: initialYear,
+        });
+      }
     });
   }
 
   filterGenerator = (year, month) => {
-    const startDate = new Date(year, month - 1, "01");
+    const startDate = new Date(year, month - 1, '01');
     const endDate = new Date(year, month, 0, 23, 59, 59);
 
     this.props.setFilter({
@@ -67,14 +68,14 @@ class Statistic extends Component {
     });
   };
 
-  handlerMonthInput = (e) => {
+  handlerMonthInput = e => {
     const { year } = this.state;
     const { value, label } = e;
     this.setState({ month: { value, label } });
     this.filterGenerator(year.value, value);
   };
 
-  handlerYearInput = (e) => {
+  handlerYearInput = e => {
     const { month } = this.state;
     const { value, label } = e;
     this.setState({ year: { value, label } });
@@ -88,17 +89,17 @@ class Statistic extends Component {
     const totalCostBalance = this.props.totalCostBalance;
 
     const options = {
-      theme: "white",
+      theme: 'white',
       animationEnabled: true,
       exportEnabled: true,
       data: [
         {
-          type: "pie",
-          legendText: "{category}",
-          toolTipContent: "{category}: <strong>{amount}</strong>",
-          indexLabel: "{category}",
-          indexLabelPlacement: "inside",
-          indexLabelFontColor: "White",
+          type: 'pie',
+          legendText: '{category}',
+          toolTipContent: '{category}: <strong>{amount}</strong>',
+          indexLabel: '{category}',
+          indexLabelPlacement: 'inside',
+          indexLabelFontColor: 'White',
           dataPoints: dataPoints,
         },
       ],
@@ -137,7 +138,7 @@ class Statistic extends Component {
                   <p className={styles.statictic__total}>Сумма</p>
                 </div>
                 <ul className={styles.statistic__list}>
-                  {dataPoints.map((base) => (
+                  {dataPoints.map(base => (
                     <li key={base.category} className={styles.list__item}>
                       <p className={styles.category_section}>
                         <span
@@ -157,14 +158,14 @@ class Statistic extends Component {
                 <h3 className={styles.costs}>
                   <p className={styles.costs_title}>Расходы:</p>
                   <span className={styles.costs_total}>
-                    {totalCostBalance}{" "}
+                    {totalCostBalance}{' '}
                     <span className={styles.costs_desc}>грн.</span>
                   </span>
                 </h3>
                 <h3 className={styles.costs}>
                   <p className={styles.costs_title}>Доходы:</p>
                   <span className={styles.income_total}>
-                    {totalIncomeBalance}{" "}
+                    {totalIncomeBalance}{' '}
                     <span className={styles.costs_desc}>грн.</span>
                   </span>
                 </h3>
@@ -220,12 +221,12 @@ Statistic.propTypes = {
       typeBalanceAfter: PropTypes.string,
       updatedAt: PropTypes.string,
       y: PropTypes.number.isRequired,
-      _id: PropTypes.string.isRequired
-    })
+      _id: PropTypes.string.isRequired,
+    }),
   ),
   setFilter: PropTypes.func.isRequired,
   totalCostBalance: PropTypes.number.isRequired,
-  totalIncomeBalance: PropTypes.number.isRequired
-}
+  totalIncomeBalance: PropTypes.number.isRequired,
+};
 
 export default Statistic;
