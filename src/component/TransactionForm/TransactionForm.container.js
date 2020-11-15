@@ -1,13 +1,13 @@
-import { connect } from 'react-redux';
-import TransactionForm from './TransactionForm';
-import { createTransaction } from '../../redux/transactions/transactionOperations';
+import { connect } from "react-redux";
+import TransactionForm from "./TransactionForm";
+import { createTransaction } from "../../redux/transactions/transactionOperations";
 import {
   userIdSelector,
   userTokenSelector,
-} from '../../redux/auth/authSelectors';
-import { totalBalanceSelector } from '../../redux/transactions/transactionsSelectors';
+} from "../../redux/auth/authSelectors";
+import { totalBalanceSelector } from "../../redux/transactions/transactionsSelectors";
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   balance: totalBalanceSelector(state),
   userId: userIdSelector(state),
   token: userTokenSelector(state),

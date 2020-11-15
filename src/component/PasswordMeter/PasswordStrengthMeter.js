@@ -1,22 +1,22 @@
-import React from 'react';
-import zxcvbn from 'zxcvbn';
-import PropTypes from 'prop-types';
-import './PasswordMeter.css';
+import React from "react";
+import zxcvbn from "zxcvbn";
+import PropTypes from "prop-types";
+import "./PasswordMeter.css";
 
-const createPasswordLabel = result => {
+const createPasswordLabel = (result) => {
   switch (result.score) {
     case 0:
-      return 'Weak';
+      return "Weak";
     case 1:
-      return 'Weak';
+      return "Weak";
     case 2:
-      return 'Good';
+      return "Good";
     case 3:
-      return 'Strong';
+      return "Strong";
     case 4:
-      return 'Very strong!';
+      return "Very strong!";
     default:
-      return 'Weak';
+      return "Weak";
   }
 };
 
@@ -28,14 +28,14 @@ const PasswordStrengthMeter = ({ password }) => {
       value={testedResult.score}
       max="4"
       className={`password-strength-meter-progress strength-${createPasswordLabel(
-        testedResult,
+        testedResult
       )}`}
     />
   );
 };
 
 PasswordStrengthMeter.defaultProps = {
-  password: '',
+  password: "",
 };
 
 PasswordStrengthMeter.propTypes = {

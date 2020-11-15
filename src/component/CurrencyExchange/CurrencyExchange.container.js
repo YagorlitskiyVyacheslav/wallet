@@ -1,5 +1,5 @@
-import { connect } from "react-redux"
-import CurrencyExchange from "./CurrencyExchange"
+import { connect } from "react-redux";
+import CurrencyExchange from "./CurrencyExchange";
 import { currencyExchange } from "../../redux/currency/currencySelectors";
 
 const mapStateToProps = (state) => ({

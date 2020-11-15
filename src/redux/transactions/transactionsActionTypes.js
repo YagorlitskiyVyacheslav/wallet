@@ -1,3 +1,3 @@
-export const SET_TRANSACTIONS = 'SET_TRANSACTION';
-export const SET_BALANCE = 'SET_BALANCE';
-export const SET_FILTER = 'SET_FILTER';
+export const SET_TRANSACTIONS = "SET_TRANSACTION";
+export const SET_BALANCE = "SET_BALANCE";
+export const SET_FILTER = "SET_FILTER";
