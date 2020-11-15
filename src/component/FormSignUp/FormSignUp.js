@@ -53,7 +53,7 @@ const SignUp = () => {
               onChange={(event) => setEmail(event.target.value)}
             />
             {errors.email && (
-              <p className={style.authenticationError}>Введите E-mail.</p>
+              <p className={style.authenticationError}>Enter E-mail.</p>
             )}
           </label>
           <label className={style.label}>
@@ -61,14 +61,14 @@ const SignUp = () => {
               type="password"
               name="password"
               value={password}
-              placeholder="Пароль"
+              placeholder="Password"
               ref={register({required: true})}
               autoComplete="off"
               className={style.authenticationPassword}
               onChange={(event) => setPassword(event.target.value)}
             />
             {errors.password && (
-              <p className={style.authenticationError}>Введите пароль.</p>
+              <p className={style.authenticationError}>Enter password.</p>
             )}
           </label>
           <PasswordStrengthMeter password={password} />
@@ -78,13 +78,13 @@ const SignUp = () => {
               name="passwordConfirm"
               value={confirmPassword}
               ref={register({required: true})}
-              placeholder="Подтвердите пароль"
+              placeholder="Password confirm"
               autoComplete="off"
               className={style.authenticationPassword}
               onChange={(event) => setConfirmPassword(event.target.value)}
             />
             {confirmPasswordError() && confirmPassword !== '' && (
-              <p className={style.authenticationError}>Пароли не совпадают.</p>
+              <p className={style.authenticationError}>Pasword don't match.</p>
             )}
           </label>
           <label className={style.label}>
@@ -92,20 +92,20 @@ const SignUp = () => {
               type="text"
               name="name"
               value={name}
-              placeholder="Ваше имя"
+              placeholder="Enter your name"
               ref={register({required: true})}
               className={style.authenticationName}
               onChange={(event) => setUserName(event.target.value)}
             />
             {errors.name && (
-              <p className={style.authenticationError}>Введите имя.</p>
+              <p className={style.authenticationError}>Enter name</p>
             )}
           </label>
-          <button className={style.authenticationButton}>Регистрация</button>
+          <button className={style.authenticationButton}>Sign Up</button>
         </form>
         <Link to="/login" className={style.link}>
           <p type="button" className={style.linkSignIn}>
-            Войти
+            Sign In
           </p>
         </Link>
       </div>

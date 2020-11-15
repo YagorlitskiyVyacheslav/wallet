@@ -80,6 +80,7 @@
     width: inherit;
     padding: 0px 8px 0px 22px;
     margin-bottom: 0px;
+    height: 62px;
   }
 
   /** нечетное */
@@ -111,12 +112,20 @@
   .financeMobItem:last-child {
     margin-bottom: 0px;
   }
-
+  .financeMobRow:nth-child(4) {
+    overflow-y: auto;
+    max-height: 100%;
+    padding-left: 0;
+  }
+  .financeMobItem:first-child .financeMobRow:nth-child(4) {
+    overflow-y: inherit;
+  }
   .financeMobRow {
     display: flex;
     flex-direction: column;
     width: 120px;
     padding: 0px;
+    
   }
 
   .financeMobRow:nth-of-type(-n + 2) {
@@ -218,7 +227,7 @@
     padding-left: 40px;
   }
 
-  .financeMobItem:not(:first-child) .financeMobRow {
+  .financeMobItem:not(:first-child) .financeMobRow:not(:nth-child(4)) {
     padding-left: 40px;
   }
 }

@@ -26,7 +26,7 @@ export const requestSingIn = (payload) => async (dispatch) => {
 
     if (!user) {
       info({
-        text: "Неверный E-mail или пароль.",
+        text: "Incorrect E-mail or password.",
       });
     }
 
@@ -54,11 +54,11 @@ export const requestSingUp = (payload) => async (dispatch) => {
 
     if (response.status === 400) {
       info({
-        text: "Такой E-mail уже существует!",
+        text: "This E-mail already exist!",
       });
     } else {
       info({
-        text: "Регистрация успешна!",
+        text: "Registration successfully!",
       });
     }
 
