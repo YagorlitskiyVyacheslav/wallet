@@ -7,9 +7,9 @@ const CurrencyExchange = ({actualCurs}) => (
   <table className={styles.currencyTable}>
     <thead>
       <tr className={styles.currencyTable__head}>
-        <td>Валюта</td>
-        <td>Продажа</td>
-        <td>Покупка</td>
+        <td>Currency</td>
+        <td>Sale</td>
+        <td>Purshase</td>
       </tr>
     </thead>
     {actualCurs.length > 0 && (

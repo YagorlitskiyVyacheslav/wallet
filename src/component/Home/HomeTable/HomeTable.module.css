@@ -146,7 +146,7 @@
     font-size: 13px;
     font-family: "HelveticaNeueCyr";
     color: rgb(40, 40, 40);
-    text-transform: uppercase;
+    font-weight: bold;
     line-height: 2.727;
     background-color: inherit;
     padding: 12px 0px;
@@ -210,7 +210,7 @@
 
   .financeMobItem:first-child .financeMobTitle {
     background-color: #ffffff;
-    padding-left: 40px;
+    text-align: center;
   }
 
   .financeMobItem:first-child .financeMobDate {

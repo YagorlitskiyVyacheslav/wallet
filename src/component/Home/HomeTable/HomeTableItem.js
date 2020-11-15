@@ -22,23 +22,23 @@ const HomeTableList = ({ data }) => {
           : `${styles.financeMobItem} ${styles.financeMobItemSpending}`
       }>
       <div className={styles.financeMobRow}>
-        <p className={styles.financeMobTitle}>Дата</p>
+        <p className={styles.financeMobTitle}>Date</p>
         <span className={styles.financeMobDate}>{date}</span>
       </div>
       <div className={styles.financeMobRow}>
-        <p className={styles.financeMobTitle}>Тип</p>
+        <p className={styles.financeMobTitle}>Type</p>
         <span className={styles.financeMobDate}>{data.type}</span>
       </div>
       <div className={styles.financeMobRow}>
-        <p className={styles.financeMobTitle}>Категория</p>
+        <p className={styles.financeMobTitle}>Category</p>
         <span className={styles.financeMobDate}>{data.category}</span>
       </div>
       <div className={styles.financeMobRow}>
-        <p className={styles.financeMobTitle}>Комментарии</p>
+        <p className={styles.financeMobTitle}>Comments</p>
         <span className={styles.financeMobDate}>{data.comments}</span>
       </div>
       <div className={styles.financeMobRow}>
-        <p className={styles.financeMobTitle}>Сумма</p>
+        <p className={styles.financeMobTitle}>Amount, UAH</p>
         <span
           className={
             data.type === "+"
@@ -49,7 +49,7 @@ const HomeTableList = ({ data }) => {
         </span>
       </div>
       <div className={styles.financeMobRow}>
-        <div className={styles.financeMobTitle}>Баланс</div>
+        <div className={styles.financeMobTitle}>Balance After</div>
         <span className={styles.financeMobDate}>{data.balanceAfter}</span>
       </div>
     </li>
