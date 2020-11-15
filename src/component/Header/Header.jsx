@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import PropTypes from 'prop-types';
 import { logout } from "../../redux/auth/authOperations";
 import logo from "../../images/Header/logo.svg";
 import logoTablet from "../../images/Header/wallet icon.png";
@@ -36,5 +37,9 @@ const Header = ({ name }) => {
     </header>
   );
 };
+
+Header.propTypes = {
+  name: PropTypes.string.isRequired
+}
 
 export default Header;

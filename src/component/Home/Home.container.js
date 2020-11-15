@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
-import { transactionsListSelector } from "../../redux/transactions/transactionsSelectors";
+import { reverseTransactionListSelector } from "../../redux/transactions/transactionsSelectors";
 import Home from "./Home";
 
 const mapStateToProps = (state) => ({
-    items: transactionsListSelector(state)
+    items: reverseTransactionListSelector(state)
   });
 
 export default connect(mapStateToProps)(Home);

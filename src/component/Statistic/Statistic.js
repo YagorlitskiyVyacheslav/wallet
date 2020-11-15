@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import CanvasJSReact from './canvasjs.react';
 import Select from 'react-select';
 import selectOptMonth from './selectOptMonth';
@@ -10,35 +11,34 @@ const selectOptYear = [];
 
 class Statistic extends Component {
   state = {
-    mounth: '',
+    month: '',
     year: '',
   };
 
   componentDidMount() {
     const currentDate = new Date();
     let initialYear = currentDate.getFullYear();
-    const initialMounth = currentDate.getMonth() + 1;
+    const initialMonth = currentDate.getMonth() + 1;
     const initialDay = '01';
 
-    const currentFormatStartDate = [
-      initialYear,
-      initialMounth,
-      initialDay,
-    ].join('-');
+    const currentFormatStartDate = [initialYear, initialMonth, initialDay].join(
+      '-',
+    );
 
     const currentFormatEndDate = Date.now();
 
     const parsedStartDate = Date.parse(currentFormatStartDate);
+
     this.props.setFilter({ start: parsedStartDate, end: currentFormatEndDate });
 
-    const initialMounthOpton = {
-      value: initialMounth,
-      label: selectOptMonth.find(item => Number(item.value) === initialMounth)
+    const initialMonthOption = {
+      value: initialMonth,
+      label: selectOptMonth.find(item => Number(item.value) === initialMonth)
         .label,
     };
-    const initialYearOpton = { value: initialYear, label: initialYear };
+    const initialYearOption = { value: initialYear, label: initialYear };
 
-    this.setState({ mounth: initialMounthOpton, year: initialYearOpton });
+    this.setState({ month: initialMonthOption, year: initialYearOption });
 
     countOfYears.forEach(e => {
       if (selectOptYear.length < 1) {
@@ -48,18 +48,19 @@ class Statistic extends Component {
         });
         return;
       }
-
-      initialYear -= 1;
-      selectOptYear.push({
-        value: initialYear,
-        label: initialYear,
-      });
+      if (selectOptYear.length < 5) {
+        initialYear -= 1;
+        selectOptYear.push({
+          value: initialYear,
+          label: initialYear,
+        });
+      }
     });
   }
 
-  filterGenerator = (year, mounth) => {
-    const startDate = new Date(year, mounth - 1, '01');
-    const endDate = new Date(year, mounth, 0, 23, 59, 59);
+  filterGenerator = (year, month) => {
+    const startDate = new Date(year, month - 1, '01');
+    const endDate = new Date(year, month, 0, 23, 59, 59);
 
     this.props.setFilter({
       start: Date.parse(startDate),
@@ -67,22 +68,22 @@ class Statistic extends Component {
     });
   };
 
-  handlerMounthInput = e => {
+  handlerMonthInput = e => {
     const { year } = this.state;
     const { value, label } = e;
-    this.setState({ mounth: { value, label } });
+    this.setState({ month: { value, label } });
     this.filterGenerator(year.value, value);
   };
 
   handlerYearInput = e => {
-    const { mounth } = this.state;
+    const { month } = this.state;
     const { value, label } = e;
     this.setState({ year: { value, label } });
-    this.filterGenerator(value, mounth.value);
+    this.filterGenerator(value, month.value);
   };
 
   render() {
-    const { mounth, year } = this.state;
+    const { month, year } = this.state;
     const dataPoints = this.props.dataPoints;
     const totalIncomeBalance = this.props.totalIncomeBalance;
     const totalCostBalance = this.props.totalCostBalance;
@@ -104,22 +105,23 @@ class Statistic extends Component {
       ],
     };
 
-    return dataPoints.length > 0 ? (
+    return dataPoints.length > 0 || totalIncomeBalance > 0 ? (
       <div className={styles.statistics}>
-        <h2 className={styles.statistic_main_title}>Статистика</h2>
+        <h2 className={styles.statistic_main_title}>Statistics</h2>
         <div className={styles.desctop_container}>
           <div className={styles.container}>
             <div className={styles.chart}>
-              <CanvasJSChart options={options} />
+              {dataPoints.length > 0 ? <CanvasJSChart options={options} /> : <p className={styles.chart_error}>There is no any information about costs!
+              Please add some costs!</p>}
             </div>
           </div>
           <div className={styles.main_section}>
             <div className={styles.select__section}>
               <Select
                 options={selectOptMonth}
-                value={mounth}
+                value={month}
                 className={styles.select__input}
-                onChange={this.handlerMounthInput}
+                onChange={this.handlerMonthInput}
                 placeholder="Месяц"
               />
               <Select
@@ -131,13 +133,13 @@ class Statistic extends Component {
               />
             </div>
             <div className={styles.statistic_container}>
-              <div className={styles.statictic}>
-                <div className={styles.statictic__title}>
-                  <p className={styles.statictic__category}>Категории</p>
-                  <p className={styles.statictic__total}>Сумма</p>
+              <div className={styles.statistic}>
+                <div className={styles.statistic__title}>
+                  <p className={styles.statistic__category}>Category</p>
+                  <p className={styles.statistic__total}>Total</p>
                 </div>
-                <ul className={styles.statistic__list}>
-                  {dataPoints.map(base => (
+                <ul className={totalCostBalance > 0 ? styles.statistic__list: styles.statistic__list_error}>
+                  {dataPoints.map((base) => (
                     <li key={base.category} className={styles.list__item}>
                       <p className={styles.category_section}>
                         <span
@@ -155,17 +157,17 @@ class Statistic extends Component {
               </div>
               <div className={(styles.container, styles.costs_section)}>
                 <h3 className={styles.costs}>
-                  <p className={styles.costs_title}>Расходы:</p>
+                  <p className={styles.costs_title}>Incomes:</p>
                   <span className={styles.costs_total}>
-                    {totalCostBalance}{' '}
-                    <span className={styles.costs_desc}>грн.</span>
+                    {totalCostBalance}{" "}
+                    <span className={styles.costs_desc}>UAH</span>
                   </span>
                 </h3>
                 <h3 className={styles.costs}>
-                  <p className={styles.costs_title}>Доходы:</p>
+                  <p className={styles.costs_title}>Costs:</p>
                   <span className={styles.income_total}>
-                    {totalIncomeBalance}{' '}
-                    <span className={styles.costs_desc}>грн.</span>
+                    {totalIncomeBalance}{" "}
+                    <span className={styles.costs_desc}>UAH</span>
                   </span>
                 </h3>
               </div>
@@ -175,15 +177,15 @@ class Statistic extends Component {
       </div>
     ) : (
       <div className={styles.statistics}>
-        <h2 className={styles.statistic_main_title}>Статистика</h2>
+        <h2 className={styles.statistic_main_title}>Statistics</h2>
         <div className={styles.desctop_container}>
           <div className={styles.main_section}>
             <div className={styles.select__section}>
               <Select
                 options={selectOptMonth}
-                value={mounth}
+                value={month}
                 className={styles.select__input}
-                onChange={this.handlerMounthInput}
+                onChange={this.handlerMonthInput}
                 placeholder="Месяц"
               />
               <Select
@@ -195,8 +197,7 @@ class Statistic extends Component {
               />
             </div>
             <h2 className={styles.error__title}>
-              У Вас нету данных для сведения статистики. Пожалуйста добавьте
-              данные!
+             There is no any information for statistic creation. Please add some information about statistics!
             </h2>
           </div>
         </div>
@@ -204,5 +205,28 @@ class Statistic extends Component {
     );
   }
 }
+
+Statistic.propTypes = {
+  dataPoints: PropTypes.arrayOf(
+    PropTypes.shape({
+      amount: PropTypes.number.isRequired,
+      balanceAfter: PropTypes.number,
+      category: PropTypes.string.isRequired,
+      color: PropTypes.string.isRequired,
+      comments: PropTypes.string,
+      createdAt: PropTypes.string,
+      date: PropTypes.number.isRequired,
+      label: PropTypes.string.isRequired,
+      type: PropTypes.string.isRequired,
+      typeBalanceAfter: PropTypes.string,
+      updatedAt: PropTypes.string,
+      y: PropTypes.number.isRequired,
+      _id: PropTypes.string.isRequired,
+    }),
+  ),
+  setFilter: PropTypes.func.isRequired,
+  totalCostBalance: PropTypes.number.isRequired,
+  totalIncomeBalance: PropTypes.number.isRequired,
+};
 
 export default Statistic;

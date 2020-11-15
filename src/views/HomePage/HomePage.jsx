@@ -4,7 +4,7 @@ import Layout from "../../component/Layout/layout";
 import Home from "../../component/Home/Home.container";
 import { userIdSelector, userTokenSelector } from "../../redux/auth/authSelectors";
 import { getTransactions } from "../../redux/transactions/transactionOperations";
-import { currencyExchengeOperation } from "../../redux/currency/currencyOperation";
+import { currencyExchangeOperation } from "../../redux/currency/currencyOperation";
 
 const HomePage = () => {
   const dispatch = useDispatch();
@@ -15,7 +15,7 @@ const HomePage = () => {
 
   useEffect(() => {
     dispatch(getTransactions(userId, userToken));
-    dispatch(currencyExchengeOperation());
+    dispatch(currencyExchangeOperation());
   });
 
   return (

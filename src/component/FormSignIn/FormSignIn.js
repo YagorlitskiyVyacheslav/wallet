@@ -49,7 +49,7 @@ const SignIn = () => {
                 ref={register({required: true})}
               />
               {errors.email && (
-                <p className={style.authenticationError}>Введите E-mail.</p>
+                <p className={style.authenticationError}>Enter E-mail.</p>
               )}
             </label>
           }
@@ -58,21 +58,21 @@ const SignIn = () => {
               value={password}
               type="password"
               name="password"
-              placeholder="Пароль"
+              placeholder="Password"
               onChange={(event) => setPassword(event.target.value)}
               className={style.authenticationPassword}
               ref={register({required: true})}
             />
             {errors.password && (
-              <p className={style.authenticationError}>Введите пароль.</p>
+              <p className={style.authenticationError}>Enter password.</p>
             )}
           </label>
           <button type="submit" className={style.authenticationButton}>
-            Войти
+            Sign In
           </button>
         </form>
         <Link to="/registration" className={style.link}>
-          <p className={style.linkSignUp}>Регистрация</p>
+          <p className={style.linkSignUp}>Sing Up</p>
         </Link>
       </div>
     </div>
