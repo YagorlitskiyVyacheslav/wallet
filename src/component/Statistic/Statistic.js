@@ -177,7 +177,7 @@ class Statistic extends Component {
       </div>
     ) : (
       <div className={styles.statistics}>
-        <h2 className={styles.statistic_main_title}>Статистика</h2>
+        <h2 className={styles.statistic_main_title}>Statistics</h2>
         <div className={styles.desctop_container}>
           <div className={styles.main_section}>
             <div className={styles.select__section}>
@@ -197,8 +197,7 @@ class Statistic extends Component {
               />
             </div>
             <h2 className={styles.error__title}>
-              У Вас нету данных для сведения статистики. Пожалуйста добавьте
-              данные!
+             There is no any information for statistic creation. Please add some information about costs or incomes!
             </h2>
           </div>
         </div>
