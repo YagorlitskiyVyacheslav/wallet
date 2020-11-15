@@ -197,7 +197,7 @@ class Statistic extends Component {
               />
             </div>
             <h2 className={styles.error__title}>
-             There is no any information for statistic creation. Please add some information about costs or incomes!
+             There is no any information for statistic creation. Please add some information about statistics!
             </h2>
           </div>
         </div>
