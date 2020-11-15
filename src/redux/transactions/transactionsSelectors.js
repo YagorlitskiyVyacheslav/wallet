@@ -16,7 +16,10 @@ export const filteredTransactionsByDateSelector = createSelector(
       : transactionsList;
   },
 );
-
+export const reverseTransactionListSelector = createSelector(
+  transactionsListSelector,
+  transactionList => transactionList.reverse()
+);
 export const incomeTransactionsListSelector = createSelector(
     filteredTransactionsByDateSelector,
   transactionsList => transactionsList.filter(item => item.type === '+'),
