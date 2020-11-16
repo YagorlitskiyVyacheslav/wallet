@@ -10,12 +10,12 @@
   top: 34px;
   transform: translateX(-50%);
 }
+
 .iPhoneContainer {
   display: none;
 }
 
 .authenticationLogoContainer {
-  padding-top: 100px;
   text-align: center;
 }
 
@@ -33,7 +33,6 @@
 
 .authenticationForm {
   text-align: center;
-
   width: 300px;
   margin: 33px auto;
 }

@@ -6,8 +6,18 @@
   margin: 0 auto;
   margin-top: -10px;
   font-size: 12px;
-  width: 75px;
+  width: 50px;
   border-bottom: 1px solid rgb(166, 177, 181);
+}
+.modal{
+  width: 100vh;
+}
+.formContainer{
+  height: 350px;
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 
