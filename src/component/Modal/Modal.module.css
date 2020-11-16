@@ -29,7 +29,7 @@
 
 .modal {
   position: absolute;
-  top: 40px;
+  height: calc(100% - 40px);
   left: 0;
   bottom: 0;
   right: 0;
