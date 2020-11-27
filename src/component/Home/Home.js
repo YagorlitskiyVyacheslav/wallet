@@ -32,8 +32,7 @@ const Home = ({ items }) => (
     </Toggler>
 
     <section className={styles.financeMobSection}>
-      {items.length === 0 && <Welcome />}
-      {items.length !== 0 && <HomeTable finance={items} />}
+      {items.length === 0 ? <Welcome /> : <HomeTable finance={items} />}
     </section>
 
     <div className={styles.currencySection}>

@@ -50,7 +50,8 @@ export const requestSingUp = (payload) => async (dispatch) => {
         "Content-Type": "application/json",
       },
     });
-    const { token, user } = await response.json();
+    const user = await response.json();
+    console.log(user);
 
     if (response.status === 400) {
       info({
@@ -58,14 +59,14 @@ export const requestSingUp = (payload) => async (dispatch) => {
       });
     } else {
       info({
-        text: "Registration successfully!",
+        text: `Registration successfully!`,
       });
     }
 
-    dispatch(setToken(token));
-    dispatch(setUserData(user));
+    // dispatch(setToken(token));
+    // dispatch(setUserData(user));
 
-    saveTokenToStorage({ token, user: JSON.stringify(user) });
+    // saveTokenToStorage({ token, user: JSON.stringify(user) });
   } catch (error) {
     info({
       text: error,
