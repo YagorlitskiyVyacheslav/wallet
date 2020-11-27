@@ -5,8 +5,7 @@ import PrivateRoute from "./component/PrivateRoute/PrivateRoute";
 import RestrictedRoute from "./component/RestrictedRoute/PrivateRoute";
 import Loader from "./component/Loader";
 import { getTokenFromStorage } from "./redux/auth/authOperations";
-import './fonts/fonts.css';
-
+import "./fonts/fonts.css";
 
 const App = () => {
   const dispatch = useDispatch();

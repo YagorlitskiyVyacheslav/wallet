@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import styles from "./HomeTable.module.css";
 
 const HomeTableList = ({ data }) => {
@@ -20,7 +20,8 @@ const HomeTableList = ({ data }) => {
         data.type === "+"
           ? `${styles.financeMobItem} ${styles.financeMobItemIncome}`
           : `${styles.financeMobItem} ${styles.financeMobItemSpending}`
-      }>
+      }
+    >
       <div className={styles.financeMobRow}>
         <p className={styles.financeMobTitle}>Date</p>
         <span className={styles.financeMobDate}>{date}</span>
@@ -44,7 +45,8 @@ const HomeTableList = ({ data }) => {
             data.type === "+"
               ? `${styles.financeMobDate} ${styles.tdIncome}`
               : `${styles.financeMobDate} ${styles.tdSpending}`
-          }>
+          }
+        >
           {data.amount}
         </span>
       </div>
@@ -64,9 +66,9 @@ HomeTableList.propTypes = {
       category: PropTypes.string.isRequired,
       comments: PropTypes,
       amount: PropTypes.number,
-      balanceAfter: PropTypes.number
+      balanceAfter: PropTypes.number,
     })
-    )
-}
+  ),
+};
 
 export default HomeTableList;

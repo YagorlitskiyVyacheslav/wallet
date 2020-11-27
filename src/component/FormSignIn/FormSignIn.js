@@ -1,21 +1,21 @@
-import React, {useState} from 'react';
-import {useDispatch} from 'react-redux';
-import {Link} from 'react-router-dom';
-import {useForm} from 'react-hook-form';
-import {requestSingIn} from '../../redux/auth/authOperations';
-import walletIcon from '../../images/Authentication/walletIcon.png';
-import iPhoneIMG from '../../images/Authentication/iPhone-login-desktop.png';
-import style from './SignIn.module.css';
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { requestSingIn } from "../../redux/auth/authOperations";
+import walletIcon from "../../images/Authentication/walletIcon.png";
+import iPhoneIMG from "../../images/Authentication/iPhone-login-desktop.png";
+import style from "./SignIn.module.css";
 
 const SignIn = () => {
   const dispatch = useDispatch();
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const {register, handleSubmit, errors} = useForm();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const { register, handleSubmit, errors } = useForm();
 
   const onSubmit = () => {
-    dispatch(requestSingIn({email, password}));
+    dispatch(requestSingIn({ email, password }));
   };
 
   return (
@@ -36,7 +36,8 @@ const SignIn = () => {
 
         <form
           className={style.authenticationForm}
-          onSubmit={handleSubmit(onSubmit)}>
+          onSubmit={handleSubmit(onSubmit)}
+        >
           {
             <label className={style.label}>
               <input
@@ -46,7 +47,7 @@ const SignIn = () => {
                 onChange={(event) => setEmail(event.target.value)}
                 className={`${style.authenticationEmail} ${style.inputValidation}`}
                 value={email}
-                ref={register({required: true})}
+                ref={register({ required: true })}
               />
               {errors.email && (
                 <p className={style.authenticationError}>Enter E-mail.</p>
@@ -61,7 +62,7 @@ const SignIn = () => {
               placeholder="Password"
               onChange={(event) => setPassword(event.target.value)}
               className={style.authenticationPassword}
-              ref={register({required: true})}
+              ref={register({ required: true })}
             />
             {errors.password && (
               <p className={style.authenticationError}>Enter password.</p>

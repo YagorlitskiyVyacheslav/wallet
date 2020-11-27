@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import CanvasJSReact from './canvasjs.react';
-import Select from 'react-select';
-import selectOptMonth from './selectOptMonth';
-import styles from './statistic.module.css';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import CanvasJSReact from "./canvasjs.react";
+import Select from "react-select";
+import selectOptMonth from "./selectOptMonth";
+import styles from "./statistic.module.css";
 
 const CanvasJSChart = CanvasJSReact.CanvasJSChart;
 const countOfYears = [1, 2, 3, 4, 5];
@@ -11,18 +11,18 @@ const selectOptYear = [];
 
 class Statistic extends Component {
   state = {
-    month: '',
-    year: '',
+    month: "",
+    year: "",
   };
 
   componentDidMount() {
     const currentDate = new Date();
     let initialYear = currentDate.getFullYear();
     const initialMonth = currentDate.getMonth() + 1;
-    const initialDay = '01';
+    const initialDay = "01";
 
     const currentFormatStartDate = [initialYear, initialMonth, initialDay].join(
-      '-',
+      "-"
     );
 
     const currentFormatEndDate = Date.now();
@@ -33,14 +33,14 @@ class Statistic extends Component {
 
     const initialMonthOption = {
       value: initialMonth,
-      label: selectOptMonth.find(item => Number(item.value) === initialMonth)
+      label: selectOptMonth.find((item) => Number(item.value) === initialMonth)
         .label,
     };
     const initialYearOption = { value: initialYear, label: initialYear };
 
     this.setState({ month: initialMonthOption, year: initialYearOption });
 
-    countOfYears.forEach(e => {
+    countOfYears.forEach((e) => {
       if (selectOptYear.length < 1) {
         selectOptYear.push({
           value: initialYear,
@@ -59,7 +59,7 @@ class Statistic extends Component {
   }
 
   filterGenerator = (year, month) => {
-    const startDate = new Date(year, month - 1, '01');
+    const startDate = new Date(year, month - 1, "01");
     const endDate = new Date(year, month, 0, 23, 59, 59);
 
     this.props.setFilter({
@@ -68,14 +68,14 @@ class Statistic extends Component {
     });
   };
 
-  handlerMonthInput = e => {
+  handlerMonthInput = (e) => {
     const { year } = this.state;
     const { value, label } = e;
     this.setState({ month: { value, label } });
     this.filterGenerator(year.value, value);
   };
 
-  handlerYearInput = e => {
+  handlerYearInput = (e) => {
     const { month } = this.state;
     const { value, label } = e;
     this.setState({ year: { value, label } });
@@ -89,17 +89,17 @@ class Statistic extends Component {
     const totalCostBalance = this.props.totalCostBalance;
 
     const options = {
-      theme: 'white',
+      theme: "white",
       animationEnabled: true,
       exportEnabled: true,
       data: [
         {
-          type: 'pie',
-          legendText: '{category}',
-          toolTipContent: '{category}: <strong>{amount}</strong>',
-          indexLabel: '{category}',
-          indexLabelPlacement: 'inside',
-          indexLabelFontColor: 'White',
+          type: "pie",
+          legendText: "{category}",
+          toolTipContent: "{category}: <strong>{amount}</strong>",
+          indexLabel: "{category}",
+          indexLabelPlacement: "inside",
+          indexLabelFontColor: "White",
           dataPoints: dataPoints,
         },
       ],
@@ -111,8 +111,14 @@ class Statistic extends Component {
         <div className={styles.desctop_container}>
           <div className={styles.container}>
             <div className={styles.chart}>
-              {dataPoints.length > 0 ? <CanvasJSChart options={options} /> : <p className={styles.chart_error}>There is no any information about costs!
-              Please add some costs!</p>}
+              {dataPoints.length > 0 ? (
+                <CanvasJSChart options={options} />
+              ) : (
+                <p className={styles.chart_error}>
+                  There is no any information about costs! Please add some
+                  costs!
+                </p>
+              )}
             </div>
           </div>
           <div className={styles.main_section}>
@@ -138,7 +144,13 @@ class Statistic extends Component {
                   <p className={styles.statistic__category}>Category</p>
                   <p className={styles.statistic__total}>Total</p>
                 </div>
-                <ul className={totalCostBalance > 0 ? styles.statistic__list: styles.statistic__list_error}>
+                <ul
+                  className={
+                    totalCostBalance > 0
+                      ? styles.statistic__list
+                      : styles.statistic__list_error
+                  }
+                >
                   {dataPoints.map((base) => (
                     <li key={base.category} className={styles.list__item}>
                       <p className={styles.category_section}>
@@ -197,7 +209,8 @@ class Statistic extends Component {
               />
             </div>
             <h2 className={styles.error__title}>
-             There is no any information for statistic creation. Please add some information about statistics!
+              There is no any information for statistic creation. Please add
+              some information about statistics!
             </h2>
           </div>
         </div>
@@ -222,7 +235,7 @@ Statistic.propTypes = {
       updatedAt: PropTypes.string,
       y: PropTypes.number.isRequired,
       _id: PropTypes.string.isRequired,
-    }),
+    })
   ),
   setFilter: PropTypes.func.isRequired,
   totalCostBalance: PropTypes.number.isRequired,

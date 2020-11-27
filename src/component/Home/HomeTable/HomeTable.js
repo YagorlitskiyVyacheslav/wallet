@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import HomeTableItem from "./HomeTableItem";
 import styles from "./HomeTable.module.css";
 
@@ -8,8 +8,8 @@ const HomeTable = ({ finance }) => {
     <div className={styles.financeMobWrapper}>
       <ul className={styles.financeMobList}>
         {finance.map((data) => (
-    //  TODO: to HomeTableItem component
-          <HomeTableItem  key={data._id} data={data} />
+          //  TODO: to HomeTableItem component
+          <HomeTableItem key={data._id} data={data} />
         ))}
       </ul>
     </div>
@@ -17,7 +17,7 @@ const HomeTable = ({ finance }) => {
 };
 
 HomeTable.propTypes = {
-  finance: PropTypes.arrayOf(PropTypes.object)
-}
+  finance: PropTypes.arrayOf(PropTypes.object),
+};
 
 export default HomeTable;
