@@ -16,6 +16,7 @@ html {
     background-color: #3a5374;
 }
 ::-webkit-scrollbar-button:vertical:start:decrement {
+    display: none;
     background: linear-gradient(120deg, #284060 40%, rgba(0, 0, 0, 0) 41%),
     linear-gradient(240deg, #284060 40%, rgba(0, 0, 0, 0) 41%),
     linear-gradient(0deg, #284060 30%, rgba(0, 0, 0, 0) 31%);
@@ -24,6 +25,7 @@ html {
 }
 
 ::-webkit-scrollbar-button:vertical:end:increment {
+    display: none;
     background:
         linear-gradient(300deg, #284060 40%, rgba(0, 0, 0, 0) 41%),
         linear-gradient(60deg, #284060 40%, rgba(0, 0, 0, 0) 41%),
@@ -33,6 +35,7 @@ html {
 }
 
 ::-webkit-scrollbar-button:horizontal:start:decrement {
+    display: none;
     background:
         linear-gradient(30deg, #284060 40%, rgba(0, 0, 0, 0) 41%),
         linear-gradient(150deg, #284060 40%, rgba(0, 0, 0, 0) 41%),
@@ -42,6 +45,7 @@ html {
 }
 
 ::-webkit-scrollbar-button:horizontal:end:increment {
+    display: none;
     background:
         linear-gradient(210deg, #284060 40%, rgba(0, 0, 0, 0) 41%),
         linear-gradient(330deg, #284060 40%, rgba(0, 0, 0, 0) 41%),
