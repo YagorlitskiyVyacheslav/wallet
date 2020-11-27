@@ -140,7 +140,6 @@
     box-shadow: 0px 0px 19px 8px rgba(0, 0, 0, 0.36);
   }
   .iPhoneContainer {
-    height: 650px;
     width: 300px;
     display: block;
     position: relative;
@@ -149,8 +148,9 @@
     transform: translateY(-50%);
   }
   .iPhoneIMG {
-    height: 590px;
-    width: 290px;
+    height: 531px;
+    width: 261px;
+    margin: 0 auto;
   }
   .financeApp {
     margin-top: 35px;
