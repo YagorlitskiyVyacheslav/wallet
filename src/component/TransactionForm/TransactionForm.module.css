@@ -283,3 +283,8 @@ select:focus {
 .onOpenModal {
   overflow: hidden;
 }
+.errorCategory {
+  color: red;
+  text-align: center;
+  margin: -15px 0 10px 0;
+}

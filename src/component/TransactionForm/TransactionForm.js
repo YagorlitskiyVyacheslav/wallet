@@ -2,6 +2,15 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import styles from "./TransactionForm.module.css";
 
+import "@pnotify/core/dist/Angeler.css";
+import * as PNotifyMobile from "@pnotify/mobile";
+import { defaults } from "@pnotify/core";
+import { info, defaultModules } from "@pnotify/core";
+
+defaults.width = "350px";
+defaults.delay = 2000;
+defaultModules.set(PNotifyMobile, {});
+
 const TransactionType = {
   DEPOSIT: "deposit",
   WITHDRAW: "withdraw",
@@ -62,7 +71,12 @@ class TransactionForm extends Component {
     const { date, type, category, amount, comments } = this.state;
 
     const { userId, token, balance } = this.props;
-
+    if(category === "") {
+      info({
+        text: "Select a category!",
+      });
+      return;
+    }
     const balanceAfter = balance + Number(type + amount);
 
     const typeBalanceAfter = balanceAfter > 0 ? "+" : "-";
@@ -142,6 +156,7 @@ class TransactionForm extends Component {
               />
             </label>
           </div>
+
           <select
             className={styles.select}
             name="category"
@@ -149,7 +164,6 @@ class TransactionForm extends Component {
             onChange={this.handlerInput}
           >
             <option value="" label="Category" disabled />
-
             {isSelectDepositInput ? (
               <>
                 <option value="Salary" label="Salary" />

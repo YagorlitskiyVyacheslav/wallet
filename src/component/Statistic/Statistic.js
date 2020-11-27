@@ -169,14 +169,14 @@ class Statistic extends Component {
               </div>
               <div className={(styles.container, styles.costs_section)}>
                 <h3 className={styles.costs}>
-                  <p className={styles.costs_title}>Incomes:</p>
+                  <p className={styles.costs_title}>Costs:</p>
                   <span className={styles.costs_total}>
                     {totalCostBalance}{" "}
                     <span className={styles.costs_desc}>UAH</span>
                   </span>
                 </h3>
                 <h3 className={styles.costs}>
-                  <p className={styles.costs_title}>Costs:</p>
+                  <p className={styles.costs_title}>Incomes:</p>
                   <span className={styles.income_total}>
                     {totalIncomeBalance}{" "}
                     <span className={styles.costs_desc}>UAH</span>
