@@ -93,7 +93,8 @@
     background-color: #f3f6f6;
   }
   .financeMobItem:first-child {
-    height: 116px;
+    min-height: 116px;
+    max-height: 166px;
   }
   .financeMobItem:not(:first-child) .financeMobTitle {
     display: none;
@@ -101,7 +102,8 @@
 
   .financeMobItem:not(:first-child) {
     align-items: center;
-    height: 62px;
+    min-height: 62px;
+    max-height: 112px;
   }
 
   .financeMobItemIncome {
@@ -120,15 +122,9 @@
     display: flex;
     flex-direction: column;
     width: 120px;
+    height: 100%;
     padding: 0px;
-  }
-  .financeMobRow:nth-child(4) {
-    overflow-y: auto;
-    max-height: 100%;
-  }
-  .financeMobRow:nth-child(4)::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+    padding-right: 10px;
   }
   .financeMobRow:nth-of-type(-n + 2) {
     width: 106px;
@@ -157,15 +153,25 @@
     font-size: 13px;
     font-family: "HelveticaNeueCyr";
     color: rgb(40, 40, 40);
+    text-align: center;
     font-weight: bold;
     line-height: 2.727;
     background-color: inherit;
     padding: 12px 0px;
+    margin-right: -10px;
   }
 
   .financeMobDate {
     min-width: inherit;
     padding: 16px 0px;
+  }
+  .financeMobRow:nth-child(4) .financeMobDate {
+    overflow-y: auto;
+    max-height: 100%;
+  }
+  .financeMobRow:nth-child(4) .financeMobDate::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
   }
 }
 
