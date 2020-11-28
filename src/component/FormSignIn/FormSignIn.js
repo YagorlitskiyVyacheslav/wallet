@@ -1,18 +1,27 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
-import { useForm } from "react-hook-form";
-import { requestSingIn } from "../../redux/auth/authOperations";
-import walletIcon from "../../images/Authentication/walletIcon.png";
-import iPhoneIMG from "../../images/Authentication/iPhone-login-desktop.png";
-import style from "./SignIn.module.css";
+import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
+import { requestSingIn } from '../../redux/auth/authOperations';
+import walletIcon from '../../images/Authentication/walletIcon.png';
+import iPhoneIMG from '../../images/Authentication/iPhone-login-desktop.png';
+import style from './SignIn.module.css';
 
 const SignIn = () => {
   const dispatch = useDispatch();
+  const user = JSON.parse(localStorage.getItem('user'));
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const { register, handleSubmit, errors } = useForm();
+
+  useEffect(() => {
+    if (user && user.email) {
+      console.log(user);
+      setEmail(user.email);
+      setPassword(user.password);
+    }
+  }, [user]);
 
   const onSubmit = () => {
     dispatch(requestSingIn({ email, password }));
@@ -44,7 +53,7 @@ const SignIn = () => {
                 type="email"
                 name="email"
                 placeholder="E-mail"
-                onChange={(event) => setEmail(event.target.value)}
+                onChange={event => setEmail(event.target.value)}
                 className={`${style.authenticationEmail} ${style.inputValidation}`}
                 value={email}
                 ref={register({ required: true })}
@@ -60,7 +69,7 @@ const SignIn = () => {
               type="password"
               name="password"
               placeholder="Password"
-              onChange={(event) => setPassword(event.target.value)}
+              onChange={event => setPassword(event.target.value)}
               className={style.authenticationPassword}
               ref={register({ required: true })}
             />
