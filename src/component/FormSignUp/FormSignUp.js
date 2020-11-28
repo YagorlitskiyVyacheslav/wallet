@@ -1,26 +1,32 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
-import { requestSingUp } from "../../redux/auth/authOperations";
-import { useForm } from "react-hook-form";
-import PasswordStrengthMeter from "../PasswordMeter/PasswordStrengthMeter";
-import walletIcon from "../../images/Authentication/walletIcon.png";
-import iPhoneIMG from "../../images/Authentication/iPhone-registration-desktop.png";
-import style from "./SignUp.module.css";
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { requestSingUp } from '../../redux/auth/authOperations';
+import { useForm } from 'react-hook-form';
+import PasswordStrengthMeter from '../PasswordMeter/PasswordStrengthMeter';
+import walletIcon from '../../images/Authentication/walletIcon.png';
+import iPhoneIMG from '../../images/Authentication/iPhone-registration-desktop.png';
+import style from './SignUp.module.css';
 
 const SignUp = () => {
   const dispatch = useDispatch();
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [name, setUserName] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [name, setUserName] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const { register, handleSubmit, errors } = useForm();
   const confirmPasswordError = () =>
     password !== confirmPassword ? true : false;
   const onSubmit = () => {
     if (password === confirmPassword) {
-      dispatch(requestSingUp({ email, password, name }));
+      dispatch(requestSingUp({ email, password, name })).then(response => {
+        if (response) {
+          setTimeout(() => {
+            document.location.href = '/login';
+          }, 1000);
+        }
+      });
     }
   };
 
@@ -51,7 +57,7 @@ const SignUp = () => {
               placeholder="E-mail"
               ref={register({ required: true })}
               className={`${style.authenticationEmail} ${style.inputValidation}`}
-              onChange={(event) => setEmail(event.target.value)}
+              onChange={event => setEmail(event.target.value)}
             />
             {errors.email && (
               <p className={style.authenticationError}>Enter E-mail.</p>
@@ -66,7 +72,7 @@ const SignUp = () => {
               ref={register({ required: true })}
               autoComplete="off"
               className={style.authenticationPassword}
-              onChange={(event) => setPassword(event.target.value)}
+              onChange={event => setPassword(event.target.value)}
             />
             {errors.password && (
               <p className={style.authenticationError}>Enter password.</p>
@@ -82,9 +88,9 @@ const SignUp = () => {
               placeholder="Password confirm"
               autoComplete="off"
               className={style.authenticationPassword}
-              onChange={(event) => setConfirmPassword(event.target.value)}
+              onChange={event => setConfirmPassword(event.target.value)}
             />
-            {confirmPasswordError() && confirmPassword !== "" && (
+            {confirmPasswordError() && confirmPassword !== '' && (
               <p className={style.authenticationError}>Pasword don't match.</p>
             )}
           </label>
@@ -96,7 +102,7 @@ const SignUp = () => {
               placeholder="Enter your name"
               ref={register({ required: true })}
               className={style.authenticationName}
-              onChange={(event) => setUserName(event.target.value)}
+              onChange={event => setUserName(event.target.value)}
             />
             {errors.name && (
               <p className={style.authenticationError}>Enter name</p>
