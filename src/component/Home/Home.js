@@ -11,7 +11,7 @@ import Toggler from "../Toggler";
 import styles from "./Home.module.css";
 import fade from "../Modal/Modal.module.css";
 
-const Home = ({ items }) => (
+const Home = ({ items, loading }) => (
   <>
     <Toggler>
       {({ isOpen, onToggle }) => (
@@ -32,7 +32,8 @@ const Home = ({ items }) => (
     </Toggler>
 
     <section className={styles.financeMobSection}>
-      {items.length === 0 ? <Welcome /> : <HomeTable finance={items} />}
+      {items.length === 0 && !loading && <Welcome />}
+      {!loading && <HomeTable finance={items} />}
     </section>
 
     <div className={styles.currencySection}>

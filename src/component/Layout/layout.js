@@ -4,11 +4,11 @@ import Container from "../Container/Container";
 import NavSection from "../NavSection/NavSection";
 import styles from "../../globalStyles.module.css";
 
-const Layout = ({ children }) => (
+const Layout = ({ children, loading }) => (
   <div className={styles.gridContainer}>
-    <Header />
-    <NavSection />
-    <Container>{children}</Container>
+    {!loading && <Header />}
+    {!loading && <NavSection />}
+    {!loading && <Container>{children}</Container>}
   </div>
 );
 

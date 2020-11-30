@@ -3,7 +3,8 @@ import {
   SET_OUT_TRANSACTIONS,
   SET_BALANCE,
   SET_FILTER,
-} from './transactionsActionTypes';
+  LOADING_TRANSACTIONS,
+} from "./transactionsActionTypes";
 
 export const setTransactions = payload => ({
   type: SET_TRANSACTIONS,
@@ -18,5 +19,9 @@ export const setBalance = payload => ({
 });
 export const setFilter = payload => ({
   type: SET_FILTER,
+  payload,
+});
+export const loadingTransaction = (payload) => ({
+  type: LOADING_TRANSACTIONS,
   payload,
 });
