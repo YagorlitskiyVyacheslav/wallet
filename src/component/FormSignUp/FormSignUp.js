@@ -8,7 +8,7 @@ import walletIcon from '../../images/Authentication/walletIcon.png';
 import iPhoneIMG from '../../images/Authentication/iPhone-registration-desktop.png';
 import style from './SignUp.module.css';
 
-const SignUp = () => {
+const SignUp = props => {
   const dispatch = useDispatch();
 
   const [email, setEmail] = useState('');
@@ -23,7 +23,7 @@ const SignUp = () => {
       dispatch(requestSingUp({ email, password, name })).then(response => {
         if (response) {
           setTimeout(() => {
-            document.location.href = '/login';
+            props.history.push('/login');
           }, 1000);
         }
       });

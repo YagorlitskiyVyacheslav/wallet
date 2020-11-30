@@ -1,5 +1,6 @@
 import {
   SET_TRANSACTIONS,
+  SET_OUT_TRANSACTIONS,
   SET_BALANCE,
   SET_FILTER,
   LOADING_TRANSACTIONS,
@@ -16,6 +17,8 @@ const reducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_TRANSACTIONS:
       return { ...state, items: action.payload };
+    case SET_OUT_TRANSACTIONS:
+      return initialState;
     case SET_BALANCE:
       return { ...state, balance: action.payload };
     case SET_FILTER:

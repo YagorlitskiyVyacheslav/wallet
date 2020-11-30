@@ -12,11 +12,10 @@ const HomePage = () => {
   const userId = useSelector(userIdSelector);
   const userToken = useSelector(userTokenSelector);
 
-
   useEffect(() => {
     dispatch(getTransactions(userId, userToken));
     dispatch(currencyExchangeOperation());
-  });
+  }, []);
 
   return (
     <Layout>

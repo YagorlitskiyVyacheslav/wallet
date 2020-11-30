@@ -17,7 +17,6 @@ const SignIn = () => {
 
   useEffect(() => {
     if (user && user.email) {
-      console.log(user);
       setEmail(user.email);
       setPassword(user.password);
     }
