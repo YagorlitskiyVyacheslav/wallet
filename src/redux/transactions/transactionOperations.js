@@ -41,7 +41,8 @@ export const createTransaction = (userId, token, transaction) => async (
 };
 
 export const getTransactions = (userId, token) => async (dispatch) => {
-  dispatch(loadingTransaction(true))
+  if(userId === undefined) return;
+  dispatch(loadingTransaction(true));
   try {
     const url = `${API_URL}/api/finance/${userId}`;
 
@@ -53,7 +54,6 @@ export const getTransactions = (userId, token) => async (dispatch) => {
     };
     const response = await fetch(url, options);
     const data = await response.json();
-    console.log(data)
 
     dispatch(setBalance(data.finance.totalBalance));
     dispatch(setTransactions(data.finance.data));

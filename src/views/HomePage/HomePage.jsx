@@ -15,7 +15,7 @@ const HomePage = () => {
   useEffect(() => {
     dispatch(getTransactions(userId, userToken));
     dispatch(currencyExchangeOperation());
-  }, []);
+  });
 
   return (
     <Layout>
