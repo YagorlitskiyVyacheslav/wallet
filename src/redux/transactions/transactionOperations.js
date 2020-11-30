@@ -1,6 +1,6 @@
 import { API_URL } from "../../constants";
 
-import { setBalance, setTransactions } from "./transactionsActions";
+import { loadingTransaction, setBalance, setTransactions } from "./transactionsActions";
 
 import "@pnotify/core/dist/PNotify.css";
 import "@pnotify/core/dist/BrightTheme.css";
@@ -41,6 +41,8 @@ export const createTransaction = (userId, token, transaction) => async (
 };
 
 export const getTransactions = (userId, token) => async (dispatch) => {
+  if(userId === undefined) return;
+  dispatch(loadingTransaction(true));
   try {
     const url = `${API_URL}/api/finance/${userId}`;
 
@@ -50,15 +52,16 @@ export const getTransactions = (userId, token) => async (dispatch) => {
         "Content-Type": "application/json",
       },
     };
-
     const response = await fetch(url, options);
     const data = await response.json();
 
     dispatch(setBalance(data.finance.totalBalance));
     dispatch(setTransactions(data.finance.data));
+    dispatch(loadingTransaction(false))
   } catch (error) {
     info({
       text: error,
     });
+    dispatch(loadingTransaction(false))
   }
 };

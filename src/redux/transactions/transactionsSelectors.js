@@ -4,6 +4,7 @@ import colorSwitcher from "../../utils/colorsSwitcher";
 export const transactionsListSelector = (state) => state.transactions.items;
 export const totalBalanceSelector = (state) => state.transactions.balance;
 export const transactionsFilterSelector = (state) => state.transactions.filter;
+export const loadingTransactionSelector = (state) => state.transactions.loading;
 
 export const filteredTransactionsByDateSelector = createSelector(
   transactionsListSelector,
