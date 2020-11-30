@@ -8,6 +8,8 @@ import { defaults } from '@pnotify/core';
 import { info, defaultModules } from '@pnotify/core';
 
 import { setUserData, setToken } from './authActions';
+import { setOutCurrencyExchange } from '../currency/currencyAction';
+import { setOutTransactions } from '../transactions/transactionsActions';
 
 defaults.width = '350px';
 defaults.delay = 2000;
@@ -98,6 +100,8 @@ export const logout = () => dispatch => {
 
   dispatch(setToken(token));
   dispatch(setUserData(user));
+  dispatch(setOutCurrencyExchange());
+  dispatch(setOutTransactions());
 
   saveTokenToStorage({ token, user: JSON.stringify(user) });
 };
