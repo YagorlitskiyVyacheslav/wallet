@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Layout from "../../component/Layout/layout";
+import Layout from "../../component/Layout/layout.container";
 import Home from "../../component/Home/Home.container";
 import { userIdSelector, userTokenSelector } from "../../redux/auth/authSelectors";
 import { getTransactions } from "../../redux/transactions/transactionOperations";

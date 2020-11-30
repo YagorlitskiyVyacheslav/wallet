@@ -53,6 +53,7 @@ export const getTransactions = (userId, token) => async (dispatch) => {
     };
     const response = await fetch(url, options);
     const data = await response.json();
+    console.log(data)
 
     dispatch(setBalance(data.finance.totalBalance));
     dispatch(setTransactions(data.finance.data));

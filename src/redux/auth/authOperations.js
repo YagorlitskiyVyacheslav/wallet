@@ -7,13 +7,14 @@ import '@pnotify/mobile/dist/PNotifyMobile.css';
 import { defaults } from '@pnotify/core';
 import { info, defaultModules } from '@pnotify/core';
 
-import { setUserData, setToken } from './authActions';
+import { setUserData, setToken, loadingAcc } from './authActions';
 
 defaults.width = '350px';
 defaults.delay = 2000;
 defaultModules.set(PNotifyMobile, {});
 
 export const requestSingIn = payload => async dispatch => {
+  dispatch(loadingAcc(true));
   try {
     const response = await fetch(`${API_URL}/api/login`, {
       method: 'POST',
@@ -32,12 +33,13 @@ export const requestSingIn = payload => async dispatch => {
 
     dispatch(setToken(token));
     dispatch(setUserData(user));
-
     saveTokenToStorage({ token, user: JSON.stringify(user) });
+    dispatch(loadingAcc(false));
   } catch (error) {
     info({
       text: error,
     });
+    dispatch(loadingAcc(false));
   }
 };
 
