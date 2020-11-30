@@ -2,11 +2,13 @@ import {
   SET_TRANSACTIONS,
   SET_BALANCE,
   SET_FILTER,
+  LOADING_TRANSACTIONS,
 } from "./transactionsActionTypes";
 
 const initialState = {
   items: [],
   balance: 0,
+  loading: false,
   filter: "",
 };
 
@@ -18,6 +20,8 @@ const reducer = (state = initialState, action) => {
       return { ...state, balance: action.payload };
     case SET_FILTER:
       return { ...state, filter: action.payload };
+    case LOADING_TRANSACTIONS: 
+      return { ...state, loading: action.payload};
     default:
       return state;
   }
