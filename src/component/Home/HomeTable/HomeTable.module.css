@@ -72,6 +72,8 @@
 
   .financeMobList {
     min-width: 738px;
+    max-height: 600px;
+    overflow-y: auto;
   }
 
   .financeMobItem {
@@ -182,8 +184,6 @@
 
   .financeMobList {
     min-width: 856px;
-    max-height: 600px;
-    overflow-y: auto;
   }
   .financeMobList::-webkit-scrollbar {
     width: 6px;
@@ -244,7 +244,7 @@
     text-align: center;
   }
 
-  .financeMobItem:first-child .financeMobDate {
+  .financeMobItem:first-child .financeMobRow:not(:nth-child(4)) .financeMobDate {
     background-color: #f2eaf0;
     padding-left: 40px;
   }
