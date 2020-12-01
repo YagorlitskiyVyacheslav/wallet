@@ -29,10 +29,10 @@ export const createTransaction = (userId, token, transaction) => async (
     };
 
     const response = await fetch(url, options);
-    const data = await response.json();
+    const { finance: { totalBalance, data }} = await response.json();
 
-    dispatch(setBalance(data.finance.totalBalance));
-    dispatch(setTransactions(data.finance.data));
+    dispatch(setBalance(totalBalance));
+    dispatch(setTransactions(data));
   } catch (error) {
     info({
       text: error,
@@ -53,10 +53,10 @@ export const getTransactions = (userId, token) => async (dispatch) => {
       },
     };
     const response = await fetch(url, options);
-    const data = await response.json();
+    const { finance: { totalBalance, data }} = await response.json();
 
-    dispatch(setBalance(data.finance.totalBalance));
-    dispatch(setTransactions(data.finance.data));
+    dispatch(setBalance(totalBalance));
+    dispatch(setTransactions(data));
     dispatch(loadingTransaction(false))
   } catch (error) {
     info({
