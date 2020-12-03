@@ -13,6 +13,7 @@ const HomePage = () => {
   const userToken = useSelector(userTokenSelector);
 
   useEffect(() => {
+    if(userId === undefined) return;
     dispatch(getTransactions(userId, userToken));
     dispatch(currencyExchangeOperation());
   });
