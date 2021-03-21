@@ -4,14 +4,17 @@ import styles from "./HomeTable.module.css";
 
 const HomeTableList = ({ data }) => {
   let date = new Date(data.date);
+
   date =
     date.getDate() +
     "." +
-    ((date.getMonth() + 1).length === 2
+    (date.getMonth() + 1 >= 10
       ? date.getMonth() + 1
-      : 0 + date.getMonth() + 1) +
+      : 0 + `${date.getMonth() + 1}`) +
     "." +
     `${date.getFullYear()}`.slice(-2);
+
+  console.log("date:", date);
 
   return (
     <li
@@ -20,8 +23,7 @@ const HomeTableList = ({ data }) => {
         data.type === "+"
           ? `${styles.financeMobItem} ${styles.financeMobItemIncome}`
           : `${styles.financeMobItem} ${styles.financeMobItemSpending}`
-      }
-    >
+      }>
       <div className={styles.financeMobRow}>
         <p className={styles.financeMobTitle}>Date</p>
         <span className={styles.financeMobDate}>{date}</span>
@@ -45,8 +47,7 @@ const HomeTableList = ({ data }) => {
             data.type === "+"
               ? `${styles.financeMobDate} ${styles.tdIncome}`
               : `${styles.financeMobDate} ${styles.tdSpending}`
-          }
-        >
+          }>
           {data.amount}
         </span>
       </div>

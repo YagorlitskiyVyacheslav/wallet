@@ -160,9 +160,10 @@
     background-color: inherit;
     padding: 12px 0px;
   }
-
+  
   .financeMobDate {
     min-width: inherit;
+    text-align: center;
     padding: 16px 0px;
   }
   .financeMobRow:nth-child(4) .financeMobDate {
@@ -246,10 +247,10 @@
 
   .financeMobItem:first-child .financeMobRow:not(:nth-child(4)) .financeMobDate {
     background-color: #f2eaf0;
-    padding-left: 40px;
+    /* padding-left: 40px; */
   }
 
   .financeMobItem:not(:first-child) .financeMobRow:not(:nth-child(4)) {
-    padding-left: 40px;
+    /* padding-left: 40px; */
   }
 }

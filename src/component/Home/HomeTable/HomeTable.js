@@ -8,7 +8,6 @@ const HomeTable = ({ finance }) => {
     <div className={styles.financeMobWrapper}>
       <ul className={styles.financeMobList}>
         {finance.map((data) => (
-          //  TODO: to HomeTableItem component
           <HomeTableItem key={data._id} data={data} />
         ))}
       </ul>

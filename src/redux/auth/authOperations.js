@@ -1,57 +1,27 @@
-import { API_URL } from '../../constants';
+import { API_URL } from "../../constants";
 
-import '@pnotify/core/dist/PNotify.css';
-import '@pnotify/core/dist/BrightTheme.css';
-import * as PNotifyMobile from '@pnotify/mobile';
-import '@pnotify/mobile/dist/PNotifyMobile.css';
-import { defaults } from '@pnotify/core';
-import { info, defaultModules } from '@pnotify/core';
+import "@pnotify/core/dist/PNotify.css";
+import "@pnotify/core/dist/BrightTheme.css";
+import * as PNotifyMobile from "@pnotify/mobile";
+import "@pnotify/mobile/dist/PNotifyMobile.css";
+import { defaults } from "@pnotify/core";
+import { info, defaultModules } from "@pnotify/core";
 
-import { setUserData, setToken, loadingAcc } from './authActions';
-import { setOutCurrencyExchange } from '../currency/currencyAction';
-import { setOutTransactions } from '../transactions/transactionsActions';
+import { setUserData, setToken, loadingAcc } from "./authActions";
+import { setOutCurrencyExchange } from "../currency/currencyAction";
+import { setOutTransactions } from "../transactions/transactionsActions";
 
-defaults.width = '350px';
+defaults.width = "350px";
 defaults.delay = 2000;
 defaultModules.set(PNotifyMobile, {});
 
-export const requestSingIn = payload => async dispatch => {
-  dispatch(loadingAcc(true));
-  try {
-    const response = await fetch(`${API_URL}/api/login`, {
-      method: 'POST',
-      body: JSON.stringify(payload),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-    const { token, user } = await response.json();
-
-    if (!user) {
-      info({
-        text: 'Incorrect E-mail or password.',
-      });
-    }
-
-    dispatch(setToken(token));
-    dispatch(setUserData(user));
-    saveTokenToStorage({ token, user: JSON.stringify(user) });
-    dispatch(loadingAcc(false));
-  } catch (error) {
-    info({
-      text: error,
-    });
-    dispatch(loadingAcc(false));
-  }
-};
-
-export const requestSingUp = payload => async dispatch => {
+export const requestSingUp = (payload) => async (dispatch) => {
   try {
     const response = await fetch(`${API_URL}/api/register`, {
-      method: 'POST',
+      method: "POST",
       body: JSON.stringify(payload),
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
     });
 
@@ -59,7 +29,7 @@ export const requestSingUp = payload => async dispatch => {
 
     if (!success) {
       info({
-        text: 'This E-mail already exist!',
+        text: "This E-mail already exist!",
       });
 
       return;
@@ -84,10 +54,40 @@ export const requestSingUp = payload => async dispatch => {
   }
 };
 
-export const getTokenFromStorage = () => dispatch => {
+export const requestSingIn = (payload) => async (dispatch) => {
+  dispatch(loadingAcc(true));
   try {
-    const token = localStorage.getItem('token');
-    const user = JSON.parse(localStorage.getItem('user'));
+    const response = await fetch(`${API_URL}/api/login`, {
+      method: "POST",
+      body: JSON.stringify(payload),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const { token, user } = await response.json();
+
+    if (!user) {
+      info({
+        text: "Incorrect E-mail or password.",
+      });
+    }
+
+    dispatch(setToken(token));
+    dispatch(setUserData(user));
+    saveTokenToStorage({ token, user: JSON.stringify(user) });
+    dispatch(loadingAcc(false));
+  } catch (error) {
+    info({
+      text: error,
+    });
+    dispatch(loadingAcc(false));
+  }
+};
+
+export const getTokenFromStorage = () => (dispatch) => {
+  try {
+    const token = localStorage.getItem("token");
+    const user = JSON.parse(localStorage.getItem("user"));
 
     dispatch(setToken(token));
     dispatch(setUserData(user));
@@ -96,8 +96,8 @@ export const getTokenFromStorage = () => dispatch => {
   }
 };
 
-export const logout = () => dispatch => {
-  const token = '';
+export const logout = () => (dispatch) => {
+  const token = "";
   const user = {};
 
   dispatch(setToken(token));
@@ -109,6 +109,6 @@ export const logout = () => dispatch => {
 };
 
 export const saveTokenToStorage = ({ user, token }) => {
-  localStorage.setItem('user', user);
-  localStorage.setItem('token', token);
+  localStorage.setItem("user", user);
+  localStorage.setItem("token", token);
 };
